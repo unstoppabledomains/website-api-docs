@@ -1,0 +1,17 @@
+$font-weight-bolder: 700;
+$font-weight-bold: 600;
+$font-weight-normal: 400;
+$font-weight-light: 300;
+
+%font-weight-bolder {
+  font-weight: $font-weight-bolder;
+}
+%font-weight-bold {
+  font-weight: $font-weight-bold;
+}
+%font-weight-normal {
+  font-weight: $font-weight-normal;
+}
+%font-weight-light {
+  font-weight: $font-weight-light;
+}

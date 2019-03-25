@@ -1,0 +1,64 @@
+@import '../breakpoints';
+
+$font-sizes: (
+  11: 2,
+  12: 4,
+  13: 5,
+  14: 5,
+  15: 5,
+  16: 5,
+  17: 5,
+  18: 5,
+  19: 5,
+  20: 6,
+  21: 6,
+  22: 6,
+  23: 6,
+  24: 8,
+  25: 8,
+  26: 8,
+  28: 8,
+  30: 8,
+  32: 6,
+  34: 6,
+  36: 6,
+  38: 6,
+  40: 4,
+  44: 4,
+  48: 4,
+  52: 4,
+  56: 4,
+  60: 4,
+  64: 4,
+  68: 4,
+  74: 4,
+  80: 4,
+);
+
+@mixin apply-font-size($size) {
+  $lead-padding: map-get($font-sizes, $size);
+
+  font-size: #{$size}px;
+  line-height: #{$size + $lead-padding}px;
+}
+
+@mixin bind-font-size(
+  $selector,
+  $fourk-size,
+  $desktop-size,
+  $tablet-size,
+  $phone-size
+) {
+  #{$selector} {
+    @include apply-font-size($fourk-size);
+    @include only-desktop-and-down {
+      @include apply-font-size($desktop-size);
+    }
+    @include only-tablet-and-down {
+      @include apply-font-size($tablet-size);
+    }
+    @include only-phone {
+      @include apply-font-size($phone-size);
+    }
+  }
+}

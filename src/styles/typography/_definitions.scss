@@ -1,0 +1,78 @@
+@import './families';
+@import './sizes';
+@import './weights';
+@import '../colors';
+
+%heading {
+  @extend %font-weight-bolder;
+  font-weight: 700;
+  font-size-adjust: 0.5;
+  &.eyebrow {
+    font-weight: 600;
+  }
+}
+
+%subhead {
+}
+
+%aside {
+  @extend %font-weight-light;
+}
+
+%code {
+  @extend %font-family-monospace;
+  @include apply-font-size(13);
+}
+
+@include bind-font-size(
+  '%heading-1',
+  80,
+  68,
+  56,
+  36
+); // Use sparingly for big landing headings
+@include bind-font-size(
+  '%heading-2',
+  64,
+  56,
+  48,
+  32
+); // Use as normal landing headings
+@include bind-font-size(
+  '%heading-3',
+  48,
+  44,
+  40,
+  28
+); // Use as regular page titles and big landing subheads
+@include bind-font-size('%heading-4', 40, 36, 32, 25); // Use as
+@include bind-font-size('%heading-5', 32, 28, 26, 23); // Use as quad titles
+@include bind-font-size('%heading-6', 26, 22, 19, 19); // Use as form headnings
+
+@include bind-font-size('%subhead-1', 24, 21, 21, 21); // primary ~ h1,h2
+@include bind-font-size('%subhead-2', 21, 17, 17, 17); // secondary ~ h3,h4
+@include bind-font-size('%subhead-3', 17, 17, 17, 17); // for minor subheads
+// use body text for long subheads
+
+@include bind-font-size('%aside', 26, 22, 19, 19);
+@include bind-font-size('html,%body', 17, 17, 16, 15);
+@include bind-font-size('%compact', 15, 15, 14, 13);
+
+@include bind-font-size('%caption', 13, 13, 12, 11);
+
+// Some simple selector bindings
+
+%subhead-1,
+%subhead-2,
+%subhead-3 {
+  @extend %subhead !optional;
+}
+
+%heading-1,
+%heading-2,
+%heading-3,
+%heading-4,
+%heading-5,
+%heading-6 {
+  @extend %heading !optional;
+}

@@ -1,0 +1,79 @@
+@import './colors';
+@import './breakpoints';
+
+.Container {
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  max-width: $breakpoint-large;
+  &.medium {
+    max-width: $breakpoint-medium;
+  }
+  &.small {
+    max-width: $breakpoint-small;
+  }
+  &.text {
+    max-width: 37rem; // 630px
+  }
+
+  background-color: inherit;
+
+  &.fluid {
+    max-width: initial;
+  }
+
+  padding-left: 3.3333%;
+  padding-right: 3.3333%;
+  @include only-phone {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+}
+
+.Section {
+  padding: 2rem 0;
+  min-height: 592px;
+  background: $grayscale-f;
+  @include only-tablet-and-down {
+    min-height: 512px;
+  }
+  @include only-phone {
+    min-height: 100%;
+  }
+}
+
+.Footer {
+}
+
+.Header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  height: 64px;
+  > :not(:first-child) {
+    margin-left: 16px;
+  }
+}
+
+.Layout {
+}
+
+.TopBottom {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  > :nth-last-child(2) {
+    flex-grow: 1;
+  }
+}
+
+.NavBar {
+}
+
+.NavMenu {
+  @include only-tablet-and-down {
+    display: none;
+  }
+}

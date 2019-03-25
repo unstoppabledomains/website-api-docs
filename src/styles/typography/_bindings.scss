@@ -1,0 +1,49 @@
+@import './definitions';
+@import './families';
+@import './sizes';
+@import './weights';
+
+small,
+.compact {
+  @extend %compact;
+}
+
+.caption {
+  @extend %caption;
+}
+
+blockquote,
+.aside {
+  @extend %aside;
+}
+
+strong,
+b {
+  @extend %font-weight-bolder;
+}
+
+em,
+i {
+  font-style: italic;
+}
+
+u {
+  text-decoration: underline;
+}
+
+pre,
+code {
+  @extend %font-family-monospace;
+}
+
+@each $size in (1, 2, 3, 4, 5, 6) {
+  .heading-#{$size} {
+    @extend %heading-#{$size};
+  }
+}
+
+@each $size in (1, 2, 3) {
+  .subhead-#{$size} {
+    @extend %subhead-#{$size};
+  }
+}

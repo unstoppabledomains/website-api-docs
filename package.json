@@ -1,0 +1,44 @@
+{
+  "name": "ud-docs",
+  "private": true,
+  "description": "The Unstoppable Domains Documentation",
+  "version": "0.1.0",
+  "author": "Braden Pezeshki <braden@unstoppabledomains.com>",
+  "dependencies": {
+    "classnames": "^2.2.6",
+    "gatsby": "^2.2.5",
+    "gatsby-plugin-catch-links": "^2.0.13",
+    "gatsby-plugin-react-helmet": "^3.0.10",
+    "gatsby-plugin-sass": "^2.0.11",
+    "gatsby-remark-copy-linked-files": "^2.0.11",
+    "gatsby-remark-images": "^3.0.10",
+    "gatsby-remark-prismjs": "^3.2.6",
+    "gatsby-source-filesystem": "^2.0.28",
+    "gatsby-transformer-remark": "^2.3.8",
+    "node-sass": "^4.11.0",
+    "prismjs": "^1.15.0",
+    "react": "^16.8.4",
+    "react-dom": "^16.8.4",
+    "react-helmet": "^5.2.0",
+    "swagger-ui": "^3.22.0",
+    "swagger-ui-dist": "^3.22.0"
+  },
+  "devDependencies": {
+    "prettier": "^1.16.4"
+  },
+  "license": "MIT",
+  "scripts": {
+    "build": "gatsby build",
+    "format": "prettier -l --write src/**/*.{js,jsx,md}",
+    "start": "gatsby develop",
+    "serve": "gatsby serve",
+    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/unstoppabledomains/docs"
+  },
+  "bugs": {
+    "url": "https://github.com/unstoppabledomains/docs/issues"
+  }
+}

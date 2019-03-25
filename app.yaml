@@ -1,0 +1,16 @@
+runtime: python27
+api_version: 1
+threadsafe: true
+
+service: default
+
+handlers:
+  - url: /(.*\.(css|html|js|json|ico|png|jpeg|gif|svg|webmanifest))$
+    static_files: public/\1
+    upload: public/.*\.(css|html|js|json|ico|png|jpeg|gif|svg|webmanifest)$
+    secure: always
+
+  - url: /.*
+    static_files: public/index.html
+    upload: public/index.html
+    secure: always
