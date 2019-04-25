@@ -14,8 +14,6 @@ Some helpful links:
 - [Getting Started](/docs/namicorn/getting-started/)
 - [Installation](/docs/namicorn/installation/)
 - [Concepts](/docs/namicorn/concepts/)
-- [Advanced](/docs/namicorn/advanced/)
-- [Reference](/docs/namicorn/reference/)
 - [FAQ](/docs/namicorn/faq/)
 
 <!--
