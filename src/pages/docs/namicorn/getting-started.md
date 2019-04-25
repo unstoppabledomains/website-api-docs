@@ -17,24 +17,29 @@ npm init -y
 Install Namicorn.
 
 ```shell
-npm install namicorn isomorphic-fetch
+npm install namicorn
 ```
 
 Make a file, `script.js`.
 
 ```javascript
-// what-is-resolver-dot-eth.js
+const {default: Namicorn} = require('namicorn')
 
-const {default: resolve} = require('namicorn')
+const namicorn = new Namicorn()
 
-resolve('resolver.eth')
-  .then(address => console.log('resolver.eth resolves to', address))
-  .catch(console.error)
+function resolve(domain, currency) {
+  namicorn.address(domain, currency)
+    .then(address => console.log(domain, ' resolves to', address))
+    .catch(console.error)
+}
+resolve('resolver.eth', "ETH")
+resolve('ryan.zil', "ZIL")
 ```
 
 Execute the script.
 
 ```javascript
-node what-is-resolver-dot-eth.js
+node script.js
+# ryan.zil  resolves to 0x177FFbD0366097C8A0DB7De1E81217dE3883a4B3
 # resolver.eth resolves to 0xD3ddcCDD3b25A8a7423B5bEe360a42146eb4Baf3
 ```

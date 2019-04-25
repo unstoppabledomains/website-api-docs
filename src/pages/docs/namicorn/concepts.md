@@ -9,8 +9,6 @@ navIndex: 2
 
 # Resolution
 
-### What is it good for?
-
 Resolution is the process of taking a name and finding a corresponding a record.
 We say a name 'resolves' to a record.
 
@@ -20,56 +18,35 @@ DNS.
 Blockchain domain names can resolve to a wide variety of records. The most basic
 is a crypto currency address.
 
-The Ethereum Name Service can **resolve** names to Ethereum addresses.
+The [Ethereum Name Service (ENS)](https://ens.domains/) **resolves** names to Ethereum addresses.
 
-The Zilliqa Name Service can **resolve** names to Zilliqa Addresses.
+The [Zilliqa Name Service (ZNS)](https://unstoppabledomains.com/) **resolves** names to Zilliqa Addresses.
 
-### How does Namicorn fit in?
+Namicorn combines different naming providers under the same interface
 
-Namicorn is a javascript library for resolving blockchain names.
+# Configuration
 
-# How does Namicorn work?
+Domain resolution information is stored on the blockchain of the related provider.
+Namicorn can do the calls to related blockchain to resolve domain.
+However, the blockchain call can take a long time (up to 2 seconds).
 
-Namicorn is a configured middleware stack.
 
-First create a stack.
+That is why `new Namicorn()` would resolve domains using [Unstoppable Domains API](https://docs.unstoppabledomains.com/docs/api/reference/) by default which stores the cached information of the blockchain and keeps it up to date by subscribing to blockchain events.
 
-```javascript
-import Core from '@namicorn/core'
-
-const core = new Core()
-```
-
-Then add resolution middlware.
+Namicorn supports the configuraiton to make blockchain calls directly instead using `{blockchain: true}` option:
 
 ```javascript
-import ENS from '@namicorn/ens'
-import ZNS from '@namicorn/zns'
-
-// previous stuff...
-
-const ens = new ENS()
-const zns = new ZNS()
-
-core.use(ens, zns)
+const namicorn = new Namicorn({blockchain: true})
 ```
 
-Then call the middleware stack.
+You can go even deeper and configure individual providers data source:
 
-```javascript
-// previous stuff...
-
-core.resolve('resolver.eth')
-// Promise<pending>
+``` javascript
+new Namicorn({
+  blockchain: {
+    ens: 'wss://mainnet.infura.io/ws' // the default
+  }
+})
 ```
 
-You can even create custom middleware.
-
-```javascript
-function unicornMiddleware(context, next) {
-  if (context.name === '🦄') return '🌈s'
-  return next()
-}
-
-core.use(unicornMiddleware)
-```
+This is handy when you have your own blockchain copy.
