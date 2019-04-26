@@ -7,4 +7,4 @@ navTitle: Contributing
 navIndex: 6
 ---
 
-[For now just pull it from here](https://github.com/unstoppabledomains/namicorn/pulls).
+[For now just pull it from here](https://github.com/unstoppabledomains/namicorn).
