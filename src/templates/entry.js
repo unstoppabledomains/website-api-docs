@@ -3,6 +3,7 @@ import {Helmet} from "react-helmet"
 import {graphql} from "gatsby"
 import Container from "../components/Container"
 import NavBar from "../components/NavBar"
+import '../styles/_all.scss'
 
 const Template = ({data}) => {
   return (
