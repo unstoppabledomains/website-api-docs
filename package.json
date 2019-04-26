@@ -29,6 +29,7 @@
   "license": "MIT",
   "scripts": {
     "build": "gatsby build",
+    "deploy": "yarn && yarn build && gcloud config set project unstoppable-domains-docs && gcloud app deploy",
     "format": "prettier -l --write src/**/*.{js,jsx,md}",
     "start": "gatsby develop",
     "serve": "gatsby serve",
