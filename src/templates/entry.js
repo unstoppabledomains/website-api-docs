@@ -66,9 +66,6 @@ const Template = ({data}) => {
             {data.markdownRemark.frontmatter.subtitle && (
               <div className="subhead-1" style={{marginBottom: "1rem"}}>
                 {data.markdownRemark.frontmatter.subtitle}
-                <div className="caption" style={{color: "#909095"}}>
-                  Last updated {data.markdownRemark.frontmatter.date}
-                </div>
               </div>
             )}
 
