@@ -11,7 +11,7 @@ Unstoppable has three ways of integrating name lookup into a website.
 
 1. Via the Javascript Library `namicorn`
 2. Via an API hosted at
-   [`https://unstoppabledomains.com/api/v1`](https://api.unstoppabledomains.com/v1/openapi.json)
+   [`https://unstoppabledomains.com/api/v1`](/docs/api/reference)
 3. Via a search bar.
 
 The search bar is a great way to get started. It comes with a react library and
