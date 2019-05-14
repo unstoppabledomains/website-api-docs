@@ -45,7 +45,6 @@ const NavBar = () => {
   console.log(navObject)
 
   navObject.API = [
-    {title: "About", slug: "/docs/api/about/"},
     {title: "OpenAPI", slug: "/docs/api/reference/"},
     //
   ]
