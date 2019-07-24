@@ -1,4 +1,5 @@
 module.exports = {
+  pathPrefix: 'docs.unstoppabledomains.com',
   siteMetadata: {
     title: "Unstoppable Domains Documentation",
     author: `Unstoppable Domains`,

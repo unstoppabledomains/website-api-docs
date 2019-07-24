@@ -38,7 +38,7 @@ const NavBar = () => {
       if (!title || !group || index === undefined) return a
       a[group] = a[group] || []
       a[group][index] = {title, slug}
-      console.log(a)
+      console.log('eee this is== ', a)
       return a
     }, {})
 
