@@ -4,6 +4,9 @@
   "description": "The Unstoppable Domains Documentation",
   "version": "0.1.0",
   "author": "Braden Pezeshki <braden@unstoppabledomains.com>",
+  "engines": {
+    "node": "10.15.3"
+  },
   "dependencies": {
     "classnames": "^2.2.6",
     "gatsby": "^2.2.5",
@@ -29,7 +32,7 @@
   "license": "MIT",
   "scripts": {
     "build": "gatsby build",
-    "deploy": "yarn && yarn build && gcloud app deploy --project unstoppable-domains-docs",
+    "deploy": "yarn build && gcloud app deploy --project unstoppable-domains-docs",
     "format": "prettier -l --write src/**/*.{js,jsx,md}",
     "start": "gatsby develop",
     "serve": "gatsby serve",
