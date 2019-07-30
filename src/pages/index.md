@@ -7,62 +7,21 @@ navTitle: Quickstart
 navIndex: 0
 ---
 
-Unstoppable has three ways of integrating name lookup into a website.
+# Clone the sample project.
 
-1. Via the Javascript Library `namicorn`
-2. Via an API hosted at
-   [`https://unstoppabledomains.com/api/v1`](/docs/api/reference)
-3. Via a search bar.
-
-The search bar is a great way to get started. It comes with a react library and
-vanilla javasript library.
-
-Create a react app.
-
-```bash
-yarn create react-app namicorn-search
-cd namicorn-search
+```shell
+mkdir test-out-namicorn && cd $_
+git clone https://github.com/unstoppabledomains/namicorn-searchbar.git ./
 ```
 
-Add dependencies.
+# Install dependencies.
 
-```bash
-yarn add '@namicorn/react-searchbar'
+```shell
+yarn install
 ```
 
-Delete default create react app content.
+# Run the project in the development mode
 
-```bash
-rm -rf src/*
-```
-
-Create a simple app.
-
-```javascript
-// src/index.js
-
-import NamicornSearch from '@namicorn/react-searchbar'
-import React, {useState, useCallback} from 'react'
-import ReactDOM from 'react-dom'
-
-const App = () => {
-  const [data, setData] = useState()
-
-  return (
-    <>
-      <NamicornSearch onChange={useCallback(setData)} />
-      <pre>{JSON.stringify(data)}</pre>
-    </>
-  )
-}
-
-ReactDOM.render(<App />)
-```
-
-Test it out!
-
-```bash
+```shell
 yarn start
 ```
-
-Full Namicorn Search Documentation Coming soon!
