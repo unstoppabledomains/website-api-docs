@@ -1,5 +1,5 @@
-import React from "react"
-import {Link, useStaticQuery, graphql} from "gatsby"
+import React from 'react'
+import {Link, useStaticQuery, graphql} from 'gatsby'
 
 const NavBar = () => {
   const data = useStaticQuery(graphql`
@@ -22,7 +22,7 @@ const NavBar = () => {
     }
   `)
 
-  console.log("data", data)
+  console.log('data', data)
 
   const navObject = data.allMarkdownRemark.edges
     .map(edge => {
@@ -45,26 +45,27 @@ const NavBar = () => {
   console.log(navObject)
 
   navObject.API = [
-    {title: "OpenAPI", slug: "/docs/api/reference/"},
+    {title: 'OpenAPI', slug: '/docs/api/reference/'},
     //
   ]
 
   // return <pre>{JSON.stringify(navObject, null, 2)}</pre>
   return (
     <>
-      {Object.keys(navObject).map(group => (
-        <div>
-          <h6 className="heading-6" style={{marginTop: "1rem"}}>
+      {Object.keys(navObject).map((group, index) => (
+        <div key={index}>
+          <h6 className="heading-6" style={{marginTop: '1rem'}}>
             {group}
           </h6>
           {navObject[group].map(({title, slug}) => (
             <Link
+              key={slug}
               to={slug}
               style={{
-                display: "block",
+                display: 'block',
                 // marginLeft: "1rem",
-                marginTop: ".25em",
-                color: "#36f",
+                marginTop: '.25em',
+                color: '#36f',
               }}
             >
               {title}
