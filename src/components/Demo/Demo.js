@@ -8,7 +8,7 @@ const INVALID_DOMAIN = 'Invalid Domain'
 
 const Demo = () => {
   const namicorn = new Namicorn()
-  const [selectedCoin, setSelectedCoin] = useState('ZIL')
+  //   const [selectedCoin, setSelectedCoin] = useState('ZIL')
   const [userInput, setUserInput] = useState('')
   const [loadingSpinner, setLoadingSpinner] = useState(false)
   const [domainInfo, setDomainInfo] = useState(null)
@@ -26,26 +26,26 @@ const Demo = () => {
     </div>
   )
 
-  const _renderRadioButton = ({value}) => (
-    <label className="Title" style={{margin: '5px'}}>
-      <input
-        type="radio"
-        name="selectedCoin"
-        id={value}
-        onChange={e => setSelectedCoin(e.target.id)}
-        checked={selectedCoin === value}
-      />
-      {value}
-    </label>
-  )
+  //   const _renderRadioButton = ({value}) => (
+  //     <label className="Title" style={{margin: '5px'}}>
+  //       <input
+  //         type="radio"
+  //         name="selectedCoin"
+  //         id={value}
+  //         onChange={e => setSelectedCoin(e.target.id)}
+  //         checked={selectedCoin === value}
+  //       />
+  //       {value}
+  //     </label>
+  //   )
 
-  const renderRadioButtons = () => (
-    <>
-      {_renderRadioButton({value: 'ZIL'})}
-      {_renderRadioButton({value: 'ETH'})}
-      {_renderRadioButton({value: 'BTC'})}
-    </>
-  )
+  //   const renderRadioButtons = () => (
+  //     <>
+  //       {_renderRadioButton({value: 'ZIL'})}
+  //       {_renderRadioButton({value: 'ETH'})}
+  //       {_renderRadioButton({value: 'BTC'})}
+  //     </>
+  //   )
 
   const handleUserInput = e => {
     const tempUserInput = e.target.value
@@ -95,18 +95,34 @@ const Demo = () => {
     </div>
   )
 
+  const _renderAddresses = addresess => {
+    const result = []
+    for (let coin in addresess) {
+      if (addresess.hasOwnProperty(coin))
+        result.push(
+          <div className="resultAddressesRow">
+            <span key={addresess[coin]} style={{fontWeight: 'bold'}}>
+              {coin} :{' '}
+            </span>
+            <span key={coin} style={{fontStyle: 'italic'}}>
+              {addresess[coin]}
+            </span>
+          </div>,
+        )
+    }
+    return <div className="resultAddresses">{result}</div>
+  }
+
   const renderResults = () => (
     <>
       {loadingSpinner ? _renderSpinner() : null}
-      <span className="Title">
-        {!domainInfo
-          ? ''
-          : domainInfo.invalid
-          ? INVALID_DOMAIN
-          : domainInfo.meta.owner === null
-          ? NOT_REGISTERED
-          : domainInfo.addresses[selectedCoin] || NO_ADDRESS_FOUND}
-      </span>
+      {!domainInfo
+        ? ''
+        : domainInfo.invalid
+        ? INVALID_DOMAIN
+        : domainInfo.meta.owner === null
+        ? NOT_REGISTERED
+        : _renderAddresses(domainInfo.addresses) || NO_ADDRESS_FOUND}
     </>
   )
 
@@ -116,7 +132,7 @@ const Demo = () => {
         <h1 className="Title">Domain Name Resolution example</h1>
         <h3 className="SubTitle">May take a long time</h3>
       </div>
-      <div className="radioButtons">{renderRadioButtons()}</div>
+      {/* <div className="radioButtons">{renderRadioButtons()}</div> */}
       <div className="searchBar">{renderSearchBar()}</div>
       <div className="results">{renderResults()}</div>
     </div>

@@ -50,6 +50,7 @@
   justify-content: center;
   align-items: center;
   padding: 1.2rem 0;
+  margin: 20px;
 }
 
 .SubTitle {
@@ -63,6 +64,11 @@
 
 .header {
   margin: 5px 0;
+}
+
+.Title {
+  font-weight: bold;
+  font-size: 1.2em;
 }
 
 .Title > input {
@@ -80,9 +86,15 @@
   justify-content: center;
 }
 
+.resultAddresses {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
 .Wrapper {
-  flex: 0 0 80%;
-  max-width: 80%;
+  flex: 0 0 90%;
+  max-width: 90%;
 }
 
 .Input {
