@@ -10,7 +10,17 @@ handlers:
     upload: public/.*\.(css|html|js|json|ico|png|jpeg|gif|svg|webmanifest)$
     secure: always
 
-  - url: /.*
+  - url: /docs/(.*)/(.*)/
+    static_files: public/docs/\1/\2/index.html
+    upload: public/docs/(.*)/(.*)/index.html
+    secure: always
+
+  - url: /
     static_files: public/index.html
     upload: public/index.html
+    secure: always
+
+  - url: /*.*
+    static_files: public/404/index.html
+    upload: public/404/index.html
     secure: always

@@ -1,3 +1,3 @@
 export default function NotFound() {
-  return "404"
+  return 'Error 404: Page not found'
 }
