@@ -7,6 +7,8 @@ navTitle: Quickstart
 navIndex: 0
 ---
 
+![demo](./docs/demo_hotfix.gif)
+
 # Clone the sample project.
 
 ```shell
