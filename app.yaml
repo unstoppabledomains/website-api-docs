@@ -16,8 +16,8 @@ handlers:
     secure: always
 
   - url: /
-    static_files: public/index.html
-    upload: public/index.html
+    static_files: public/docs/api/reference/index.html
+    upload: public/docs/api/reference/index.html
     secure: always
 
   - url: /*.*
