@@ -1,26 +1,27 @@
 module.exports = {
   siteMetadata: {
-    title: "Unstoppable Domains Documentation",
+    title: 'Unstoppable Domains Documentation',
     author: `Unstoppable Domains`,
   },
   plugins: [
-    "gatsby-plugin-sass",
-    "gatsby-plugin-catch-links",
-    "gatsby-plugin-react-helmet",
+    'gatsby-plugin-sass',
+    'gatsby-plugin-catch-links',
+    'gatsby-plugin-react-helmet',
     {
       resolve: `gatsby-source-filesystem`,
-      options: {path: `${__dirname}/src/pages`, name: "docs"},
+      options: {path: `${__dirname}/src/pages`, name: 'docs'},
     },
     {
-      resolve: "gatsby-transformer-remark",
+      resolve: 'gatsby-transformer-remark',
       options: {
         plugins: [
           // "gatsby-remark-copy-linked-files",
           // "gatsby-remark-images",
+          `gatsby-remark-responsive-iframe`,
           {
             resolve: `gatsby-remark-prismjs`,
             options: {
-              classPrefix: "language-",
+              classPrefix: 'language-',
               // This is used to allow setting a language for inline code
               // (i.e. single backticks) by creating a separator.
               // This separator is a string and will do no white-space

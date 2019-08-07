@@ -7,7 +7,7 @@ navTitle: Quickstart
 navIndex: 0
 ---
 
-![demo](./docs/demo_hotfix.gif)
+<iframe src="https://unstoppabledomains.github.io/namicorn-searchbar/" width="1000" height="600"></iframe>
 
 # Clone the sample project.
 
