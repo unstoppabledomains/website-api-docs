@@ -14,10 +14,10 @@ handlers:
     static_files: public/docs/\1/\2/index.html
     upload: public/docs/(.*)/(.*)/index.html
     secure: always
-
+    
   - url: /
-    static_files: public/docs/api/reference/index.html
-    upload: public/docs/api/reference/index.html
+    static_files: public/index.html
+    upload: public/index.html
     secure: always
 
   - url: /*.*
