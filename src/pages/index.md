@@ -7,7 +7,14 @@ navTitle: Quickstart
 navIndex: 0
 ---
 
+
+# 
+ 
+ <a href="https://unstoppabledomains.github.io/namicorn-searchbar/" target="_blank">Click to open in a new tab</a>
+
 <iframe src="https://unstoppabledomains.github.io/namicorn-searchbar/" width="1000" height="600"></iframe>
+
+
 
 # Plug and play integration
 
