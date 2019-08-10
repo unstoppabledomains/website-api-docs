@@ -18,11 +18,8 @@ DNS.
 Blockchain domain names can resolve to a wide variety of records. The most basic
 is a crypto currency address.
 
-The [Ethereum Name Service (ENS)](https://ens.domains/) **resolves** names to Ethereum addresses.
 
 The [Zilliqa Name Service (ZNS)](https://unstoppabledomains.com/) **resolves** names to Zilliqa Addresses.
-
-Namicorn combines different naming providers under the same interface
 
 # Configuration
 
