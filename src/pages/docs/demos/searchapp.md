@@ -1,6 +1,6 @@
 ---
-title: Resolution
-subtitle: Example of using namicorn library
+title: Search react-app
+subtitle: Example of unstoppable domain resolution api
 date: 2019-03-24T19:04
 navGroup: Demos
 navTitle: Resolution

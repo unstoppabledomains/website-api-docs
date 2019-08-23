@@ -48,6 +48,10 @@ const NavBar = () => {
 		{ title: "Resolution", slug: "http://unstoppabledomains.github.io/namicorn-searchbar/", exact: true }
 	]
 
+	navObject.Quickstart = [
+		{ title: "Search Iframe", slug: "/docs/demos/searchframe/" },
+		{ title: "Search app", slug: "/docs/demos/searchapp/" }
+	]
 
 
 	// return <pre>{JSON.stringify(navObject, null, 2)}</pre>
@@ -55,7 +59,7 @@ const NavBar = () => {
 	// Sort the navbar to be in this order Overview -> Demos -> Namicorn -> API
 	// eslint-disable-next-line
 	const GroupsInOrder = Object.keys(navObject).sort((a, b) => {
-		const order = ['Overview', 'Demos', 'Namicorn', 'API'];
+		const order = ['Overview', 'Demos', 'Quickstart', 'Namicorn', 'API'];
 		return order.indexOf(a) - order.indexOf(b);
 	}
 	);
