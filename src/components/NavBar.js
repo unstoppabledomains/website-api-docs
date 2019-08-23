@@ -39,32 +39,52 @@ const NavBar = () => {
 			return a
 		}, {})
 
-
 	navObject.API = [
 		{ title: "OpenAPI", slug: "/docs/api/reference/" },
 		//
 	]
 
+	navObject.Demos = [
+		{ title: "Resolution", slug: "http://unstoppabledomains.github.io/namicorn-searchbar/", exact: true }
+	]
+
+
+
 	// return <pre>{JSON.stringify(navObject, null, 2)}</pre>
+
+	// Sort the navbar to be in this order Overview -> Demos -> Namicorn -> API
+	// eslint-disable-next-line
+	const GroupsInOrder = Object.keys(navObject).sort((a, b) => {
+		const order = ['Overview', 'Demos', 'Namicorn', 'API'];
+		return order.indexOf(a) - order.indexOf(b);
+	}
+	);
+
 	return (
 		<>
-			{Object.keys(navObject).map(group => (
-				<div>
+			{GroupsInOrder.map(group => (
+				<div key={group}>
 					<h6 className="heading-6" style={{ marginTop: "1rem" }}>
 						{group}
 					</h6>
-					{navObject[group].map(({ title, slug }) => (
-						<Link
-							to={slug}
-							style={{
-								display: "block",
-								// marginLeft: "1rem",
-								marginTop: ".25em",
-								color: "#36f",
-							}}
-						>
-							{title}
-						</Link>
+					{navObject[group].map(({ title, slug, ...rest }, index) => (
+						rest.exact ? <a key={index} href={slug} style={{
+							display: "block",
+							// marginLeft: "1rem",
+							marginTop: ".25em",
+							color: "#36f"
+						}}>{title}</a> :
+							<Link key={index}
+								to={slug}
+								style={{
+									display: "block",
+									// marginLeft: "1rem",
+									marginTop: ".25em",
+									color: "#36f",
+								}}
+							>
+								{title}
+							</Link>
 					))}
 				</div>
 			))}

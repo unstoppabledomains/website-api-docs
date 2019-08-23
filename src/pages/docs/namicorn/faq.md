@@ -4,7 +4,7 @@ subtitle: Frequently asked questions about Namicron
 date: 2019-03-24T19:04
 navGroup: Namicorn
 navTitle: FAQ
-navIndex: 5
+navIndex: 4
 ---
 
 For now no-one asks questions frequently.
