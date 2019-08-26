@@ -1,10 +1,10 @@
 ---
-title: Concepts
-subtitle: Basics required for a deeper understanding of naming.
+title: Getting started
+subtitle: Get started using Unstoppable Domains Tooling
 date: 2019-03-24T19:04
-navGroup: Namicorn
-navTitle: Concepts
-navIndex: 2
+navGroup: Overview
+navTitle: Overview
+navIndex: 0
 ---
 
 # Resolution

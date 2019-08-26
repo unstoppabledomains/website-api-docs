@@ -45,12 +45,9 @@ const NavBar = () => {
 	]
 
 	navObject.Demos = [
-		{ title: "Resolution", slug: "http://unstoppabledomains.github.io/namicorn-searchbar/", exact: true }
-	]
-
-	navObject.Quickstart = [
-		{ title: "Search Iframe", slug: "/docs/demos/searchframe/" },
-		{ title: "Search app", slug: "/docs/demos/searchapp/" }
+		...navObject.Demos,
+		{ title: "Resolution", slug: "http://unstoppabledomains.github.io/namicorn-searchbar/", exact: true },
+		{ title: "Reseller", slug: "http://unstoppabledomains.github.io/reseller-demo/", exact: true },
 	]
 
 
