@@ -7,14 +7,14 @@ navTitle: Quickstart
 navIndex: 0
 ---
 
-<iframe src="https://unstoppabledomains.github.io/namicorn-searchbar/" width="1000" height="600"></iframe>
+<iframe src="https://unstoppabledomains.github.io/namicorn-searchbar/#/frame"  width="1000" height="600"></iframe>
 
 # Plug and play integration
 
 Put this line of code anywhere in your web app to get access to our domain resolution search box.
 
 ```html
-<iframe src="https://unstoppabledomains.github.io/namicorn-searchbar/"
+<iframe src="https://unstoppabledomains.github.io/namicorn-searchbar/#/frame" 
   width="1000" height="600"></iframe>
 ```
 

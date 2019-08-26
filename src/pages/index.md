@@ -12,7 +12,7 @@ navIndex: 0
  
  <a href="https://unstoppabledomains.github.io/namicorn-searchbar/" target="_blank">Click to open in a new tab</a>
 
-<iframe src="https://unstoppabledomains.github.io/namicorn-searchbar/" width="1000" height="600"></iframe>
+<iframe src="https://unstoppabledomains.github.io/namicorn-searchbar/#/frame"  width="1000" height="600"></iframe>
 
 
 
@@ -21,7 +21,7 @@ navIndex: 0
 Put this line of code anywhere in your web app to get access to our domain resolution search box.
 
 ```html
-<iframe src="https://unstoppabledomains.github.io/namicorn-searchbar/"
+<iframe src="https://unstoppabledomains.github.io/namicorn-searchbar/#/frame" 
   width="1000" height="600"></iframe>
 ```
 
