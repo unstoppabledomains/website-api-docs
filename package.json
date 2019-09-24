@@ -2,42 +2,42 @@
   "name": "ud-docs",
   "private": true,
   "description": "The Unstoppable Domains Documentation",
-  "version": "0.1.0",
-  "author": "Braden Pezeshki <braden@unstoppabledomains.com>",
-  "engines": {
-    "node": "10.15.3"
-  },
+  "version": "1.0.0",
+  "author": "Braden Pezeshki <braden@unstoppabledomains.com>, Johnny Tahirov <johnny@unstoppabledomains.com>",
   "dependencies": {
-    "classnames": "^2.2.6",
-    "gatsby": "^2.2.5",
-    "gatsby-plugin-catch-links": "^2.0.13",
-    "gatsby-plugin-react-helmet": "^3.0.10",
-    "gatsby-plugin-sass": "^2.0.11",
-    "gatsby-remark-copy-linked-files": "^2.0.11",
-    "gatsby-remark-images": "^3.0.10",
-    "gatsby-remark-prismjs": "^3.2.6",
-    "gatsby-remark-responsive-iframe": "^2.2.4",
-    "gatsby-source-filesystem": "^2.0.28",
-    "gatsby-transformer-remark": "^2.3.8",
-    "node-sass": "^4.11.0",
-    "prismjs": "^1.15.0",
-    "react": "^16.8.4",
-    "react-dom": "^16.8.4",
-    "react-helmet": "^5.2.0",
-    "swagger-ui": "^3.22.0",
-    "swagger-ui-dist": "^3.22.0"
+    "core-js": "^3.2.1",
+    "mobx": "^4.2.0",
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0",
+    "react-scripts": "3.1.1",
+    "redoc": "^2.0.0-rc.14",
+    "styled-components": "^4.3.2"
   },
   "devDependencies": {
     "prettier": "^1.16.4"
   },
-  "license": "MIT",
   "scripts": {
-    "build": "gatsby build",
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
     "deploy": "yarn build && gcloud app deploy --project unstoppable-domains-docs",
-    "format": "prettier -l --write src/**/*.{js,jsx,md}",
-    "start": "gatsby develop",
-    "serve": "gatsby serve",
-    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\""
+    "format": "prettier -l --write src/**/*.{js,jsx,md}"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   },
   "repository": {
     "type": "git",
