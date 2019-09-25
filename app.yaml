@@ -1,12 +1,13 @@
 runtime: python27
 api_version: 1
 threadsafe: true
-
-service: default
-
+service: client
 handlers:
-  - url: /
+  - url: /(.*\.(css|html|js|json|ico|png|jpeg|gif|svg|webmanifest))$
+    static_files: build/\1
+    upload: build/.*\.(css|html|js|json|ico|png|jpeg|gif|svg|webmanifest)$
+    secure: always
+  - url: /.*
     static_files: build/index.html
     upload: build/index.html
-  - url: /
-    static_dir: build
+    secure: always
