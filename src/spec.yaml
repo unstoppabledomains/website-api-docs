@@ -5,23 +5,15 @@ servers:
 info:
   description: |
     Welcome to Unstoppable Domains documentation.
-
-    # QuickStart
-    Get started using Unstoppable Domains Tooling
-
-    # Resolution
-
+    ## Resolution
     Resolution is the process of taking a name and finding a corresponding a record. We say a name 'resolves' to a record.
     For example, www.google.com resolves to an IP Address on DNS.
     Blockchain domain names can resolve to a wide variety of records. The most basic is a crypto currency address.
-    The Zilliqa Name Service (ZNS) resolves names to Zilliqa Addresses.
-
-    
+    The Zilliqa Name Service (ZNS) resolves names to Zilliqa Addresses.    
     # Authentication
       Unstoppabled Domains provides both public and private api endpoints:
       - Domain Resolution api is open for everyone to use
       - Reseller api will require API key generated for your team. Please contact UD for obtaining thouse
-   
   version: 1.0.0
   title: Unstoppable Domain
   termsOfService: "https://unstoppabledomains.com/terms"
@@ -38,12 +30,10 @@ info:
 tags:
   - name: namicorn
     x-displayName: Namicorn
-    description: |-
-        ## Introduction
-          Unstoppable Domain provides an npm package called Namicorn.
+    description: |
+        Unstoppable Domain provides an npm package called Namicorn.
           This package is as a higher level wrapper arround domain resolution api.
           One of the advantages of this package is that it can make a direct blockchain calls as well as calling UD API
-
         ## Installation
           Namicorn is hosted on the [NPM Registry](https://www.npmjs.com/package/namicorn) as package
           `namicorn`. Namicorn also owns the npm org `@namicorn`.
@@ -120,45 +110,40 @@ tags:
           ```
 
           This is handy when you have your own blockchain copy.
-        ## FAQ
-          For now no-one asks questions frequently.
-          ### Do you have something to ask?
-          Please [make an issue](https://github.com/unstoppabledomains/namicorn/issues). 
        
   - name: demos
-    x-displayName: Demos doorway
+    x-displayName: Demos
     description: |
+      Unstoppable Domains has built several demo applications to show some examples on how someone would use it services
 
-      <iframe src="https://unstoppabledomains.github.io/namicorn-searchbar/#/frame" width="600" height="400"></iframe>
-
-
-      # Plug and play integration
-
-
+      ### Demo List:
+        - [Domain name resolution](https://unstoppabledomains.github.io/reseller-demo/#/domain-name-reloution)
+        - [Domain name resolution v2](https://unstoppabledomains.github.io/reseller-demo/#/domain-name-reloution-v2)
+        - [Reseller domain purchase](https://unstoppabledomains.github.io/reseller-demo/#/reseller-demo)
+        
+      
+      Demo asides we also provide you with this plug and play iframe code.
       Put this line of code anywhere in your web app to get access to our domain resolution search box.
+      
 
       ```html
       <iframe src="https://unstoppabledomains.github.io/namicorn-searchbar/#/frame" width="600" height="400" />
       ```
 
-      If you would like to further customize the search box in your UI, here are some simple steps to help you launch the same demo app above locally on your machine. More complete documentation is coming soon!
+
+      <iframe src="https://unstoppabledomains.github.io/namicorn-searchbar/#/frame" width="600" height="400"></iframe>
+
+
+      Here are some simple steps to help you launch Unstoppable Demo app locally on your machine. More complete documentation is coming soon!
 
 
       # Clone, install and run the project locally.
 
       ```shell
       mkdir test-out-namicorn && cd $_ &&
-      git clone https://github.com/unstoppabledomains/namicorn-searchbar.git ./ && 
+      git clone https://github.com/unstoppabledomains/reseller-demo ./ && 
       yarn install && yarn start
       ```
-
-      # Domain Name Resolution demo 
-        Feel free to check the extended version of our domain name resolution demo.
-        [Demo lies here](https://unstoppabledomains.github.io/namicorn-searchbar/#/)
-
-      # Reseller demo
-        Feel free to play with our reseller demo. It shows the main aspect of using unstoppable domain reseller api
-        [Demo lies here](https://unstoppabledomains.github.io/reseller-demo/)
 
   - name: domain_name_resolution
     x-displayName: DNR openAPI
@@ -167,18 +152,20 @@ tags:
     x-displayName: Reseller openAPI
     description: "Everything related to the endpoints of reseller api"
 x-tagGroups:
-  - name: Demos
-    tags:
-      - demos
-  - name: Namicorn Library
+  
+  - name: Blockchain librabry
     tags: 
       - namicorn
+ 
   - name: Domain name resolution
     tags:
       - domain_name_resolution
   - name: Reseller API
     tags:
       - reseller
+  - name: For developers
+    tags:
+      - demos
 paths:
   /{domain}:
     parameters:
@@ -340,6 +327,10 @@ paths:
         Requires:
           - User Email
           - Order Number
+          
+        This endpoint is used to check against blockchain transaction status.
+        Due to technical limitiation of blockchains transactions are not instant and require some time
+        Once the status is mined you can be sure that the domain is live and written on a blockchain
       responses:
         "200":
           description: Successfull
@@ -409,7 +400,7 @@ components:
         payment:
           anyOf:
             - $ref: "#/components/schemas/stripePayment"
-            - $ref: "#/components/schemas/resellerPayBack"
+            - $ref: "#/components/schemas/coinbase"
         subtotal: 
           type: integer
           description: sub total something number
@@ -418,6 +409,17 @@ components:
           type: array
           items:
             $ref: "#/components/schemas/orderItem"
+    Owner:
+      description: "Object contains user public key"
+      type: object
+      properties:
+        type:
+          type: string
+          enum: [ETH, ZIL]
+        publicKey:
+          type: string
+          description: ETH or ZIL public key. UD accepts both compressed and uncompressed keys
+          example: '0xe5f8500db8c739f8bf518640760d5b4105716a73bec59a693f0941c879a1bc527969a2418d1c8e6e64476246aa9b74773503789d801b2279910a01119410da15'
     Domain:
       description: "A Plaintext LDH domain"
       type: "string"
@@ -480,15 +482,15 @@ components:
               enum: [ens, zns]
             ttl:
               $ref: "#/components/schemas/Timestamp"
-    resellerPayBack:
+    coinbase:
       type: object
-      description: for reseller payback method
+      description: Generating a coinbase token via this call
       properties:
         type:
           type: string
-          description: reseller
+          description: coinbase
       example:
-        type: reseller  
+        type: coinbase  
     stripePayment:
       type: object
       description: for stripe payment method
@@ -588,18 +590,18 @@ components:
                     name: 
                      $ref: "#/components/schemas/Domain"
                     owner:
-                     $ref: "#/components/schemas/Address"
+                     $ref: "#/components/schemas/Owner"
                     resolution:
                      $ref: "#/components/schemas/Resolution"
               payment:
                 type: object
                 anyOf:
-                  - $ref: "#/components/schemas/resellerPayBack"
+                  - $ref: "#/components/schemas/coinbase"
                   - $ref: "#/components/schemas/stripePayment"
   securitySchemes:
     api_key:
       description: >
-        For this sample, you can use the api key `1txobsttv63p5wrfvnpjp0wfuava5cov` to test the reseller api
+        For this sample, you can use the api key `1txobsttv63p5wrfvnpjp0wfuava5cov` to test the reseller api, the resselerID for this account is udtesting
       type: apiKey
       name: Authentication
       in: header
