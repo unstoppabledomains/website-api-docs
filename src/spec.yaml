@@ -469,7 +469,7 @@ components:
               "ETH": "0x89a8f5f337304EaA7caEd7AA1D88b791f3d8B51D",
               "XLM": "r3kmLJN5D28dHuH8vZNUZpMC43pEHpaocV",
               "XRP": "r3kmLJN5D28dHuH8vZNUZpMC43pEHpaocV",
-              "ZIL": "0x177FFbD0366097C8A0DB7De1E81217dE3883a4B3",
+              "ZIL": "zil1zallh5pkvztu3gxm0hs7syshmcug8f9nxnf3ej",
             }
         meta:
           description: Meta information regarding the domain.
@@ -561,7 +561,7 @@ components:
           type: object
           example: 
               ZIL: 
-                address: "0xe568f2BB42A77F6508911290d581B3Af107b1e4B"
+                address: "zil1u4509w6z5alk2zy3z2gdtqdn4ug8k8jt880mcs"
               ETH:
                 address: "0x20B4564DEB7AF89ece828d843D0Ac2c16934a23e"
     Reseller:
