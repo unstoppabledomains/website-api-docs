@@ -418,7 +418,7 @@ components:
           enum: [ETH, ZIL]
         publicKey:
           type: string
-          description: ETH or ZIL public key. UD accepts both compressed and uncompressed keys
+          description: ETH or ZIL public key. UD accepts both compressed and uncompressed keys.
           example: '0xe5f8500db8c739f8bf518640760d5b4105716a73bec59a693f0941c879a1bc527969a2418d1c8e6e64476246aa9b74773503789d801b2279910a01119410da15'
     Domain:
       description: "A Plaintext LDH domain"
@@ -526,6 +526,7 @@ components:
       resellingResponse:
         description: Object contains all information regarding reselling proccess
         type: object
+        nullable: true
         properties:
           price:
             description: How much UD takes for the domain
@@ -550,9 +551,10 @@ components:
               owner:
                 $ref: "#/components/schemas/Address"
               reselling:
-                type: object
                 $ref: "#/components/schemas/DomainAvailability/resellingResponse"
               auction:
+                nullable: true
+                type: object
                 description: Information regarding the auction if applicable
     Resolution:
       properties:
