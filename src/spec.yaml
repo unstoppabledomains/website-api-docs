@@ -153,7 +153,7 @@ tags:
     description: "Everything related to the endpoints of reseller api"
 x-tagGroups:
   
-  - name: Blockchain librabry
+  - name: Blockchain library
     tags: 
       - namicorn
  
