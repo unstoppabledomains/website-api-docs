@@ -87,19 +87,17 @@ tags:
           ```
         ## Configurations
           Domain resolution information is stored on the blockchain of the related provider.
-          Namicorn can do the calls to related blockchain to resolve domain.
+          Namicorn calls related blockchain to resolve a domain.
           However, the blockchain call can take a long time (up to 2 seconds).
 
 
-          That is why `new Namicorn()` would resolve domains using [Unstoppable Domains API](https://docs.unstoppabledomains.com/docs/api/reference/) by default which stores the cached information of the blockchain and keeps it up to date by subscribing to blockchain events.
-
-          Namicorn supports the configuraiton to make blockchain calls directly instead using `{blockchain: true}` option:
+          The library can be setup to query [Unstoppable Domains API](/#tag/domain_name_resolution) instead which stores the cached information of the blockchain and keeps it up to date by subscribing to blockchain events with `{blockchain: false}` option.
 
           ```javascript
-          const namicorn = new Namicorn({blockchain: true})
+          const namicorn = new Namicorn({blockchain: false})
           ```
 
-          You can go even deeper and configure individual providers data source:
+          In case, you prefer blockchain calls, there is possibility to configure individual blockchain URLs:
 
           ``` javascript
           new Namicorn({
