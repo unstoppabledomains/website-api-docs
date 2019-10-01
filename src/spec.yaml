@@ -87,19 +87,17 @@ tags:
           ```
         ## Configurations
           Domain resolution information is stored on the blockchain of the related provider.
-          Namicorn can do the calls to related blockchain to resolve domain.
+          Namicorn calls related blockchain to resolve a domain.
           However, the blockchain call can take a long time (up to 2 seconds).
 
 
-          That is why `new Namicorn()` would resolve domains using [Unstoppable Domains API](https://docs.unstoppabledomains.com/docs/api/reference/) by default which stores the cached information of the blockchain and keeps it up to date by subscribing to blockchain events.
-
-          Namicorn supports the configuraiton to make blockchain calls directly instead using `{blockchain: true}` option:
+          The library can be setup to query [Unstoppable Domains API](/#tag/domain_name_resolution) instead which stores the cached information of the blockchain and keeps it up to date by subscribing to blockchain events with `{blockchain: false}` option.
 
           ```javascript
-          const namicorn = new Namicorn({blockchain: true})
+          const namicorn = new Namicorn({blockchain: false})
           ```
 
-          You can go even deeper and configure individual providers data source:
+          In case, you prefer blockchain calls, there is possibility to configure individual blockchain URLs:
 
           ``` javascript
           new Namicorn({
@@ -418,7 +416,7 @@ components:
           enum: [ETH, ZIL]
         publicKey:
           type: string
-          description: ETH or ZIL public key. UD accepts both compressed and uncompressed keys
+          description: ETH or ZIL public key. UD accepts both compressed and uncompressed keys.
           example: '0xe5f8500db8c739f8bf518640760d5b4105716a73bec59a693f0941c879a1bc527969a2418d1c8e6e64476246aa9b74773503789d801b2279910a01119410da15'
     Domain:
       description: "A Plaintext LDH domain"
@@ -469,7 +467,7 @@ components:
               "ETH": "0x89a8f5f337304EaA7caEd7AA1D88b791f3d8B51D",
               "XLM": "r3kmLJN5D28dHuH8vZNUZpMC43pEHpaocV",
               "XRP": "r3kmLJN5D28dHuH8vZNUZpMC43pEHpaocV",
-              "ZIL": "0x177FFbD0366097C8A0DB7De1E81217dE3883a4B3",
+              "ZIL": "zil1zallh5pkvztu3gxm0hs7syshmcug8f9nxnf3ej",
             }
         meta:
           description: Meta information regarding the domain.
@@ -526,6 +524,7 @@ components:
       resellingResponse:
         description: Object contains all information regarding reselling proccess
         type: object
+        nullable: true
         properties:
           price:
             description: How much UD takes for the domain
@@ -550,9 +549,10 @@ components:
               owner:
                 $ref: "#/components/schemas/Address"
               reselling:
-                type: object
                 $ref: "#/components/schemas/DomainAvailability/resellingResponse"
               auction:
+                nullable: true
+                type: object
                 description: Information regarding the auction if applicable
     Resolution:
       properties:
@@ -561,7 +561,7 @@ components:
           type: object
           example: 
               ZIL: 
-                address: "0xe568f2BB42A77F6508911290d581B3Af107b1e4B"
+                address: "zil1u4509w6z5alk2zy3z2gdtqdn4ug8k8jt880mcs"
               ETH:
                 address: "0x20B4564DEB7AF89ece828d843D0Ac2c16934a23e"
     Reseller:
