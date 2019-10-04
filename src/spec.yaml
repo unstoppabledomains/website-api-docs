@@ -75,14 +75,14 @@ tags:
               .catch(console.error)
           }
           resolve('resolver.eth', "ETH")
-          resolve('ryan.zil', "ZIL")
+          resolve('brad.zil', "ZIL")
           ```
 
           Execute the script.
 
           ```javascript
           node script.js
-          # ryan.zil  resolves to 0x177FFbD0366097C8A0DB7De1E81217dE3883a4B3
+          # brad.zil  resolves to zil1yu5u4hegy9v3xgluweg4en54zm8f8auwxu0xxj
           # resolver.eth resolves to 0xD3ddcCDD3b25A8a7423B5bEe360a42146eb4Baf3
           ```
         ## Configurations
