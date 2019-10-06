@@ -186,6 +186,23 @@ tags:
         - Stripe integration
         - Coinbase integration
 
+  - name: testing
+    x-displayName: Testing
+    description: |-
+      Based on the nature of the blockchain domains, they can not be easily returned because UD has no control over the domain once it is assigned. 
+      ### IMPORTANT:
+      That is why **ANY** successful purchase of the domain is not easily reversible. UD charges resellers for any domain sold via the “Buy Domain” endpoint that is not in the test name space.
+      ## Test name space
+      UD is introducing the testing domain name space for resellers. If your domain has the following format: “reseller-test-<reseller-id>-<random-number>.zil”, UD will not charge you for selling any of these. However, these domains are fully functional and live in the same production environment on the blockchain as any other UD domain. “Domain Availability” endpoint has an information whether the domain is in the testing space with `reseller.test` key.
+      ## Try It For Yourself
+      Shell script to run all example request to API:
+      - https://gist.github.com/bogdan/ae38244b0dad45aa48555ec1e2590224
+      
+      Requires jq and curl console utilities:
+      - https://stedolan.github.io/jq/
+      - https://curl.haxx.se/
+
+
 
 x-tagGroups:
   - name: Payment
@@ -193,6 +210,9 @@ x-tagGroups:
       - paymentDescription
       - stripePayment
       - coinbasePayment
+  - name: How to test
+    tags:
+      - testing
   - name: Blockchain librabry
     tags: 
       - namicorn
