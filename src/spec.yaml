@@ -87,22 +87,23 @@ tags:
           ```
         ## Configurations
           Domain resolution information is stored on the blockchain of the related provider.
-          Namicorn calls related blockchain to resolve a domain.
-          However, the blockchain call can take a long time (up to 2 seconds).
+          Namicorn can do the calls to therelated blockchain to resolve domain.
 
-
-          The library can be setup to query [Unstoppable Domains API](/#tag/domain_name_resolution) instead which stores the cached information of the blockchain and keeps it up to date by subscribing to blockchain events with `{blockchain: false}` option.
+          Namicorn supports the configuraiton to make blockchain calls directly by default or to use UnstoppableDomain api instead instead using `{blockchain: false}` option:
 
           ```javascript
           const namicorn = new Namicorn({blockchain: false})
           ```
 
-          In case, you prefer blockchain calls, there is possibility to configure individual blockchain URLs:
+          You can go even deeper and configure individual providers data source:
 
           ``` javascript
           new Namicorn({
             blockchain: {
-              ens: 'wss://mainnet.infura.io/ws' // the default
+              ens: {
+                url: 'wss://mainnet.infura.io/ws', // the default
+                network: 'mainnet'
+              }
             }
           })
           ```
@@ -119,21 +120,7 @@ tags:
         - [Domain name resolution v2](https://unstoppabledomains.github.io/reseller-demo/#/domain-name-reloution-v2)
         - [Reseller domain purchase](https://unstoppabledomains.github.io/reseller-demo/#/reseller-demo)
         
-      
-      Demo asides we also provide you with this plug and play iframe code.
-      Put this line of code anywhere in your web app to get access to our domain resolution search box.
-      
-
-      ```html
-      <iframe src="https://unstoppabledomains.github.io/namicorn-searchbar/#/frame" width="600" height="400" />
-      ```
-
-
-      <iframe src="https://unstoppabledomains.github.io/namicorn-searchbar/#/frame" width="600" height="400"></iframe>
-
-
       Here are some simple steps to help you launch Unstoppable Demo app locally on your machine. More complete documentation is coming soon!
-
 
       # Clone, install and run the project locally.
 
@@ -149,17 +136,69 @@ tags:
   - name: reseller
     x-displayName: Reseller openAPI
     description: "Everything related to the endpoints of reseller api"
+  - name: stripePayment
+    x-displayName: Stripe
+    description: |-
+      UD support http://stripe.com/ payments.
+
+      That requires Reseller to embed the stripe form into his application: https://stripe.com/docs/web/setup
+
+      Stripe token ID should be proded to the buy domain API endpoint: https://stripe.com/docs/stripe-js/elements/quickstart#create-token
+
+      This is a recommended and **SECURE** payment method for wallets that have all their applications completely on the client side.
+
+      We use a differeent strype API key for live and test orders:
+        - pk_test_bERlHfGH5lT9rTIhKPg74H0o (reseller-test-* namespace)
+        - pk_live_HAPE6Nv5bfhCJYKe6Nfaaj4P (all other domains)
+
+      These Stripe API keys are public keys and they are safe to reveal.
+
+      ## Stripe Flow:
+      - Customer enters his credit card and presses submit
+      - Wallet sends payment information to stripe and generates the stripe token.
+      - Wallet sends “Buy Domain” request with order information and stripe token id
+      - UD receives the call, charges the credit card via stripe token
+      - UD responds to the wallet with success and pending status if payment was successful
+      - Wallet shows the contratuation page to the customer
+      - Wallet queries “Order Status” endpoint to make sure the transaction is mined successfully
+  - name: coinbasePayment
+    x-displayName: Coinbase
+    description: |-
+      UD support https://developers.coinbase.com/ payments.
+
+      That requires Reseller to change the flow in a specific manner.
+      In order to work with coinbase a wallet should make a buy domain call with payments field defined to “coinbase”. UD will respond with the coinbase chargeID which can be used with coinbase API.
+      
+      Example: https://api.commerce.coinbase.com/charges/BDCL6NRV
+
+      In order to detect whether the payment passed through developer can use order status endpoint. 
+
+      ## Coinbase Flow:
+      - Customer fills all necessary fields for making an order
+      - Wallet sends "Buy Domain" request with order information and payment type field as coinbase
+      - Wallet receives coinbase chargeID token, use it with https://api.commerce.coinbase.com/charges/:chargeID endpoint to show ui to the user
+      - User pays specified amount to the specified address
+      - Wallets makes a series of queries "Order Status" endpoint to make sure the transaction has been made and mined successfully
+  - name: paymentDescription
+    x-displayName: Payment options
+    description: |-
+      Unstoppable Domains provides several choices for payment operations:
+        - Stripe integration
+        - Coinbase integration
+
+
 x-tagGroups:
-  
-  - name: Blockchain library
+  - name: Payment
+    tags: 
+      - paymentDescription
+      - stripePayment
+      - coinbasePayment
+  - name: Blockchain librabry
     tags: 
       - namicorn
- 
-  - name: Domain name resolution
+  - name: API
     tags:
       - domain_name_resolution
-  - name: Reseller API
-    tags:
       - reseller
   - name: For developers
     tags:
@@ -416,7 +455,7 @@ components:
           enum: [ETH, ZIL]
         publicKey:
           type: string
-          description: ETH or ZIL public key. UD accepts both compressed and uncompressed keys.
+          description: ETH or ZIL public key. UD accepts both compressed and uncompressed keys
           example: '0xe5f8500db8c739f8bf518640760d5b4105716a73bec59a693f0941c879a1bc527969a2418d1c8e6e64476246aa9b74773503789d801b2279910a01119410da15'
     Domain:
       description: "A Plaintext LDH domain"
@@ -467,7 +506,7 @@ components:
               "ETH": "0x89a8f5f337304EaA7caEd7AA1D88b791f3d8B51D",
               "XLM": "r3kmLJN5D28dHuH8vZNUZpMC43pEHpaocV",
               "XRP": "r3kmLJN5D28dHuH8vZNUZpMC43pEHpaocV",
-              "ZIL": "zil1zallh5pkvztu3gxm0hs7syshmcug8f9nxnf3ej",
+              "ZIL": "0x177FFbD0366097C8A0DB7De1E81217dE3883a4B3",
             }
         meta:
           description: Meta information regarding the domain.
@@ -524,7 +563,6 @@ components:
       resellingResponse:
         description: Object contains all information regarding reselling proccess
         type: object
-        nullable: true
         properties:
           price:
             description: How much UD takes for the domain
@@ -549,10 +587,9 @@ components:
               owner:
                 $ref: "#/components/schemas/Address"
               reselling:
+                type: object
                 $ref: "#/components/schemas/DomainAvailability/resellingResponse"
               auction:
-                nullable: true
-                type: object
                 description: Information regarding the auction if applicable
     Resolution:
       properties:
@@ -561,7 +598,7 @@ components:
           type: object
           example: 
               ZIL: 
-                address: "zil1u4509w6z5alk2zy3z2gdtqdn4ug8k8jt880mcs"
+                address: "0xe568f2BB42A77F6508911290d581B3Af107b1e4B"
               ETH:
                 address: "0x20B4564DEB7AF89ece828d843D0Ac2c16934a23e"
     Reseller:
