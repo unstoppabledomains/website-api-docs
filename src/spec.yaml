@@ -78,30 +78,7 @@ tags:
           # brad.zil  resolves to zil1yu5u4hegy9v3xgluweg4en54zm8f8auwxu0xxj
           # resolver.eth resolves to 0xD3ddcCDD3b25A8a7423B5bEe360a42146eb4Baf3
           ```
-        ## Configurations
-          Domain resolution information is stored on the blockchain of the related provider.
-          Namicorn can do the calls to therelated blockchain to resolve domain.
-
-          Namicorn supports the configuraiton to make blockchain calls directly by default or to use UnstoppableDomain api instead instead using `{blockchain: false}` option:
-
-          ```javascript
-          const namicorn = new Namicorn({blockchain: false})
-          ```
-
-          You can go even deeper and configure individual providers data source:
-
-          ``` javascript
-          new Namicorn({
-            blockchain: {
-              ens: {
-                url: 'wss://mainnet.infura.io/ws', // the default
-                network: 'mainnet'
-              }
-            }
-          })
-          ```
-
-          This is handy when you have your own blockchain copy.
+          
         ## Methods Overview
 
         - ### Constructor
