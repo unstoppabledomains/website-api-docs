@@ -202,7 +202,7 @@ tags:
   - name: authentication
     x-displayName: Authentication
     description: |-
-      Unstoppabled Domains provides both public and private api endpoints:
+      Unstoppable Domains provides both public and private api endpoints:
       - Domain Resolution api is open for everyone to use
       - Reseller api will require API key generated for your team. Please contact UD for obtaining those
 
