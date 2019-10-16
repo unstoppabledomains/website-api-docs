@@ -6,11 +6,12 @@ info:
   description: |
     Welcome to Unstoppable Domains documentation.
     
-    # Content
-    Over here you can take a closer look in the main developer products:
+    # Fast navigation
+    Over here you can take a closer look in the main points of integration:
       - [Domain name resolution API](#tag/domain_name_resolution)
       - [Reseller API](#tag/reseller)
       - [Blockchain library](#tag/namicorn)
+      - [Payment options](#tag/paymentDescription)
       - [Demos](#tag/demos)
 
   version: 1.0.0
@@ -147,7 +148,7 @@ tags:
       
         
   - name: reseller
-    x-displayName: Reseller openAPI
+    x-displayName: Reseller API
     description: "Below endpoints are used with our [Authentication](#tag/authentication)"
   - name: stripePayment
     x-displayName: Stripe
