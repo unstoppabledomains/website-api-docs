@@ -8,9 +8,8 @@ info:
     
     # Fast navigation
     Over here you can take a closer look in the main points of integration:
-      - [Domain name resolution API](#tag/domain_name_resolution)
-      - [Reseller API](#tag/reseller)
       - [Blockchain library](#tag/namicorn)
+      - [Reseller API](#tag/reseller)
       - [Payment options](#tag/paymentDescription)
       - [Demos](#tag/demos)
 
@@ -26,8 +25,12 @@ tags:
     x-displayName: Namicorn
     description: |
         Unstoppable Domain provides an npm package called Namicorn.
-        This package is as a higher level wrapper arround domain resolution api.
-        One of the advantages of this package is that it can make a direct blockchain calls as well as calling UD API
+        This npm package is able to make a live blockchain call to either zns or ens to resolve a domain name.
+        It is fully customizable for various blockchain networks. When creating an instance developer can specify
+          - blockchain url such as https://mainnet.infura.io or https://api.zilliqa.com
+          - blockchain network as either a standart number like 1 for ens for mainnet or 333 for zns for testnet
+            - blockchain network can be specified as a string as well ('mainnet', 'testnet', 'ropsten' and etc...)
+          
         ## Installation
           Namicorn is hosted on the [NPM Registry](https://www.npmjs.com/package/namicorn) as package
           `namicorn`. Namicorn also owns the npm org `@namicorn`.
@@ -80,24 +83,11 @@ tags:
           # resolver.eth resolves to 0xD3ddcCDD3b25A8a7423B5bEe360a42146eb4Baf3
           ```
           
-        ## Methods Overview
-
-        - ### Constructor
-          This creates the main namicorn instance. As a params it takes blockchain and api configurations.
-          ```javascript
-            const namicorn = new Namicorn({blockchain: {ens: {url: 'https://mainnet.infura.io', network: 'mainnet'}, zns: true}})
-          ```
-          Now fields ens or zns can be either a **boolean**, **string** or an **object**
-          - Boolean:
-            use the default settings
-          - String:
-            Pass api url for the blockchain like 'https://testnet.infura.io' for ens testnet network
-          - Object:
-            all properties are optional
-            - url specifies main blockchain url like 'https://api.zilliqa.com' for zns mainnet
-            - network can be a number or a name identifier for the network like 'mainnet' or 'testnet' 
+        ## How to resolve 
+          Namicorn librabry provides a way to resolve a domain name using a direct blockchain call.
+          For this purpose there are two main methods to look for: ** Namicorn.resolve ** and ** Namicorn.address **
         - ### Resolve
-          This resolve the given domain and returns following object or null in case of error
+          This method accept the domain name and returns following object or null in case of error
           ```javascript
             {
               addresses: {}, // if domain will resolve to anything it will be here
@@ -108,12 +98,19 @@ tags:
             };
           ```
         - ### Address
-          This returns you the specific address for specific currency if such was found in resolution of a domain.
-          You will need to provide the domain and currencyTicker like BTC or ZIL. Returns null if such address wasn't found
+          This method accepts two arguments:
+            - domain name
+            - currency ticker in which address you are interested like ( BTC, ETH, ZIL )
+
+          It returns you the address if such exists or simply null if such address wasn't found.
+          Beside the resolution there are also methods to test whether the domain is in valid format or supported by the network
         - ### isSupportedDomain
-          Tests whether the domain is supported by ens or zns.
+          Accepts domain name and returns boolean if such domain is supported by ens or zns
         - ### isSupportedDomainInNetwork
-          Tests whether the domain is supported by the current blockchain network and if it is a valid name.
+          Accepts the domain name and test it agains the current blockchain network specified in constructor of Namicorn.
+          It will also check if the domain is in valid format
+
+          More formal documentation is coming soon!
        
   - name: demos
     x-displayName: Demos
@@ -135,18 +132,6 @@ tags:
       yarn install && yarn start
       ```
 
-  - name: domain_name_resolution
-    x-displayName: Domain name resolution
-    description: |-
-        Resolution is the process of taking a name and finding a corresponding a record. We say a name 'resolves' to a record.
-        For example, www.google.com resolves to an IP Address on DNS.
-
-        Blockchain domain names can resolve to a wide variety of records. The most basic is a crypto currency address.
-        The Zilliqa Name Service (ZNS) resolves names to Zilliqa Addresses.
-        
-        One of the way how someone can resolve a Blockchain domain name is to use this endpoint below
-      
-        
   - name: reseller
     x-displayName: Reseller API
     description: "Below endpoints are used with our [Authentication](#tag/authentication)"
@@ -326,7 +311,6 @@ x-tagGroups:
     description: |-
     tags:
       - authentication
-      - domain_name_resolution
       - reseller
 
   - name: Blockchain library
