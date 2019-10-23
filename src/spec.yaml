@@ -84,7 +84,7 @@ tags:
           ```
           
         ## How to resolve 
-          Namicorn librabry provides a way to resolve a domain name using a direct blockchain call.
+          Namicorn library provides a way to resolve a domain name using a direct blockchain call.
           For this purpose there are two main methods to look for: ** Namicorn.resolve ** and ** Namicorn.address **
         - ### Resolve
           This method accept the domain name and returns following object or null in case of error
@@ -138,7 +138,7 @@ tags:
   - name: stripePayment
     x-displayName: Stripe
     description: |-
-      UD support http://stripe.com/ payments.
+      UD supports http://stripe.com/ payments.
 
       That requires Reseller to embed the stripe form into his application: https://stripe.com/docs/web/setup
 
@@ -151,6 +151,10 @@ tags:
         - pk_live_HAPE6Nv5bfhCJYKe6Nfaaj4P (all other domains)
 
       These Stripe API keys are public keys and they are safe to reveal.
+
+      We are planning to have a special page, where resellers can come and register the so called connected stripe account.
+      For now you will need to contact UD to open an account for you.
+      Comming soon!
 
       ## Stripe Flow:
       - Customer enters his credit card and presses submit
@@ -187,9 +191,9 @@ tags:
   - name: authentication
     x-displayName: Authentication
     description: |-
-      Unstoppable Domains provides both public and private api endpoints:
-      - Domain Resolution api is open for everyone to use
-      - Reseller api will require API key generated for your team. Please contact UD for obtaining those
+      Unstoppable Domains provides following tools and API endpoints:
+      - Domain Resolution is realized via [Namicorn](#tag/namicorn) librabry with direct blockchain calls
+      - Reseller API will require API key generated for your team. Please contact UD for obtaining those
 
       In order to make a successful Reseller API call you must include header named  **Authentication** and it's value has to be an API access token with a **Bearer** word in front
       ```javascript
@@ -207,7 +211,7 @@ tags:
       ### IMPORTANT:
       That is why **ANY** successful purchase of the domain is not easily reversible. UD charges resellers for any domain sold via the “Buy Domain” endpoint that is not in the test name space.
       ## Test name space
-      UD is introducing the testing domain name space for resellers. If your domain has the following format: “reseller-test-<reseller-id>-<random-number>.zil”, UD will not charge you for selling any of these. However, these domains are fully functional and live in the same production environment on the blockchain as any other UD domain. “Domain Availability” endpoint has an information whether the domain is in the testing space with `reseller.test` key.
+      UD is introducing the testing domain name space for resellers. If your domain has the following format: “reseller-test-\<reseller-id\>-\<random-number\>.zil”, UD will not charge you for selling any of these. However, these domains are fully functional and live in the same production environment on the blockchain as any other UD domain. “Domain Availability” endpoint has an information whether the domain is in the testing space with `reseller.test` key.
       ## Try It For Yourself
       Shell script to run all example request to API:
       ```shell
@@ -371,7 +375,7 @@ paths:
       tags:
         - reseller
       summary: User status
-      description: API endpoint can be used to check whether the user has a domain and whether they are eligible for a free domain. 
+      description: API endpoint can be used to check whether the user has a domain and whether he is eligible for a free domain. 
       responses:
         "200":
           description: Valid
@@ -396,7 +400,7 @@ paths:
     get:
       tags:
         - reseller
-      summary: Domain availability
+      summary: Domain name availability
       description: >
         Requires domain name
 
@@ -437,7 +441,7 @@ paths:
         - reseller
       summary: Buy domain
       description: >
-        This API endpoint is used for buying domains from UD
+        This API endpoint is used for buying domains from UD.
         
         The blockchain needs time before a transaction is mined. In rare cases, it is possible for someone to front run your purchase, which would result in an order being cancelled.
         We expect this to happen in less than 1 out of 10,000 cases. 
@@ -497,7 +501,7 @@ paths:
           - Order Number
           
         This endpoint is used to check against blockchain transaction status.
-        Due to technical limitiation of blockchains transactions are not instant and require some time
+        Due to technical limitiation of blockchains transactions are not instant and require some time.
         Once the status is mined you can be sure that the domain is live and written on a blockchain
       responses:
         "200":
