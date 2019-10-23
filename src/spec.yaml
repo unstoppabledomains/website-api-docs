@@ -9,6 +9,7 @@ info:
     # Fast navigation
     Over here you can take a closer look in the main points of integration:
       - [Blockchain library](#tag/namicorn)
+      - [Domain name resolution API](#tag/domain_name_resolution)
       - [Reseller API](#tag/reseller)
       - [Payment options](#tag/paymentDescription)
       - [Demos](#tag/demos)
@@ -112,6 +113,17 @@ tags:
 
           More formal documentation is coming soon!
        
+  - name: domain_name_resolution
+    x-displayName: Domain name resolution
+    description: |-
+        Resolution is the process of taking a name and finding a corresponding a record. We say a name 'resolves' to a record.
+        For example, www.google.com resolves to an IP Address on DNS.
+        Blockchain domain names can resolve to a wide variety of records. The most basic is a crypto currency address.
+        The Zilliqa Name Service (ZNS) resolves names to Zilliqa Addresses.
+        
+        One of the way how someone can resolve a Blockchain domain name is to use this endpoint below
+
+
   - name: demos
     x-displayName: Demos
     description: |
@@ -311,15 +323,17 @@ tags:
 
 
 x-tagGroups:
+  - name: Blockchain library
+    tags: 
+     - namicorn
+
   - name: API
     description: |-
     tags:
       - authentication
+      - domain_name_resolution
       - reseller
 
-  - name: Blockchain library
-    tags: 
-     - namicorn
 
 
   - name: Payment
