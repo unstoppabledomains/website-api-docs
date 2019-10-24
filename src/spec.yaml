@@ -319,7 +319,13 @@ tags:
       Requires jq and curl console utilities:
       - https://stedolan.github.io/jq/
       - https://curl.haxx.se/
-
+  - name: reachout
+    x-displayName: Support team
+    description: |-
+      You can reach our support team via these channels:
+        - [Telegram](https://t.me/unstoppabledomains)
+        - [Website](https://community.unstoppabledomains.com)
+        - <support@unstoppabledomains.com>
 
 
 x-tagGroups:
@@ -349,6 +355,9 @@ x-tagGroups:
   - name: For developers
     tags:
       - demos
+  - name: Support Contacts
+    tags: 
+      - reachout
 paths:
   /{domain}:
     parameters:
@@ -383,8 +392,7 @@ paths:
         description: User email
         required: true
         schema:
-          type: email
-          example: example@gmail.com
+          $ref: "#/components/schemas/Email"
     get:
       tags:
         - reseller
@@ -466,6 +474,9 @@ paths:
         
         Please make sure you are using the “Order Status” endpoint and wait until the transaction is mined.
         The API currently supports a single domain purchase at a time. UD will extend support to multiple domains in the future.
+
+
+        One of the most **important** aspects is that UD ask for a ETH or ZIL public key in owner field  to be specified. UD accepts both compressed and uncompressed keys
 
 
         Buy Domain has a little bit different flows depends on which Payment system is used. Please read more about it [here](#tag/paymentDescription) before using this endpoint
@@ -616,7 +627,7 @@ components:
     Email:
       description: User email address
       type: string
-      example: example@gmail.com
+      email: example@gmail.com
     Address:
       description: "An address"
       type: "string"
