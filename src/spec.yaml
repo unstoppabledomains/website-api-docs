@@ -454,28 +454,28 @@ paths:
           type: string
           example: udtesting
       - name: owner
-        in: path
+        in: query
         description: owner address in zil format
         required: true
         schema:
           type: string
           example: zil1tqcrcg50emead2pp6p37p0hnupkswpnlwpnm3r
       - name: extension
-        in: path
+        in: query
         description: extension to look for
         required: true
         schema:
           type: string
           exmaple: zil
       - name: page
-        in: path
+        in: query
         description: page number to look at number >= 1, default 1
         required: false
         schema:
           type: number
           example: 1
       - name: perPage
-        in: path
+        in: query
         description: perPage results  number >= 1 && number <= 50, default 30
         required: false
         schema:
