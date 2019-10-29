@@ -378,6 +378,7 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/DnsRecord"
+
   /resellers/{resellerID}/users/{email}:
     parameters:
       - name: resellerID
@@ -443,6 +444,55 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/DomainAvailability/errors/invalidDomain"
+  /resellers/{resellerID}/domains:
+    parameters:
+      - name: resellerID
+        in: path
+        description: ID obtained from UD team
+        required: true
+        schema: 
+          type: string
+          example: udtesting
+      - name: owner
+        in: path
+        description: owner address in zil format
+        required: true
+        schema:
+          type: string
+          example: zil1tqcrcg50emead2pp6p37p0hnupkswpnlwpnm3r
+      - name: extension
+        in: path
+        description: extension to look for
+        required: true
+        schema:
+          type: string
+          exmaple: zil
+      - name: page
+        in: path
+        description: page number to look at number >= 1, default 1
+        required: false
+        schema:
+          type: number
+          example: 1
+      - name: perPage
+        in: path
+        description: perPage results  number >= 1 && number <= 50, default 30
+        required: false
+        schema:
+          type: number
+          example: 10
+    get:
+      tags: 
+        - reseller
+      summary: Reverse look up. 
+      description: This endpoint is used to get all domains that are connected to certain owner
+      responses:
+        "200":
+          description: Valid
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/reverselookUp/Valid"
   /resellers/{resellerID}/users/{email}/orders:
     parameters:
       - name: resellerID
@@ -633,6 +683,29 @@ components:
       type: "string"
       pattern: "^0x[a-fA-F0-9]{40}$"
       example: "0x4E69e2156a5227fd26b5f64834C635734aB84CD8"
+    reverselookUp:
+      Valid:
+        description: Successfull response for a reverse loook up
+        type: object
+        properties:
+          domains:
+            type: array
+            items:
+              type: object
+              properties:
+                owner: 
+                  type: string
+                  description: Owner address
+                  example: zil1tqcrcg50emead2pp6p37p0hnupkswpnlwpnm3r
+                reselling:
+                  type: boolean
+                  description: whether a reseller can resell this domain
+                  example: true
+                auction:
+                  type: object
+                  description: As a future plans this object should represent the auction details
+                  example: null
+  
     userStatus:
       Valid:
         description: Successfull response for a user status
