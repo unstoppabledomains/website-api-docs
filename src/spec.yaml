@@ -671,6 +671,7 @@ components:
       description: "A Plaintext LDH domain"
       type: "string"
       pattern: "^((?![0-9]+$)(?!.*-$)(?!-)[a-zA-Z0-9-]{1,63}\\.)*(?![0-9]+$)(?!.*-$)(?!-)[a-zA-Z0-9-]{1,63}$"
+      example: "domain.zil"
     Timestamp:
       description: An epoch timestamp in milliseconds
       type: integer
@@ -682,7 +683,7 @@ components:
       description: "An address"
       type: "string"
       pattern: "^0x[a-fA-F0-9]{40}$"
-      example: "0x4E69e2156a5227fd26b5f64834C635734aB84CD8"
+      example: "zil1tqcrcg50emead2pp6p37p0hnupkswpnlwpnm3r"
     reverselookUp:
       Valid:
         description: Successfull response for a reverse loook up
@@ -693,18 +694,15 @@ components:
             items:
               type: object
               properties:
-                owner: 
-                  type: string
-                  description: Owner address
-                  example: zil1tqcrcg50emead2pp6p37p0hnupkswpnlwpnm3r
+                name:
+                  $ref: "#/components/schemas/Domain"
+                owner:
+                  $ref: "#/components/schemas/Address"
                 reselling:
-                  type: boolean
-                  description: whether a reseller can resell this domain
-                  example: true
-                auction:
                   type: object
-                  description: As a future plans this object should represent the auction details
-                  example: null
+                  $ref: "#/components/schemas/DomainAvailability/resellingResponse"
+                auction:
+                  description: Information regarding the auction if applicable
   
     userStatus:
       Valid:
