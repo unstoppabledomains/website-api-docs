@@ -111,7 +111,7 @@ tags:
           Accepts the domain name and test it agains the current blockchain network specified in constructor of Namicorn.
           It will also check if the domain is in valid format
 
-          More formal documentation is coming soon!
+          [Formal Namicorn documentation](https://unstoppabledomains.github.io/namicorn/)
        
   - name: domain_name_resolution
     x-displayName: Domain name resolution
