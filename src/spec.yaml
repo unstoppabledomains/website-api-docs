@@ -5,7 +5,7 @@ servers:
 info:
   description: |
     Welcome to Unstoppable Domains documentation.
-    
+
     # Fast navigation
     Over here you can take a closer look in the main points of integration:
       - [Blockchain library](#tag/namicorn)
@@ -16,113 +16,112 @@ info:
 
   version: 1.0.0
   title: Unstoppable Domain
-  
+
   x-logo:
-    url: "data:image/svg+xml;base64,PHN2ZyBoZWlnaHQ9IjU4IiB3aWR0aD0iMjU2IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxnIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+PHBhdGggZD0iTTg4LjY0NiAyNS4zMDhjLTIuMjg4IDAtNC4wNjYtLjYyMy01LjMzNS0xLjg3cy0xLjkwMy0zLjAxNC0xLjkwMy01LjMwMlY5LjZoNC4zNTZ2OC40MDRjMCAyLjQ2NC45NzUgMy42OTYgMi45MjYgMy42OTYgMS45MzYgMCAyLjkwNC0xLjIzMiAyLjkwNC0zLjY5NlY5LjZoNC4yOXY4LjUzNmMwIDIuMjg4LS42MzQgNC4wNTUtMS45MDMgNS4zMDJzLTMuMDQ3IDEuODctNS4zMzUgMS44N3pNMTEzLjQ4NCA5LjZWMjVoLTMuNTg2bC02Ljc5OC04LjIwNlYyNWgtNC4yNjhWOS42aDMuNTg2bDYuNzk4IDguMjA2VjkuNnptOC40OTIgMTUuNzA4Yy0xLjI0NyAwLTIuNDU3LS4xNTQtMy42My0uNDYycy0yLjEyNy0uNzE5LTIuODYtMS4yMzJsMS40My0zLjIxMmMuNjkuNDU1IDEuNDg5LjgyMSAyLjM5OCAxLjFzMS44MDQuNDE4IDIuNjg0LjQxOGMxLjY3MiAwIDIuNTA4LS40MTggMi41MDgtMS4yNTQgMC0uNDQtLjIzOC0uNzY2LS43MTUtLjk3OXMtMS4yNDMtLjQzNi0yLjI5OS0uNjcxYy0xLjE1OS0uMjUtMi4xMjctLjUxNy0yLjkwNC0uODAzcy0xLjQ0NS0uNzQ0LTIuMDAyLTEuMzc1LS44MzYtMS40ODEtLjgzNi0yLjU1MmMwLS45MzkuMjU3LTEuNzg2Ljc3LTIuNTQxczEuMjgtMS4zNTMgMi4yOTktMS43OTMgMi4yNy0uNjYgMy43NTEtLjY2YzEuMDEyIDAgMi4wMS4xMTQgMi45OTIuMzQxczEuODQ4LjU2MSAyLjU5NiAxLjAwMWwtMS4zNDIgMy4yMzRjLTEuNDY3LS43OTItMi44OS0xLjE4OC00LjI2OC0xLjE4OC0uODY1IDAtMS40OTYuMTI4LTEuODkyLjM4NS0uMzk2LjI1Ny0uNTk0LjU5LS41OTQgMS4wMDFzLjIzNS43MTkuNzA0LjkyNCAxLjIyNS40MTggMi4yNjYuNjM4YzEuMTczLjI1IDIuMTQ1LjUxNyAyLjkxNS44MDNzMS40MzcuNzQgMi4wMDIgMS4zNjRjLjU2NS42MjMuODQ3IDEuNDcuODQ3IDIuNTQxIDAgLjkyNC0uMjU3IDEuNzYtLjc3IDIuNTA4cy0xLjI4MyAxLjM0Ni0yLjMxIDEuNzkzLTIuMjczLjY3MS0zLjc0LjY3MXptMTIuMS0xMi4yNTRoLTQuNzNWOS42aDEzLjc5NHYzLjQ1NGgtNC43MDhWMjVoLTQuMzU2em0xOC40NTggMTIuMjU0Yy0xLjYyOCAwLTMuMDkxLS4zNDUtNC4zODktMS4wMzRzLTIuMzE3LTEuNjQzLTMuMDU4LTIuODYtMS4xMTEtMi41ODktMS4xMTEtNC4xMTQuMzctMi44OTcgMS4xMTEtNC4xMTQgMS43Ni0yLjE3IDMuMDU4LTIuODZjMS4yOTgtLjY5IDIuNzYxLTEuMDM0IDQuMzg5LTEuMDM0czMuMDkxLjM0NSA0LjM4OSAxLjAzNGMxLjI5OC42OSAyLjMxNyAxLjY0MyAzLjA1OCAyLjg2czEuMTExIDIuNTg5IDEuMTExIDQuMTE0LS4zNyAyLjg5Ny0xLjExMSA0LjExNC0xLjc2IDIuMTctMy4wNTggMi44Ni0yLjc2MSAxLjAzNC00LjM4OSAxLjAzNHptMC0zLjYwOGMuNzc3IDAgMS40ODEtLjE4MyAyLjExMi0uNTVzMS4xMy0uODg0IDEuNDk2LTEuNTUxYy4zNjctLjY2Ny41NS0xLjQzNC41NS0yLjI5OXMtLjE4My0xLjYzMi0uNTUtMi4yOTljLS4zNjctLjY2Ny0uODY1LTEuMTg0LTEuNDk2LTEuNTUxcy0xLjMzNS0uNTUtMi4xMTItLjU1LTEuNDgxLjE4My0yLjExMi41NS0xLjEzLjg4NC0xLjQ5NiAxLjU1MS0uNTUgMS40MzQtLjU1IDIuMjk5LjE4MyAxLjYzMi41NSAyLjI5OS44NjUgMS4xODQgMS40OTYgMS41NTEgMS4zMzUuNTUgMi4xMTIuNTV6TTE3MC40MiA5LjZjMS4zOTMgMCAyLjYwMy4yMzEgMy42My42OTMgMS4wMjcuNDYyIDEuODE5IDEuMTIyIDIuMzc2IDEuOThzLjgzNiAxLjg2Ni44MzYgMy4wMjUtLjI3OSAyLjE2My0uODM2IDMuMDE0LTEuMzUgMS41MDctMi4zNzYgMS45NjktMi4yMzcuNjkzLTMuNjMuNjkzaC0yLjY4NFYyNWgtNC4zNTZWOS42em0tLjI2NCA3Ljk0MmMuODk1IDAgMS41Ny0uMTk0IDIuMDI0LS41ODNzLjY4Mi0uOTQyLjY4Mi0xLjY2MS0uMjI3LTEuMjc2LS42ODItMS42NzItMS4xMy0uNTk0LTIuMDI0LS41OTRoLTIuNDJ2NC41MXpNMTg2LjYzNCA5LjZjMS4zOTMgMCAyLjYwMy4yMzEgMy42My42OTMgMS4wMjcuNDYyIDEuODE5IDEuMTIyIDIuMzc2IDEuOThzLjgzNiAxLjg2Ni44MzYgMy4wMjUtLjI3OSAyLjE2My0uODM2IDMuMDE0LTEuMzUgMS41MDctMi4zNzYgMS45NjktMi4yMzcuNjkzLTMuNjMuNjkzaC0yLjY4NFYyNWgtNC4zNTZWOS42em0tLjI2NCA3Ljk0MmMuODk1IDAgMS41Ny0uMTk0IDIuMDI0LS41ODNzLjY4Mi0uOTQyLjY4Mi0xLjY2MS0uMjI3LTEuMjc2LS42ODItMS42NzItMS4xMy0uNTk0LTIuMDI0LS41OTRoLTIuNDJ2NC41MXptMTkuNzU2IDQuNDY2aC02LjUxMkwxOTguNDA0IDI1aC00LjQ0NGw2Ljc5OC0xNS40aDQuMjlsNi44MiAxNS40aC00LjUzMnptLTEuMjc2LTMuMjEybC0xLjk4LTQuOTI4LTEuOTggNC45Mjh6bTIwLjA4Ni0xLjgyNmMuODguMzA4IDEuNTcuNzg4IDIuMDY4IDEuNDQxcy43NDggMS40NDEuNzQ4IDIuMzY1YzAgMS4zNS0uNTQzIDIuMzktMS42MjggMy4xMjRzLTIuNjU1IDEuMS00LjcwOCAxLjFIMjEzLjFWOS42aDcuODc2YzEuOTY1IDAgMy40NjEuMzYzIDQuNDg4IDEuMDg5IDEuMDI3LjcyNiAxLjU0IDEuNzA1IDEuNTQgMi45MzcgMCAuNzMzLS4xOCAxLjM5LS41MzkgMS45NjlzLS44NjkgMS4wMzgtMS41MjkgMS4zNzV6bS03LjUyNC00LjIyNHYyLjk3aDIuOTkyYzEuNDY3IDAgMi4yLS40OTkgMi4yLTEuNDk2IDAtLjk4My0uNzMzLTEuNDc0LTIuMi0xLjQ3NHptMy42NTIgOS4xMDhjMS41MjUgMCAyLjI4OC0uNTIgMi4yODgtMS41NjJzLS43NjMtMS41NjItMi4yODgtMS41NjJoLTMuNjUydjMuMTI0ek0yMzAuMDE4IDkuNmg0LjM1NnYxMS45NDZoNy4zNDhWMjVoLTExLjcwNHptMjUuNzg0IDEyLjAzNFYyNWgtMTIuMzY0VjkuNmgxMi4wNzh2My4zNjZoLTcuNzY2djIuNTk2aDYuODQydjMuMjU2aC02Ljg0MnYyLjgxNnpNODEuNTQgMzMuNmg3LjI4MmMxLjY4NyAwIDMuMTgzLjMxNSA0LjQ4OC45NDZzMi4zMTcgMS41MjUgMy4wMzYgMi42ODQgMS4wNzggMi41MTUgMS4wNzggNC4wNy0uMzYgMi45MTEtMS4wNzggNC4wNy0xLjczIDIuMDUzLTMuMDM2IDIuNjg0LTIuODAxLjk0Ni00LjQ4OC45NDZIODEuNTR6bTcuMTA2IDExLjkyNGMxLjMyIDAgMi4zOC0uMzc0IDMuMTc5LTEuMTIyczEuMTk5LTEuNzgyIDEuMTk5LTMuMTAyLS40LTIuMzU0LTEuMTk5LTMuMTAyLTEuODU5LTEuMTIyLTMuMTc5LTEuMTIyaC0yLjc1djguNDQ4em0xOC44MzIgMy43ODRjLTEuNjI4IDAtMy4wOTEtLjM0NS00LjM4OS0xLjAzNHMtMi4zMTctMS42NDMtMy4wNTgtMi44NmMtLjc0LTEuMjE3LTEuMTExLTIuNTg5LTEuMTExLTQuMTE0cy4zNy0yLjg5NyAxLjExMS00LjExNGMuNzQtMS4yMTcgMS43Ni0yLjE3IDMuMDU4LTIuODZzMi43NjEtMS4wMzQgNC4zODktMS4wMzQgMy4wOTEuMzQ1IDQuMzg5IDEuMDM0IDIuMzE3IDEuNjQzIDMuMDU4IDIuODYgMS4xMTEgMi41ODkgMS4xMTEgNC4xMTQtLjM3IDIuODk3LTEuMTExIDQuMTE0LTEuNzYgMi4xNy0zLjA1OCAyLjg2LTIuNzYxIDEuMDM0LTQuMzg5IDEuMDM0em0wLTMuNjA4Yy43NzcgMCAxLjQ4MS0uMTgzIDIuMTEyLS41NXMxLjEzLS44ODQgMS40OTYtMS41NTFjLjM2Ny0uNjY3LjU1LTEuNDM0LjU1LTIuMjk5cy0uMTgzLTEuNjMyLS41NS0yLjI5OWMtLjM2Ny0uNjY3LS44NjUtMS4xODQtMS40OTYtMS41NTFzLTEuMzM1LS41NS0yLjExMi0uNTUtMS40ODEuMTgzLTIuMTEyLjU1LTEuMTMuODg0LTEuNDk2IDEuNTUxYy0uMzY3LjY2Ny0uNTUgMS40MzQtLjU1IDIuMjk5cy4xODMgMS42MzIuNTUgMi4yOTljLjM2Ny42NjcuODY1IDEuMTg0IDEuNDk2IDEuNTUxczEuMzM1LjU1IDIuMTEyLjU1em0yNC43NSAzLjNsLS4wNDQtOC4xNjItMy45NiA2LjY0NGgtMS45MzZsLTMuOTM4LTYuNDI0VjQ5aC00LjAyNlYzMy42aDMuNTg2bDUuNDEyIDguODg4IDUuMjgtOC44ODhoMy41ODZsLjA0NCAxNS40em0xNy40MDItMi45OTJoLTYuNTEyTDE0MS45MDggNDloLTQuNDQ0bDYuNzk4LTE1LjRoNC4yOWw2LjgyIDE1LjRoLTQuNTMyem0tMS4yNzYtMy4yMTJsLTEuOTgtNC45MjgtMS45OCA0LjkyOHptOC4yNS05LjE5Nmg0LjM1NlY0OWgtNC4zNTZ6bTIyLjExIDBWNDloLTMuNTg2bC02Ljc5OC04LjIwNlY0OWgtNC4yNjhWMzMuNmgzLjU4Nmw2Ljc5OCA4LjIwNlYzMy42em04LjQ5MiAxNS43MDhjLTEuMjQ3IDAtMi40NTctLjE1NC0zLjYzLS40NjJzLTIuMTI3LS43MTktMi44Ni0xLjIzMmwxLjQzLTMuMjEyYy42OS40NTUgMS40ODkuODIxIDIuMzk4IDEuMXMxLjgwNC40MTggMi42ODQuNDE4YzEuNjcyIDAgMi41MDgtLjQxOCAyLjUwOC0xLjI1NCAwLS40NC0uMjM4LS43NjYtLjcxNS0uOTc5cy0xLjI0My0uNDM2LTIuMjk5LS42NzFjLTEuMTU5LS4yNS0yLjEyNy0uNTE3LTIuOTA0LS44MDNzLTEuNDQ1LS43NDQtMi4wMDItMS4zNzUtLjgzNi0xLjQ4MS0uODM2LTIuNTUyYzAtLjkzOS4yNTctMS43ODYuNzctMi41NDFzMS4yOC0xLjM1MyAyLjI5OS0xLjc5MyAyLjI3LS42NiAzLjc1MS0uNjZjMS4wMTIgMCAyLjAxLjExNCAyLjk5Mi4zNDFzMS44NDguNTYxIDIuNTk2IDEuMDAxbC0xLjM0MiAzLjIzNGMtMS40NjctLjc5Mi0yLjg5LTEuMTg4LTQuMjY4LTEuMTg4LS44NjUgMC0xLjQ5Ni4xMjgtMS44OTIuMzg1LS4zOTYuMjU3LS41OTQuNTktLjU5NCAxLjAwMXMuMjM1LjcxOS43MDQuOTI0IDEuMjI1LjQxOCAyLjI2Ni42MzhjMS4xNzMuMjUgMi4xNDUuNTE3IDIuOTE1LjgwM3MxLjQzNy43NCAyLjAwMiAxLjM2NC44NDcgMS40Ny44NDcgMi41NDFjMCAuOTI0LS4yNTcgMS43Ni0uNzcgMi41MDhzLTEuMjgzIDEuMzQ2LTIuMzEgMS43OTMtMi4yNzMuNjcxLTMuNzQuNjcxeiIgZmlsbD0iIzAxMDYxNyIgZmlsbC1ydWxlPSJub256ZXJvIi8+PHBhdGggZD0iTTY0IDF2MjJMMCA0OXoiIGZpbGw9IiMyZmU5ZmYiLz48cGF0aCBkPSJNNTIgMHYzOGMwIDExLjA0Ni04Ljk1NCAyMC0yMCAyMHMtMjAtOC45NTQtMjAtMjBWMjJsMTItNi42VjM4YTcgNyAwIDAwMTQgMFY3Ljd6IiBmaWxsPSIjNGM0N2Y3Ii8+PC9nPjwvc3ZnPg=="
+    url: 'data:image/svg+xml;base64,PHN2ZyBoZWlnaHQ9IjU4IiB3aWR0aD0iMjU2IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxnIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+PHBhdGggZD0iTTg4LjY0NiAyNS4zMDhjLTIuMjg4IDAtNC4wNjYtLjYyMy01LjMzNS0xLjg3cy0xLjkwMy0zLjAxNC0xLjkwMy01LjMwMlY5LjZoNC4zNTZ2OC40MDRjMCAyLjQ2NC45NzUgMy42OTYgMi45MjYgMy42OTYgMS45MzYgMCAyLjkwNC0xLjIzMiAyLjkwNC0zLjY5NlY5LjZoNC4yOXY4LjUzNmMwIDIuMjg4LS42MzQgNC4wNTUtMS45MDMgNS4zMDJzLTMuMDQ3IDEuODctNS4zMzUgMS44N3pNMTEzLjQ4NCA5LjZWMjVoLTMuNTg2bC02Ljc5OC04LjIwNlYyNWgtNC4yNjhWOS42aDMuNTg2bDYuNzk4IDguMjA2VjkuNnptOC40OTIgMTUuNzA4Yy0xLjI0NyAwLTIuNDU3LS4xNTQtMy42My0uNDYycy0yLjEyNy0uNzE5LTIuODYtMS4yMzJsMS40My0zLjIxMmMuNjkuNDU1IDEuNDg5LjgyMSAyLjM5OCAxLjFzMS44MDQuNDE4IDIuNjg0LjQxOGMxLjY3MiAwIDIuNTA4LS40MTggMi41MDgtMS4yNTQgMC0uNDQtLjIzOC0uNzY2LS43MTUtLjk3OXMtMS4yNDMtLjQzNi0yLjI5OS0uNjcxYy0xLjE1OS0uMjUtMi4xMjctLjUxNy0yLjkwNC0uODAzcy0xLjQ0NS0uNzQ0LTIuMDAyLTEuMzc1LS44MzYtMS40ODEtLjgzNi0yLjU1MmMwLS45MzkuMjU3LTEuNzg2Ljc3LTIuNTQxczEuMjgtMS4zNTMgMi4yOTktMS43OTMgMi4yNy0uNjYgMy43NTEtLjY2YzEuMDEyIDAgMi4wMS4xMTQgMi45OTIuMzQxczEuODQ4LjU2MSAyLjU5NiAxLjAwMWwtMS4zNDIgMy4yMzRjLTEuNDY3LS43OTItMi44OS0xLjE4OC00LjI2OC0xLjE4OC0uODY1IDAtMS40OTYuMTI4LTEuODkyLjM4NS0uMzk2LjI1Ny0uNTk0LjU5LS41OTQgMS4wMDFzLjIzNS43MTkuNzA0LjkyNCAxLjIyNS40MTggMi4yNjYuNjM4YzEuMTczLjI1IDIuMTQ1LjUxNyAyLjkxNS44MDNzMS40MzcuNzQgMi4wMDIgMS4zNjRjLjU2NS42MjMuODQ3IDEuNDcuODQ3IDIuNTQxIDAgLjkyNC0uMjU3IDEuNzYtLjc3IDIuNTA4cy0xLjI4MyAxLjM0Ni0yLjMxIDEuNzkzLTIuMjczLjY3MS0zLjc0LjY3MXptMTIuMS0xMi4yNTRoLTQuNzNWOS42aDEzLjc5NHYzLjQ1NGgtNC43MDhWMjVoLTQuMzU2em0xOC40NTggMTIuMjU0Yy0xLjYyOCAwLTMuMDkxLS4zNDUtNC4zODktMS4wMzRzLTIuMzE3LTEuNjQzLTMuMDU4LTIuODYtMS4xMTEtMi41ODktMS4xMTEtNC4xMTQuMzctMi44OTcgMS4xMTEtNC4xMTQgMS43Ni0yLjE3IDMuMDU4LTIuODZjMS4yOTgtLjY5IDIuNzYxLTEuMDM0IDQuMzg5LTEuMDM0czMuMDkxLjM0NSA0LjM4OSAxLjAzNGMxLjI5OC42OSAyLjMxNyAxLjY0MyAzLjA1OCAyLjg2czEuMTExIDIuNTg5IDEuMTExIDQuMTE0LS4zNyAyLjg5Ny0xLjExMSA0LjExNC0xLjc2IDIuMTctMy4wNTggMi44Ni0yLjc2MSAxLjAzNC00LjM4OSAxLjAzNHptMC0zLjYwOGMuNzc3IDAgMS40ODEtLjE4MyAyLjExMi0uNTVzMS4xMy0uODg0IDEuNDk2LTEuNTUxYy4zNjctLjY2Ny41NS0xLjQzNC41NS0yLjI5OXMtLjE4My0xLjYzMi0uNTUtMi4yOTljLS4zNjctLjY2Ny0uODY1LTEuMTg0LTEuNDk2LTEuNTUxcy0xLjMzNS0uNTUtMi4xMTItLjU1LTEuNDgxLjE4My0yLjExMi41NS0xLjEzLjg4NC0xLjQ5NiAxLjU1MS0uNTUgMS40MzQtLjU1IDIuMjk5LjE4MyAxLjYzMi41NSAyLjI5OS44NjUgMS4xODQgMS40OTYgMS41NTEgMS4zMzUuNTUgMi4xMTIuNTV6TTE3MC40MiA5LjZjMS4zOTMgMCAyLjYwMy4yMzEgMy42My42OTMgMS4wMjcuNDYyIDEuODE5IDEuMTIyIDIuMzc2IDEuOThzLjgzNiAxLjg2Ni44MzYgMy4wMjUtLjI3OSAyLjE2My0uODM2IDMuMDE0LTEuMzUgMS41MDctMi4zNzYgMS45NjktMi4yMzcuNjkzLTMuNjMuNjkzaC0yLjY4NFYyNWgtNC4zNTZWOS42em0tLjI2NCA3Ljk0MmMuODk1IDAgMS41Ny0uMTk0IDIuMDI0LS41ODNzLjY4Mi0uOTQyLjY4Mi0xLjY2MS0uMjI3LTEuMjc2LS42ODItMS42NzItMS4xMy0uNTk0LTIuMDI0LS41OTRoLTIuNDJ2NC41MXpNMTg2LjYzNCA5LjZjMS4zOTMgMCAyLjYwMy4yMzEgMy42My42OTMgMS4wMjcuNDYyIDEuODE5IDEuMTIyIDIuMzc2IDEuOThzLjgzNiAxLjg2Ni44MzYgMy4wMjUtLjI3OSAyLjE2My0uODM2IDMuMDE0LTEuMzUgMS41MDctMi4zNzYgMS45NjktMi4yMzcuNjkzLTMuNjMuNjkzaC0yLjY4NFYyNWgtNC4zNTZWOS42em0tLjI2NCA3Ljk0MmMuODk1IDAgMS41Ny0uMTk0IDIuMDI0LS41ODNzLjY4Mi0uOTQyLjY4Mi0xLjY2MS0uMjI3LTEuMjc2LS42ODItMS42NzItMS4xMy0uNTk0LTIuMDI0LS41OTRoLTIuNDJ2NC41MXptMTkuNzU2IDQuNDY2aC02LjUxMkwxOTguNDA0IDI1aC00LjQ0NGw2Ljc5OC0xNS40aDQuMjlsNi44MiAxNS40aC00LjUzMnptLTEuMjc2LTMuMjEybC0xLjk4LTQuOTI4LTEuOTggNC45Mjh6bTIwLjA4Ni0xLjgyNmMuODguMzA4IDEuNTcuNzg4IDIuMDY4IDEuNDQxcy43NDggMS40NDEuNzQ4IDIuMzY1YzAgMS4zNS0uNTQzIDIuMzktMS42MjggMy4xMjRzLTIuNjU1IDEuMS00LjcwOCAxLjFIMjEzLjFWOS42aDcuODc2YzEuOTY1IDAgMy40NjEuMzYzIDQuNDg4IDEuMDg5IDEuMDI3LjcyNiAxLjU0IDEuNzA1IDEuNTQgMi45MzcgMCAuNzMzLS4xOCAxLjM5LS41MzkgMS45NjlzLS44NjkgMS4wMzgtMS41MjkgMS4zNzV6bS03LjUyNC00LjIyNHYyLjk3aDIuOTkyYzEuNDY3IDAgMi4yLS40OTkgMi4yLTEuNDk2IDAtLjk4My0uNzMzLTEuNDc0LTIuMi0xLjQ3NHptMy42NTIgOS4xMDhjMS41MjUgMCAyLjI4OC0uNTIgMi4yODgtMS41NjJzLS43NjMtMS41NjItMi4yODgtMS41NjJoLTMuNjUydjMuMTI0ek0yMzAuMDE4IDkuNmg0LjM1NnYxMS45NDZoNy4zNDhWMjVoLTExLjcwNHptMjUuNzg0IDEyLjAzNFYyNWgtMTIuMzY0VjkuNmgxMi4wNzh2My4zNjZoLTcuNzY2djIuNTk2aDYuODQydjMuMjU2aC02Ljg0MnYyLjgxNnpNODEuNTQgMzMuNmg3LjI4MmMxLjY4NyAwIDMuMTgzLjMxNSA0LjQ4OC45NDZzMi4zMTcgMS41MjUgMy4wMzYgMi42ODQgMS4wNzggMi41MTUgMS4wNzggNC4wNy0uMzYgMi45MTEtMS4wNzggNC4wNy0xLjczIDIuMDUzLTMuMDM2IDIuNjg0LTIuODAxLjk0Ni00LjQ4OC45NDZIODEuNTR6bTcuMTA2IDExLjkyNGMxLjMyIDAgMi4zOC0uMzc0IDMuMTc5LTEuMTIyczEuMTk5LTEuNzgyIDEuMTk5LTMuMTAyLS40LTIuMzU0LTEuMTk5LTMuMTAyLTEuODU5LTEuMTIyLTMuMTc5LTEuMTIyaC0yLjc1djguNDQ4em0xOC44MzIgMy43ODRjLTEuNjI4IDAtMy4wOTEtLjM0NS00LjM4OS0xLjAzNHMtMi4zMTctMS42NDMtMy4wNTgtMi44NmMtLjc0LTEuMjE3LTEuMTExLTIuNTg5LTEuMTExLTQuMTE0cy4zNy0yLjg5NyAxLjExMS00LjExNGMuNzQtMS4yMTcgMS43Ni0yLjE3IDMuMDU4LTIuODZzMi43NjEtMS4wMzQgNC4zODktMS4wMzQgMy4wOTEuMzQ1IDQuMzg5IDEuMDM0IDIuMzE3IDEuNjQzIDMuMDU4IDIuODYgMS4xMTEgMi41ODkgMS4xMTEgNC4xMTQtLjM3IDIuODk3LTEuMTExIDQuMTE0LTEuNzYgMi4xNy0zLjA1OCAyLjg2LTIuNzYxIDEuMDM0LTQuMzg5IDEuMDM0em0wLTMuNjA4Yy43NzcgMCAxLjQ4MS0uMTgzIDIuMTEyLS41NXMxLjEzLS44ODQgMS40OTYtMS41NTFjLjM2Ny0uNjY3LjU1LTEuNDM0LjU1LTIuMjk5cy0uMTgzLTEuNjMyLS41NS0yLjI5OWMtLjM2Ny0uNjY3LS44NjUtMS4xODQtMS40OTYtMS41NTFzLTEuMzM1LS41NS0yLjExMi0uNTUtMS40ODEuMTgzLTIuMTEyLjU1LTEuMTMuODg0LTEuNDk2IDEuNTUxYy0uMzY3LjY2Ny0uNTUgMS40MzQtLjU1IDIuMjk5cy4xODMgMS42MzIuNTUgMi4yOTljLjM2Ny42NjcuODY1IDEuMTg0IDEuNDk2IDEuNTUxczEuMzM1LjU1IDIuMTEyLjU1em0yNC43NSAzLjNsLS4wNDQtOC4xNjItMy45NiA2LjY0NGgtMS45MzZsLTMuOTM4LTYuNDI0VjQ5aC00LjAyNlYzMy42aDMuNTg2bDUuNDEyIDguODg4IDUuMjgtOC44ODhoMy41ODZsLjA0NCAxNS40em0xNy40MDItMi45OTJoLTYuNTEyTDE0MS45MDggNDloLTQuNDQ0bDYuNzk4LTE1LjRoNC4yOWw2LjgyIDE1LjRoLTQuNTMyem0tMS4yNzYtMy4yMTJsLTEuOTgtNC45MjgtMS45OCA0LjkyOHptOC4yNS05LjE5Nmg0LjM1NlY0OWgtNC4zNTZ6bTIyLjExIDBWNDloLTMuNTg2bC02Ljc5OC04LjIwNlY0OWgtNC4yNjhWMzMuNmgzLjU4Nmw2Ljc5OCA4LjIwNlYzMy42em04LjQ5MiAxNS43MDhjLTEuMjQ3IDAtMi40NTctLjE1NC0zLjYzLS40NjJzLTIuMTI3LS43MTktMi44Ni0xLjIzMmwxLjQzLTMuMjEyYy42OS40NTUgMS40ODkuODIxIDIuMzk4IDEuMXMxLjgwNC40MTggMi42ODQuNDE4YzEuNjcyIDAgMi41MDgtLjQxOCAyLjUwOC0xLjI1NCAwLS40NC0uMjM4LS43NjYtLjcxNS0uOTc5cy0xLjI0My0uNDM2LTIuMjk5LS42NzFjLTEuMTU5LS4yNS0yLjEyNy0uNTE3LTIuOTA0LS44MDNzLTEuNDQ1LS43NDQtMi4wMDItMS4zNzUtLjgzNi0xLjQ4MS0uODM2LTIuNTUyYzAtLjkzOS4yNTctMS43ODYuNzctMi41NDFzMS4yOC0xLjM1MyAyLjI5OS0xLjc5MyAyLjI3LS42NiAzLjc1MS0uNjZjMS4wMTIgMCAyLjAxLjExNCAyLjk5Mi4zNDFzMS44NDguNTYxIDIuNTk2IDEuMDAxbC0xLjM0MiAzLjIzNGMtMS40NjctLjc5Mi0yLjg5LTEuMTg4LTQuMjY4LTEuMTg4LS44NjUgMC0xLjQ5Ni4xMjgtMS44OTIuMzg1LS4zOTYuMjU3LS41OTQuNTktLjU5NCAxLjAwMXMuMjM1LjcxOS43MDQuOTI0IDEuMjI1LjQxOCAyLjI2Ni42MzhjMS4xNzMuMjUgMi4xNDUuNTE3IDIuOTE1LjgwM3MxLjQzNy43NCAyLjAwMiAxLjM2NC44NDcgMS40Ny44NDcgMi41NDFjMCAuOTI0LS4yNTcgMS43Ni0uNzcgMi41MDhzLTEuMjgzIDEuMzQ2LTIuMzEgMS43OTMtMi4yNzMuNjcxLTMuNzQuNjcxeiIgZmlsbD0iIzAxMDYxNyIgZmlsbC1ydWxlPSJub256ZXJvIi8+PHBhdGggZD0iTTY0IDF2MjJMMCA0OXoiIGZpbGw9IiMyZmU5ZmYiLz48cGF0aCBkPSJNNTIgMHYzOGMwIDExLjA0Ni04Ljk1NCAyMC0yMCAyMHMtMjAtOC45NTQtMjAtMjBWMjJsMTItNi42VjM4YTcgNyAwIDAwMTQgMFY3Ljd6IiBmaWxsPSIjNGM0N2Y3Ii8+PC9nPjwvc3ZnPg=='
     altText: Unstoppable domain logo
-  
+
 tags:
   - name: namicorn
     x-displayName: Namicorn
     description: |
-        Unstoppable Domain provides an npm package called Namicorn.
-        This npm package is able to make a live blockchain call to either zns or ens to resolve a domain name.
-        It is fully customizable for various blockchain networks. When creating an instance developer can specify
-          - blockchain url such as https://mainnet.infura.io or https://api.zilliqa.com
-          - blockchain network as either a standart number like 1 for ens for mainnet or 333 for zns for testnet
-            - blockchain network can be specified as a string as well ('mainnet', 'testnet', 'ropsten' and etc...)
-          
-        ## Installation
-          Namicorn is hosted on the [NPM Registry](https://www.npmjs.com/package/namicorn) as package
-          `namicorn`. Namicorn also owns the npm org `@namicorn`.
+      Unstoppable Domain provides an npm package called Namicorn.
+      This npm package is able to make a live blockchain call to either zns or ens to resolve a domain name.
+      It is fully customizable for various blockchain networks. When creating an instance developer can specify
+        - blockchain url such as https://mainnet.infura.io or https://api.zilliqa.com
+        - blockchain network as either a standart number like 1 for ens for mainnet or 333 for zns for testnet
+          - blockchain network can be specified as a string as well ('mainnet', 'testnet', 'ropsten' and etc...)
+        
+      ## Installation
+        Namicorn is hosted on the [NPM Registry](https://www.npmjs.com/package/namicorn) as package
+        `namicorn`. Namicorn also owns the npm org `@namicorn`.
 
-          Most of the time installation looks like:
+        Most of the time installation looks like:
 
-          ```bash
-          npm install namicorn
-          ```
+        ```bash
+        npm install namicorn
+        ```
 
-          ```bash
-          # It's also available via yarn
-          yarn add namicorn
-          ```
-        ## Getting Started
-          Create a new project.
+        ```bash
+        # It's also available via yarn
+        yarn add namicorn
+        ```
+      ## Getting Started
+        Create a new project.
 
-          ```shell
-          mkdir test-out-namicorn && cd $_
-          npm init -y
-          ```
+        ```shell
+        mkdir test-out-namicorn && cd $_
+        npm init -y
+        ```
 
-          Install Namicorn.
+        Install Namicorn.
 
-          ```shell
-          npm install namicorn
-          ```
+        ```shell
+        npm install namicorn
+        ```
 
-          Make a file, `script.js`.
+        Make a file, `script.js`.
 
-          ```javascript
-          const {default: Namicorn} = require('namicorn')
+        ```javascript
+        const {default: Namicorn} = require('namicorn')
 
-          const namicorn = new Namicorn()
+        const namicorn = new Namicorn()
 
-          function resolve(domain, currency) {
-            namicorn.address(domain, currency)
-              .then(address => console.log(domain, ' resolves to', address))
-              .catch(console.error)
-          }
-          resolve('resolver.eth', "ETH")
-          resolve('brad.zil', "ZIL")
-          ```
+        function resolve(domain, currency) {
+          namicorn.address(domain, currency)
+            .then(address => console.log(domain, ' resolves to', address))
+            .catch(console.error)
+        }
+        resolve('resolver.eth', "ETH")
+        resolve('brad.zil', "ZIL")
+        ```
 
-          Execute the script.
+        Execute the script.
 
-          ```javascript
-          node script.js
-          # brad.zil  resolves to zil1yu5u4hegy9v3xgluweg4en54zm8f8auwxu0xxj
-          # resolver.eth resolves to 0xD3ddcCDD3b25A8a7423B5bEe360a42146eb4Baf3
-          ```
-          
-        ## How to resolve 
-          Namicorn library provides a way to resolve a domain name using a direct blockchain call.
-          For this purpose there are two main methods to look for: ** Namicorn.resolve ** and ** Namicorn.address **
-        - ### Resolve
-          This method accept the domain name and returns following object or null in case of error
-          ```javascript
-            {
-              addresses: {}, // if domain will resolve to anything it will be here
-              meta: {
-                owner: null, // this means the domain is avalable for purchase
-                ttl: 0,
-              },
-            };
-          ```
-        - ### Address
-          This method accepts two arguments:
-            - domain name
-            - currency ticker in which address you are interested like ( BTC, ETH, ZIL )
+        ```javascript
+        node script.js
+        # brad.zil  resolves to zil1yu5u4hegy9v3xgluweg4en54zm8f8auwxu0xxj
+        # resolver.eth resolves to 0xD3ddcCDD3b25A8a7423B5bEe360a42146eb4Baf3
+        ```
+        
+      ## How to resolve 
+        Namicorn library provides a way to resolve a domain name using a direct blockchain call.
+        For this purpose there are two main methods to look for: ** Namicorn.resolve ** and ** Namicorn.address **
+      - ### Resolve
+        This method accept the domain name and returns following object or null in case of error
+        ```javascript
+          {
+            addresses: {}, // if domain will resolve to anything it will be here
+            meta: {
+              owner: null, // this means the domain is avalable for purchase
+              ttl: 0,
+            },
+          };
+        ```
+      - ### Address
+        This method accepts two arguments:
+          - domain name
+          - currency ticker in which address you are interested like ( BTC, ETH, ZIL )
 
-          It returns you the address if such exists or simply null if such address wasn't found.
-          Beside the resolution there are also methods to test whether the domain is in valid format or supported by the network
-        - ### isSupportedDomain
-          Accepts domain name and returns boolean if such domain is supported by ens or zns
-        - ### isSupportedDomainInNetwork
-          Accepts the domain name and test it agains the current blockchain network specified in constructor of Namicorn.
-          It will also check if the domain is in valid format
+        It returns you the address if such exists or simply null if such address wasn't found.
+        Beside the resolution there are also methods to test whether the domain is in valid format or supported by the network
+      - ### isSupportedDomain
+        Accepts domain name and returns boolean if such domain is supported by ens or zns
+      - ### isSupportedDomainInNetwork
+        Accepts the domain name and test it agains the current blockchain network specified in constructor of Namicorn.
+        It will also check if the domain is in valid format
 
-          [Formal Namicorn documentation](https://unstoppabledomains.github.io/namicorn/)
-       
+        [Formal Namicorn documentation](https://unstoppabledomains.github.io/namicorn/)
+
   - name: domain_name_resolution
     x-displayName: Domain name resolution
     description: |-
-        Resolution is the process of taking a name and finding a corresponding a record. We say a name 'resolves' to a record.
-        For example, www.google.com resolves to an IP Address on DNS.
-        Blockchain domain names can resolve to a wide variety of records. The most basic is a crypto currency address.
-        The Zilliqa Name Service (ZNS) resolves names to Zilliqa Addresses.
-        
-        One of the way how someone can resolve a Blockchain domain name is to use this endpoint below
+      Resolution is the process of taking a name and finding a corresponding a record. We say a name 'resolves' to a record.
+      For example, www.google.com resolves to an IP Address on DNS.
+      Blockchain domain names can resolve to a wide variety of records. The most basic is a crypto currency address.
+      The Zilliqa Name Service (ZNS) resolves names to Zilliqa Addresses.
 
+      One of the way how someone can resolve a Blockchain domain name is to use this endpoint below
 
   - name: demos
     x-displayName: Demos
@@ -146,27 +145,33 @@ tags:
 
   - name: reseller
     x-displayName: Reseller API
-    description: "Below endpoints are used with our [Authentication](#tag/authentication)"
+    description: |-
+      Reseller API requires you to be an authorized reseller. You can
+      apply to be a reseller [here](https://unstoppabledomains.com/resellers). 
+
+      Visit the [reseller dashboard](https://unstoppabledomains.com/resellers) to view your API key, resellerID, and Stripe.
+
+      Below endpoints are used with our [Authentication](#tag/authentication)
+
   - name: stripePayment
     x-displayName: Stripe
     description: |-
+      To obtain your Stripe API keys, onboard with the Unstoppable Domains platform through Stripe.
+      There is a stripe connect button in the [reseller dashboard](https://unstoppabledomains.com/resellers). Once connected, your Stripe API key will appear.
+
       UD supports http://stripe.com/ payments.
 
-      That requires Reseller to embed the stripe form into his application: https://stripe.com/docs/web/setup
+      Stripe requires you to embed their form into your application: https://stripe.com/docs/web/setup
 
       Stripe token ID should be proded to the buy domain API endpoint: https://stripe.com/docs/stripe-js/elements/quickstart#create-token
 
       This is a recommended and **SECURE** payment method for wallets that have all their applications completely on the client side.
 
-      We use a differeent stripe API key for live and test orders:
-        - pk_test_bERlHfGH5lT9rTIhKPg74H0o (reseller-test-* namespace)
-        - pk_live_HAPE6Nv5bfhCJYKe6Nfaaj4P (all other domains)
+      We use a different stripe API key for live and test orders:
+        - pk_test_* (reseller-test-* namespace)
+        - pk_live_* (all other domains)
 
       These Stripe API keys are public keys and they are safe to reveal.
-
-      We are planning to have a special page, where resellers can come and register the so called connected stripe account.
-      For now you will need to contact UD to open an account for you.
-      Comming soon!
 
       ## Stripe Flow:
       - Customer enters his credit card and presses submit
@@ -183,7 +188,7 @@ tags:
 
       That requires Reseller to change the flow in a specific manner.
       In order to work with coinbase a wallet should make a buy domain call with payments field defined to “coinbase”. UD will respond with the coinbase chargeID which can be used with coinbase API.
-      
+
       Example: https://api.commerce.coinbase.com/charges/BDCL6NRV
 
       In order to detect whether the payment passed through developer can use order status endpoint. 
@@ -204,8 +209,8 @@ tags:
     x-displayName: Authentication
     description: |-
       Unstoppable Domains provides following tools and API endpoints:
-      - Domain Resolution is realized via [Namicorn](#tag/namicorn) librabry with direct blockchain calls
-      - Reseller API will require API key generated for your team. Please contact UD for obtaining those
+      - Domain Resolution is realized via [Namicorn](#tag/namicorn) library with direct blockchain calls
+      - Reseller API requires you to be an authorized reseller. You can apply to be a reseller [here](https://unstoppabledomains.com/resellers)
 
       In order to make a successful Reseller API call you must include header named  **Authentication** and it's value has to be an API access token with a **Bearer** word in front
       ```javascript
@@ -315,7 +320,7 @@ tags:
 
         order "$json"
       ```
-      
+
       Requires jq and curl console utilities:
       - https://stedolan.github.io/jq/
       - https://curl.haxx.se/
@@ -327,11 +332,10 @@ tags:
         - [Website](https://community.unstoppabledomains.com)
         - <support@unstoppabledomains.com>
 
-
 x-tagGroups:
   - name: Blockchain library
-    tags: 
-     - namicorn
+    tags:
+      - namicorn
 
   - name: API
     description: |-
@@ -340,23 +344,20 @@ x-tagGroups:
       - domain_name_resolution
       - reseller
 
-
-
   - name: Payment
-    tags: 
+    tags:
       - paymentDescription
       - stripePayment
       - coinbasePayment
   - name: How to test
     tags:
       - testing
- 
-  
+
   - name: For developers
     tags:
       - demos
   - name: Support Contacts
-    tags: 
+    tags:
       - reachout
 paths:
   /{domain}:
@@ -365,19 +366,22 @@ paths:
         in: path
         description: Domain name you wish to check
         schema:
-          $ref: "#/components/schemas/Domain"
+          $ref: '#/components/schemas/Domain'
     get:
       tags:
         - domain_name_resolution
       summary: Resolves the domain
-      description: "Dispatches the domain returns crypto addresses and metadata associated with the domain. Unclaimed address will still be revolved to null addresses"
+      description:
+        'Dispatches the domain returns crypto addresses and metadata associated
+        with the domain. Unclaimed address will still be revolved to null
+        addresses'
       responses:
-        "200":
+        '200':
           description: Success
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/DnsRecord"
+                $ref: '#/components/schemas/DnsRecord'
 
   /resellers/{resellerID}/users/{email}:
     parameters:
@@ -393,19 +397,21 @@ paths:
         description: User email
         required: true
         schema:
-          $ref: "#/components/schemas/Email"
+          $ref: '#/components/schemas/Email'
     get:
       tags:
         - reseller
       summary: User status
-      description: API endpoint can be used to check whether the user has a domain and whether he is eligible for a free domain. 
+      description:
+        API endpoint can be used to check whether the user has a domain and
+        whether he is eligible for a free domain.
       responses:
-        "200":
+        '200':
           description: Valid
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/userStatus/Valid"
+                $ref: '#/components/schemas/userStatus/Valid'
   /resellers/{resellerID}/domains/{domainName}:
     parameters:
       - name: resellerID
@@ -419,7 +425,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: "#/components/schemas/Domain"
+          $ref: '#/components/schemas/Domain'
     get:
       tags:
         - reseller
@@ -429,28 +435,32 @@ paths:
 
         ## Returns 
          - `owner` blockchain address
-         - `reselling` information on domain `price`, whether it’s `availableForFree`, and whether it is a `test` domain. `reselling` is equal to `null` if the domain is not available to resell.
-         - `auction` information if the domain is available for the auction. Currently not implemented.
+         - `reselling` information on domain `price`, whether it’s
+        `availableForFree`, and whether it is a `test` domain. `reselling` is
+        equal to `null` if the domain is not available to resell.
+         - `auction` information if the domain is available for the auction.
+        Currently not implemented.
       responses:
-        "200":
-          description: Contains owner, reselling information and auction information if any
+        '200':
+          description:
+            Contains owner, reselling information and auction information if any
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/DomainAvailability/ValidResponse"
-        "400":
+                $ref: '#/components/schemas/DomainAvailability/ValidResponse'
+        '400':
           description: Invalid domain
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/DomainAvailability/errors/invalidDomain"
+                $ref: '#/components/schemas/DomainAvailability/errors/invalidDomain'
   /resellers/{resellerID}/domains:
     parameters:
       - name: resellerID
         in: path
         description: ID obtained from UD team
         required: true
-        schema: 
+        schema:
           type: string
           example: udtesting
       - name: owner
@@ -482,17 +492,19 @@ paths:
           type: number
           example: 10
     get:
-      tags: 
+      tags:
         - reseller
-      summary: Reverse look up. 
-      description: This endpoint is used to get all domains that are connected to certain owner
+      summary: Reverse look up.
+      description:
+        This endpoint is used to get all domains that are connected to certain
+        owner
       responses:
-        "200":
+        '200':
           description: Valid
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/reverselookUp/Valid"
+                $ref: '#/components/schemas/reverselookUp/Valid'
   /resellers/{resellerID}/users/{email}/orders:
     parameters:
       - name: resellerID
@@ -501,49 +513,58 @@ paths:
         required: true
         schema:
           type: string
-          example: udtesting 
+          example: udtesting
       - name: email
         description: User email
         required: true
         in: path
         schema:
-          $ref: "#/components/schemas/Email" 
+          $ref: '#/components/schemas/Email'
     post:
       tags:
         - reseller
       summary: Buy domain
       description: >
         This API endpoint is used for buying domains from UD.
-        
-        The blockchain needs time before a transaction is mined. In rare cases, it is possible for someone to front run your purchase, which would result in an order being cancelled.
-        We expect this to happen in less than 1 out of 10,000 cases. 
-        
-        
-        Blockchain doesn’t currently support any locking functionality for an upcoming purchase.
-        
-        
-        Please make sure you are using the “Order Status” endpoint and wait until the transaction is mined.
-        The API currently supports a single domain purchase at a time. UD will extend support to multiple domains in the future.
+
+        The blockchain needs time before a transaction is mined. In rare cases,
+        it is possible for someone to front run your purchase, which would
+        result in an order being cancelled. We expect this to happen in less
+        than 1 out of 10,000 cases. 
 
 
-        One of the most **important** aspects is that UD ask for a ETH or ZIL public key in owner field  to be specified. UD accepts both compressed and uncompressed keys
+        Blockchain doesn’t currently support any locking functionality for an
+        upcoming purchase.
 
 
-        Buy Domain has a little bit different flows depends on which Payment system is used. Please read more about it [here](#tag/paymentDescription) before using this endpoint
+        Please make sure you are using the “Order Status” endpoint and wait
+        until the transaction is mined. The API currently supports a single
+        domain purchase at a time. UD will extend support to multiple domains in
+        the future.
+
+
+        One of the most **important** aspects is that UD ask for a ETH or ZIL
+        public key in owner field  to be specified. UD accepts both compressed
+        and uncompressed keys
+
+
+        Buy Domain has a little bit different flows depends on which Payment
+        system is used. Please read more about it
+        [here](#tag/paymentDescription) before using this endpoint
       requestBody:
         type: object
         required: true
         content:
           application/json:
             schema:
-              $ref: "#/components/requestBodies/reseller/buy"
+              $ref: '#/components/requestBodies/reseller/buy'
       responses:
-        "200":
+        '200':
           description: Successfull
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Reseller/BuyResponce"
+                $ref: '#/components/schemas/Reseller/BuyResponce'
   /resellers/{resellerID}/users/{email}/orders/{orderNumber}:
     parameters:
       - name: resellerID
@@ -552,13 +573,13 @@ paths:
         required: true
         schema:
           type: string
-          example: udtesting 
+          example: udtesting
       - name: email
         description: User email
         required: true
         in: path
         schema:
-          $ref: "#/components/schemas/Email" 
+          $ref: '#/components/schemas/Email'
       - name: orderNumber
         description: Order number returned as a result of Buy domain API call
         required: true
@@ -579,25 +600,25 @@ paths:
         Due to technical limitiation of blockchains transactions are not instant and require some time.
         Once the status is mined you can be sure that the domain is live and written on a blockchain
       responses:
-        "200":
+        '200':
           description: Successfull
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Reseller/BuyResponce"
-        "404":
+                $ref: '#/components/schemas/Reseller/BuyResponce'
+        '404':
           description: Order not found
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Reseller/OrderNotFound"
+                $ref: '#/components/schemas/Reseller/OrderNotFound'
 components:
   schemas:
     errors:
       OrderNotFound:
         type: object
         properties:
-          code: 
+          code:
             type: string
             description: |
               Error code: 'ORDER_NOT_FOUND'
@@ -609,7 +630,7 @@ components:
           field:
             type: string
             description: Estimate error field
-            example: "orderId"
+            example: 'orderId'
           value:
             description: Value of error field
             example: 1231
@@ -620,10 +641,10 @@ components:
           type: string
           enum: ['ZNS_DOMAIN']
         name:
-          $ref: "#/components/schemas/Domain"
+          $ref: '#/components/schemas/Domain'
         test:
           type: bool
-          description: "Whether domain in test namespace"
+          description: 'Whether domain in test namespace'
         blockchain:
           type: object
           description: Contains information regarding blockchain minning status
@@ -632,32 +653,32 @@ components:
               type: string
               enum: ['PENDING', 'MINED', 'CANCELED']
       example:
-        type: "ZNS_DOMAIN"
-        name: "reseller-test-udtesting-24287.zil"
+        type: 'ZNS_DOMAIN'
+        name: 'reseller-test-udtesting-24287.zil'
         test: true
-        blockchain: 
+        blockchain:
           status: 'MINED'
     Order:
       type: object
       properties:
-        orderNumber: 
+        orderNumber:
           type: string
           description: orderID used for later status check
-          example: -Lm9wiYytgrpf4YCWYv6 
+          example: -Lm9wiYytgrpf4YCWYv6
         payment:
           anyOf:
-            - $ref: "#/components/schemas/stripePayment"
-            - $ref: "#/components/schemas/coinbase"
-        subtotal: 
+            - $ref: '#/components/schemas/stripePayment'
+            - $ref: '#/components/schemas/coinbase'
+        subtotal:
           type: integer
           description: sub total something number
           example: 10
         items:
           type: array
           items:
-            $ref: "#/components/schemas/orderItem"
+            $ref: '#/components/schemas/orderItem'
     Owner:
-      description: "Object contains user public key"
+      description: 'Object contains user public key'
       type: object
       properties:
         type:
@@ -665,13 +686,15 @@ components:
           enum: [ETH, ZIL]
         publicKey:
           type: string
-          description: ETH or ZIL public key. UD accepts both compressed and uncompressed keys
+          description:
+            ETH or ZIL public key. UD accepts both compressed and uncompressed
+            keys
           example: '0xe5f8500db8c739f8bf518640760d5b4105716a73bec59a693f0941c879a1bc527969a2418d1c8e6e64476246aa9b74773503789d801b2279910a01119410da15'
     Domain:
-      description: "A Plaintext LDH domain"
-      type: "string"
+      description: 'A Plaintext LDH domain'
+      type: 'string'
       pattern: "^((?![0-9]+$)(?!.*-$)(?!-)[a-zA-Z0-9-]{1,63}\\.)*(?![0-9]+$)(?!.*-$)(?!-)[a-zA-Z0-9-]{1,63}$"
-      example: "domain.zil"
+      example: 'domain.zil'
     Timestamp:
       description: An epoch timestamp in milliseconds
       type: integer
@@ -680,10 +703,10 @@ components:
       type: string
       email: example@gmail.com
     Address:
-      description: "An address"
-      type: "string"
-      pattern: "^0x[a-fA-F0-9]{40}$"
-      example: "zil1tqcrcg50emead2pp6p37p0hnupkswpnlwpnm3r"
+      description: 'An address'
+      type: 'string'
+      pattern: '^0x[a-fA-F0-9]{40}$'
+      example: 'zil1tqcrcg50emead2pp6p37p0hnupkswpnlwpnm3r'
     reverselookUp:
       Valid:
         description: Successfull response for a reverse loook up
@@ -695,15 +718,15 @@ components:
               type: object
               properties:
                 name:
-                  $ref: "#/components/schemas/Domain"
+                  $ref: '#/components/schemas/Domain'
                 owner:
-                  $ref: "#/components/schemas/Address"
+                  $ref: '#/components/schemas/Address'
                 reselling:
                   type: object
-                  $ref: "#/components/schemas/DomainAvailability/resellingResponse"
+                  $ref: '#/components/schemas/DomainAvailability/resellingResponse'
                 auction:
                   description: Information regarding the auction if applicable
-  
+
     userStatus:
       Valid:
         description: Successfull response for a user status
@@ -714,7 +737,7 @@ components:
             type: object
             properties:
               email:
-                $ref: "#/components/schemas/Email"
+                $ref: '#/components/schemas/Email'
               registered:
                 description: Whether such user is registered
                 type: bool
@@ -731,25 +754,25 @@ components:
           type: object
           example:
             {
-              "ADA": "DdzFFzCqrhskNiNkkTLe9QDmGQc1t6u6kcB6cJ5i2UN6NWdQYRaRmwe9Kd78gX8T9Xv2dAyRxN8RhGnckgU3zFrUYVHGVGtm1uCLTSA4",
-              "BTC": null,
-              "EOS": null,
-              "ETH": "0x89a8f5f337304EaA7caEd7AA1D88b791f3d8B51D",
-              "XLM": "r3kmLJN5D28dHuH8vZNUZpMC43pEHpaocV",
-              "XRP": "r3kmLJN5D28dHuH8vZNUZpMC43pEHpaocV",
-              "ZIL": "0x177FFbD0366097C8A0DB7De1E81217dE3883a4B3",
+              'ADA': 'DdzFFzCqrhskNiNkkTLe9QDmGQc1t6u6kcB6cJ5i2UN6NWdQYRaRmwe9Kd78gX8T9Xv2dAyRxN8RhGnckgU3zFrUYVHGVGtm1uCLTSA4',
+              'BTC': null,
+              'EOS': null,
+              'ETH': '0x89a8f5f337304EaA7caEd7AA1D88b791f3d8B51D',
+              'XLM': 'r3kmLJN5D28dHuH8vZNUZpMC43pEHpaocV',
+              'XRP': 'r3kmLJN5D28dHuH8vZNUZpMC43pEHpaocV',
+              'ZIL': '0x177FFbD0366097C8A0DB7De1E81217dE3883a4B3',
             }
         meta:
           description: Meta information regarding the domain.
           type: object
           properties:
             owner:
-              $ref: "#/components/schemas/Address"
+              $ref: '#/components/schemas/Address'
             type:
               type: string
               enum: [ens, zns]
             ttl:
-              $ref: "#/components/schemas/Timestamp"
+              $ref: '#/components/schemas/Timestamp'
     coinbase:
       type: object
       description: Generating a coinbase token via this call
@@ -758,7 +781,7 @@ components:
           type: string
           description: coinbase
       example:
-        type: coinbase  
+        type: coinbase
     stripePayment:
       type: object
       description: for stripe payment method
@@ -766,7 +789,7 @@ components:
         type:
           type: string
           description: stripe
-        tokenID: 
+        tokenID:
           type: string
           description: stripe token ID
       example:
@@ -778,7 +801,7 @@ components:
           type: object
           description: Domain name is invalid
           properties:
-            errors: 
+            errors:
               type: array
               items:
                 type: object
@@ -792,7 +815,8 @@ components:
                     description: User friendly description of the problem
                     example: Domain name is invalid
       resellingResponse:
-        description: Object contains all information regarding reselling proccess
+        description:
+          Object contains all information regarding reselling proccess
         type: object
         properties:
           price:
@@ -814,12 +838,12 @@ components:
             type: object
             properties:
               name:
-                $ref: "#/components/schemas/Domain"
+                $ref: '#/components/schemas/Domain'
               owner:
-                $ref: "#/components/schemas/Address"
+                $ref: '#/components/schemas/Address'
               reselling:
                 type: object
-                $ref: "#/components/schemas/DomainAvailability/resellingResponse"
+                $ref: '#/components/schemas/DomainAvailability/resellingResponse'
               auction:
                 description: Information regarding the auction if applicable
     Resolution:
@@ -827,11 +851,11 @@ components:
         crypto:
           description: Object contains Crypto addresses assigned to this domain
           type: object
-          example: 
-              ZIL: 
-                address: "0xe568f2BB42A77F6508911290d581B3Af107b1e4B"
-              ETH:
-                address: "0x20B4564DEB7AF89ece828d843D0Ac2c16934a23e"
+          example:
+            ZIL:
+              address: '0xe568f2BB42A77F6508911290d581B3Af107b1e4B'
+            ETH:
+              address: '0x20B4564DEB7AF89ece828d843D0Ac2c16934a23e'
     Reseller:
       OrderNotFound:
         type: object
@@ -839,10 +863,10 @@ components:
           errors:
             type: array
             items:
-              $ref: "#/components/schemas/errors/OrderNotFound"  
+              $ref: '#/components/schemas/errors/OrderNotFound'
       BuyResponce:
-        $ref: "#/components/schemas/Order"
-           
+        $ref: '#/components/schemas/Order'
+
   requestBodies:
     reseller:
       buy:
@@ -855,15 +879,15 @@ components:
                 items:
                   type: object
                   properties:
-                    name: 
-                     $ref: "#/components/schemas/Domain"
+                    name:
+                      $ref: '#/components/schemas/Domain'
                     owner:
-                     $ref: "#/components/schemas/Owner"
+                      $ref: '#/components/schemas/Owner'
                     resolution:
-                     $ref: "#/components/schemas/Resolution"
+                      $ref: '#/components/schemas/Resolution'
               payment:
                 type: object
                 anyOf:
-                  - $ref: "#/components/schemas/coinbase"
-                  - $ref: "#/components/schemas/stripePayment"
+                  - $ref: '#/components/schemas/coinbase'
+                  - $ref: '#/components/schemas/stripePayment'
   examples:
