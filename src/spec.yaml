@@ -149,7 +149,7 @@ tags:
       Reseller API requires you to be an authorized reseller. You can
       apply to be a reseller [here](https://unstoppabledomains.com/resellers). 
 
-      Visit the [reseller dashboard](https://unstoppabledomains.com/resellers) to view your API key, resellerID, and Stripe.
+      Visit the [reseller dashboard](https://unstoppabledomains.com/resellers) to view your resellerID and Stripe.
 
       Below endpoints are used with our [Authentication](#tag/authentication)
 
@@ -212,15 +212,6 @@ tags:
       - Domain Resolution is realized via [Namicorn](#tag/namicorn) library with direct blockchain calls
       - Reseller API requires you to be an authorized reseller. You can apply to be a reseller [here](https://unstoppabledomains.com/resellers)
 
-      In order to make a successful Reseller API call you must include header named  **Authentication** and it's value has to be an API access token with a **Bearer** word in front
-      ```javascript
-        const token = 'Bearer 1txobsttv63p5wrfvnpjp0wfuava5cov';
-        const headers = {
-          'Authentication': token,
-        };
-        const result = fetch(url, {headers}).then(res => res.json);
-        console.log(result);
-      ```
   - name: testing
     x-displayName: Testing
     description: |-
@@ -236,13 +227,12 @@ tags:
         curl --version > /dev/null
 
         set -e
-        if [ -z "$RESELLER" ] || [ -z "$TOKEN" ] || [ -z $BUYER ]; then
-          echo "Usage: TOKEN=<token> RESELLER=<key> BUYER=<email> $0"
+        if [ -z "$RESELLER" ] || [ -z $BUYER ]; then
+          echo "Usage: RESELLER=<key> BUYER=<email> $0"
           exit 1
         fi
 
         reseller="$RESELLER"
-        token="$TOKEN"
 
         # Buy Domain params
         buyer="$BUYER"
@@ -258,12 +248,6 @@ tags:
         host="https://unstoppabledomains.com"
 
         base="$host/api/v1/resellers/$reseller"
-
-        if [[ $token ]]; then
-          header="Authentication: Bearer $token" 
-        else
-          header=""
-        fi
 
         get() {
           url="$base$1"
