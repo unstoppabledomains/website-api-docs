@@ -773,12 +773,12 @@ components:
         type:
           type: string
           description: stripe
-        tokenID:
+        tokenId:
           type: string
-          description: stripe token ID
+          description: stripe token Id
       example:
         type: stripe
-        tokenID: tok_1FAeVFG8PQyZCUJhJp7emswP
+        tokenId: tok_1FAeVFG8PQyZCUJhJp7emswP
     DomainAvailability:
       errors:
         invalidDomain:
