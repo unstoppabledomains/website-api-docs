@@ -8,7 +8,7 @@ info:
 
     # Fast navigation
     Over here you can take a closer look in the main points of integration:
-      - [Blockchain library](#tag/namicorn)
+      - [Blockchain library](#tag/resolution)
       - [Domain name resolution API](#tag/domain_name_resolution)
       - [Reseller API](#tag/reseller)
       - [Payment options](#tag/paymentDescription)
@@ -22,10 +22,10 @@ info:
     altText: Unstoppable domain logo
 
 tags:
-  - name: namicorn
-    x-displayName: Namicorn
+  - name: resolution
+    x-displayName: Resolution
     description: |
-      Unstoppable Domain provides an npm package called Namicorn.
+      Unstoppable Domain provides an npm package called Resolution.
       This npm package is able to make a live blockchain call to either zns or ens to resolve a domain name.
       It is fully customizable for various blockchain networks. When creating an instance developer can specify
         - blockchain url such as https://mainnet.infura.io or https://api.zilliqa.com
@@ -33,42 +33,42 @@ tags:
           - blockchain network can be specified as a string as well ('mainnet', 'testnet', 'ropsten' and etc...)
         
       ## Installation
-        Namicorn is hosted on the [NPM Registry](https://www.npmjs.com/package/namicorn) as package
-        `namicorn`. Namicorn also owns the npm org `@namicorn`.
+        Resolution is hosted on the [NPM Registry](https://www.npmjs.com/package/resolution) as package
+        `resolution`. Resolution also owns the npm org `@resolution`.
 
         Most of the time installation looks like:
 
         ```bash
-        npm install namicorn
+        npm install resolution
         ```
 
         ```bash
         # It's also available via yarn
-        yarn add namicorn
+        yarn add resolution
         ```
       ## Getting Started
         Create a new project.
 
         ```shell
-        mkdir test-out-namicorn && cd $_
+        mkdir test-out-resolution && cd $_
         npm init -y
         ```
 
-        Install Namicorn.
+        Install Resolution.
 
         ```shell
-        npm install namicorn
+        npm install resolution
         ```
 
         Make a file, `script.js`.
 
         ```javascript
-        const {default: Namicorn} = require('namicorn')
+        const {default: Resolution} = require('resolution')
 
-        const namicorn = new Namicorn()
+        const resolution = new Resolution()
 
         function resolve(domain, currency) {
-          namicorn.address(domain, currency)
+          resolution.address(domain, currency)
             .then(address => console.log(domain, ' resolves to', address))
             .catch(console.error)
         }
@@ -85,8 +85,8 @@ tags:
         ```
         
       ## How to resolve 
-        Namicorn library provides a way to resolve a domain name using a direct blockchain call.
-        For this purpose there are two main methods to look for: ** Namicorn.resolve ** and ** Namicorn.address **
+        Resolution library provides a way to resolve a domain name using a direct blockchain call.
+        For this purpose there are two main methods to look for: ** Resolution.resolve ** and ** Resolution.address **
       - ### Resolve
         This method accept the domain name and returns following object or null in case of error
         ```javascript
@@ -108,10 +108,10 @@ tags:
       - ### isSupportedDomain
         Accepts domain name and returns boolean if such domain is supported by ens or zns
       - ### isSupportedDomainInNetwork
-        Accepts the domain name and test it agains the current blockchain network specified in constructor of Namicorn.
+        Accepts the domain name and test it agains the current blockchain network specified in constructor of Resolution.
         It will also check if the domain is in valid format
 
-        [Formal Namicorn documentation](https://unstoppabledomains.github.io/namicorn/)
+        [Formal Resolution documentation](https://unstoppabledomains.github.io/-unstoppabledomains-resolution//v1.0.1/)
 
   - name: domain_name_resolution
     x-displayName: Domain name resolution
@@ -138,7 +138,7 @@ tags:
       # Clone, install and run the project locally.
 
       ```shell
-      mkdir test-out-namicorn && cd $_ &&
+      mkdir test-out-resolution && cd $_ &&
       git clone https://github.com/unstoppabledomains/reseller-demo ./ && 
       yarn install && yarn start
       ```
@@ -209,7 +209,7 @@ tags:
     x-displayName: Authentication
     description: |-
       Unstoppable Domains provides following tools and API endpoints:
-      - Domain Resolution is realized via [Namicorn](#tag/namicorn) library with direct blockchain calls
+      - Domain Resolution is realized via [Resolution](#tag/resolution) library with direct blockchain calls
       - Reseller API requires you to be an authorized reseller. You can apply to be a reseller [here](https://unstoppabledomains.com/resellers)
 
   - name: testing
@@ -319,7 +319,7 @@ tags:
 x-tagGroups:
   - name: Blockchain library
     tags:
-      - namicorn
+      - resolution
 
   - name: API
     description: |-
