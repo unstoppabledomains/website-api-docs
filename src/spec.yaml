@@ -39,12 +39,12 @@ tags:
         Most of the time installation looks like:
 
         ```bash
-        npm install resolution
+        npm install @unstoppabledomains/resolution
         ```
 
         ```bash
         # It's also available via yarn
-        yarn add resolution
+        yarn add @unstoppabledomains/resolution
         ```
       ## Getting Started
         Create a new project.
@@ -54,16 +54,10 @@ tags:
         npm init -y
         ```
 
-        Install Resolution.
-
-        ```shell
-        npm install resolution
-        ```
-
         Make a file, `script.js`.
 
         ```javascript
-        const {default: Resolution} = require('resolution')
+        const {default: Resolution} = require('@unstoppabledomains/resolution')
 
         const resolution = new Resolution()
 
