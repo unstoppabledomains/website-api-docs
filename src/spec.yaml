@@ -33,7 +33,7 @@ tags:
           - blockchain network can be specified as a string as well ('mainnet', 'testnet', 'ropsten' and etc...)
         
       ## Installation
-        Resolution is hosted on the [NPM Registry](https://www.npmjs.com/package/resolution) as package
+        Resolution is hosted on the [NPM Registry](https://www.npmjs.com/package/@unstoppabledomains/resolution) as package
         `resolution`. Resolution also owns the npm org `@resolution`.
 
         Most of the time installation looks like:
