@@ -26,7 +26,7 @@ tags:
     x-displayName: Resolution
     description: |
       Unstoppable Domain provides an npm package called Resolution.
-      This npm package is able to make a live blockchain call to either zns or ens to resolve a domain name.
+      This npm package is able to make a live blockchain call to either zns, cns, or ens to resolve a domain name.
       It is fully customizable for various blockchain networks. When creating an instance developer can specify
         - blockchain url such as https://mainnet.infura.io or https://api.zilliqa.com
         - blockchain network as either a standart number like 1 for ens for mainnet or 333 for zns for testnet
@@ -100,7 +100,7 @@ tags:
         It returns you the address if such exists or simply null if such address wasn't found.
         Beside the resolution there are also methods to test whether the domain is in valid format or supported by the network
       - ### isSupportedDomain
-        Accepts domain name and returns boolean if such domain is supported by ens or zns
+        Accepts domain name and returns boolean if such domain is supported by ens, cns, or zns
       - ### isSupportedDomainInNetwork
         Accepts the domain name and test it agains the current blockchain network specified in constructor of Resolution.
         It will also check if the domain is in valid format
@@ -213,7 +213,7 @@ tags:
       ### IMPORTANT:
       That is why **ANY** successful purchase of the domain is not easily reversible. UD charges resellers for any domain sold via the “Buy Domain” endpoint that is not in the test name space.
       ## Test name space
-      UD is introducing the testing domain name space for resellers. If your domain has the following format: “reseller-test-\<reseller-id\>-\<random-number\>.zil”, UD will not charge you for selling any of these. However, these domains are fully functional and live in the same production environment on the blockchain as any other UD domain. “Domain Availability” endpoint has an information whether the domain is in the testing space with `reseller.test` key.
+      UD is introducing the testing domain name space for resellers. If your domain has the following format: “reseller-test-\<reseller-id\>-\<random-number\>.crypto”, UD will not charge you for selling any of these. However, these domains are fully functional and live in the same production environment on the blockchain as any other UD domain. “Domain Availability” endpoint has an information whether the domain is in the testing space with `reseller.test` key.
       ## Try It For Yourself
       Shell script to run all example request to API:
       ```shell
@@ -231,7 +231,7 @@ tags:
         # Buy Domain params
         buyer="$BUYER"
         buydomain() {
-          echo "reseller-test-$reseller-$RANDOM.zil"
+          echo "reseller-test-$reseller-$RANDOM.crypto"
         }
         owner="0xa823a39d2d5d2b981a10ca8f0516e6eaff78bdcf"
         zil='0xe568f2BB42A77F6508911290d581B3Af107b1e4B'
@@ -249,11 +249,11 @@ tags:
           curl -sS -H "$header" $url | jq
         }
 
-        get "/domains/bogdantest.zil"
+        get "/domains/bogdantest.crypto"
         get "/domains/invalid"
-        get "/domains/available-domain.zil"
-        get "/domains/reseller-test-$reseller-3828832.zil"
-        get "/domains/reseller-test-unavailable-3828832.zil"
+        get "/domains/available-domain.crypto"
+        get "/domains/reseller-test-$reseller-3828832.crypto"
+        get "/domains/reseller-test-unavailable-3828832.crypto"
         get "/users/bogdan@unstoppabledomains.com"
         get "/users/braden@unstoppabledomains.com"
         get "/users/unknown-user@gmail.com"
@@ -443,11 +443,11 @@ paths:
           example: udtesting
       - name: owner
         in: query
-        description: owner address in zil format
+        description: owner ethereum address
         required: true
         schema:
           type: string
-          example: zil1tqcrcg50emead2pp6p37p0hnupkswpnlwpnm3r
+          example: '0x033dc48B5dB4CA62861643e9D2C411D9eb6D1975'
       - name: extension
         in: query
         description: extension to look for
@@ -538,7 +538,7 @@ paths:
               $ref: '#/components/requestBodies/reseller/buy'
       responses:
         '200':
-          description: Successfull
+          description: Successful
           content:
             application/json:
               schema:
@@ -579,7 +579,7 @@ paths:
         Once the status is mined you can be sure that the domain is live and written on a blockchain
       responses:
         '200':
-          description: Successfull
+          description: Successful
           content:
             application/json:
               schema:
@@ -617,7 +617,7 @@ components:
       properties:
         type:
           type: string
-          enum: ['ZNS_DOMAIN']
+          enum: ['CNS_DOMAIN']
         name:
           $ref: '#/components/schemas/Domain'
         test:
@@ -631,8 +631,8 @@ components:
               type: string
               enum: ['PENDING', 'MINED', 'CANCELED']
       example:
-        type: 'ZNS_DOMAIN'
-        name: 'reseller-test-udtesting-24287.zil'
+        type: 'CNS_DOMAIN'
+        name: 'reseller-test-udtesting-24287.crypto'
         test: true
         blockchain:
           status: 'MINED'
@@ -656,23 +656,18 @@ components:
           items:
             $ref: '#/components/schemas/orderItem'
     Owner:
-      description: 'Object contains user public key'
+      description: 'Object contains user Ethereum address'
       type: object
       properties:
-        type:
+        address:
           type: string
-          enum: [ETH, ZIL]
-        publicKey:
-          type: string
-          description:
-            ETH or ZIL public key. UD accepts both compressed and uncompressed
-            keys
-          example: '0xe5f8500db8c739f8bf518640760d5b4105716a73bec59a693f0941c879a1bc527969a2418d1c8e6e64476246aa9b74773503789d801b2279910a01119410da15'
+          description: Ethereum address
+          example: '0x033dc48B5dB4CA62861643e9D2C411D9eb6D1975'
     Domain:
       description: 'A Plaintext LDH domain'
       type: 'string'
       pattern: "^((?![0-9]+$)(?!.*-$)(?!-)[a-zA-Z0-9-]{1,63}\\.)*(?![0-9]+$)(?!.*-$)(?!-)[a-zA-Z0-9-]{1,63}$"
-      example: 'domain.zil'
+      example: 'domain.crypto'
     Timestamp:
       description: An epoch timestamp in milliseconds
       type: integer
@@ -684,10 +679,10 @@ components:
       description: 'An address'
       type: 'string'
       pattern: '^0x[a-fA-F0-9]{40}$'
-      example: 'zil1tqcrcg50emead2pp6p37p0hnupkswpnlwpnm3r'
+      example: '0x033dc48B5dB4CA62861643e9D2C411D9eb6D1975'
     reverselookUp:
       Valid:
-        description: Successfull response for a reverse loook up
+        description: Successful response for a reverse look up
         type: object
         properties:
           domains:
@@ -707,7 +702,7 @@ components:
 
     userStatus:
       Valid:
-        description: Successfull response for a user status
+        description: Successful response for a user status
         type: object
         properties:
           user:
@@ -748,7 +743,7 @@ components:
               $ref: '#/components/schemas/Address'
             type:
               type: string
-              enum: [ens, zns]
+              enum: [ens, 'cns', zns]
             ttl:
               $ref: '#/components/schemas/Timestamp'
     coinbase:
