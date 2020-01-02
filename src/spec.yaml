@@ -382,7 +382,7 @@ paths:
       summary: User status
       description:
         API endpoint can be used to check whether the user has a domain and
-        whether he is eligible for a free domain.
+        whether they are eligible for a free domain.
       responses:
         '200':
           description: Valid
