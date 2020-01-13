@@ -519,12 +519,7 @@ paths:
         until the transaction is mined. The API currently supports a single
         domain purchase at a time. UD will extend support to multiple domains in
         the future.
-
-
-        One of the most **important** aspects is that UD ask for a ETH or ZIL
-        public key in owner field  to be specified. UD accepts both compressed
-        and uncompressed keys
-
+        
 
         Buy Domain has a little bit different flows depends on which Payment
         system is used. Please read more about it
