@@ -14,6 +14,8 @@ info:
       - [Payment options](#tag/paymentDescription)
       - [Demos](#tag/demos)
 
+    Apply to get a reseller API token [here](https://unstoppabledomains.com/resellers)
+
   version: 1.0.0
   title: Unstoppable Domain
 
@@ -104,8 +106,6 @@ tags:
       - ### isSupportedDomainInNetwork
         Accepts the domain name and test it agains the current blockchain network specified in constructor of Resolution.
         It will also check if the domain is in valid format
-
-        [Formal Resolution documentation](https://unstoppabledomains.github.io/-unstoppabledomains-resolution//v1.0.1/)
 
   - name: domain_name_resolution
     x-displayName: Domain name resolution
