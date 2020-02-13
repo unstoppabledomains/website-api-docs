@@ -34,6 +34,18 @@ tags:
         - blockchain network as either a standart number like 1 for ens for mainnet or 333 for zns for testnet
           - blockchain network can be specified as a string as well ('mainnet', 'testnet', 'ropsten' and etc...)
         
+      ## Notice: <Infura project-ID enforcement>
+        If you are planning to use resolution library to resolve ens or cns (.crypto) domain levels consider
+        using custom url for both naming spaces.
+       ```javascript
+          const customUrl = "https://mainnet.infura.io/v3/YOUR-PROJECT-ID";
+        
+            const resolution = new Resolution({blockchain: {
+           ens: {url: customUrl},
+           cns: {url: customUrl}
+         }})
+       ```
+
       ## Installation
         Resolution is hosted on the [NPM Registry](https://www.npmjs.com/package/@unstoppabledomains/resolution) as package
         `resolution`. Resolution also owns the npm org `@resolution`.
@@ -61,7 +73,10 @@ tags:
         ```javascript
         const {default: Resolution} = require('@unstoppabledomains/resolution')
 
-        const resolution = new Resolution()
+        const resolution = new Resolution({blockchain: {
+          ens: {url: 'https://mainnet.infura.io/v3/YOUR-PROJECT-ID'},
+          cns: {url: 'https://mainnet.infura.io/v3/YOUR-PROJECT-ID'}
+        }})
 
         function resolve(domain, currency) {
           resolution.address(domain, currency)
