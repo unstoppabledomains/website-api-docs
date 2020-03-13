@@ -52,11 +52,11 @@ tags:
       ```
 
       ## Resolution
-        Records are stored in the resolver contract so we need to find out which resolver contract to read format
+        Records are stored in the resolver contract. The resolver contract address of a domain is stored in the CNS Registry
         ```
       resolverAddress = RegistryContract.resolverOf(tokenId).call();
         ```
-        We then read the resolver contract to obtain the domain records. Assume that the resolver contract 
+        Then read the resolver contract to obtain the domain records. Assume that the resolver contract 
         follows the same interface as the [default resolver contract](https://etherscan.io/address/0x878bC2f3f717766ab69C0A5f9A6144931E61AEd3)
 
         The key for crypto address records follows the format:
@@ -89,8 +89,8 @@ tags:
       }
       ```
 
-      ### Update record
-      Once you've confirmed the resolver contract is set in the CNS Registry, you can update or set records for the domain in the resolver
+      ### Update records
+      Once you've set or found the resolver contract in the CNS Registry, you can update records for the domain
       ```
       resolverAddress = RegistryContract.resolverOf(tokenId).call();
       ResolverContract.at(resolverAddress).set('crypto.ETH.address', ethAddress, tokenId).send()
