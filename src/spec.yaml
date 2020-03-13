@@ -28,7 +28,7 @@ tags:
       The Crypto Naming Service (CNS) is a series of smart contracts on the Ethereum blockchain.
       An intermediate understanding of Ethereum Smart Contracts is recommended for this section.
       We also recommend using an Ethereum package like [ethers.js](https://docs.ethers.io/ethers.js/html/) or [web3.js](https://web3js.readthedocs.io/en/v1.2.2/index.html). 
-      The psuedocode in this section should be universal across languages
+      The following psuedocode logic is the same across languages
 
       There are two contracts relevant to resolution and management:
         1. CNS Registry Contract
@@ -48,13 +48,13 @@ tags:
       CNS follows the EIP-137 namehash spec defined [here](https://github.com/ethereum/EIPs/blob/master/EIPS/eip-137.md#namehash-algorithm)
 
       ```
-      const tokenId = namehash('brad.crypto');
+      tokenId = namehash('brad.crypto');
       ```
 
       ## Resolution
         Records are stored in the resolver contract so we need to find out which resolver contract to read format
         ```
-      const resolverAddress = RegistryContract.resolverOf(tokenId).call();
+      resolverAddress = RegistryContract.resolverOf(tokenId).call();
         ```
         We then read the resolver contract to obtain the domain records. Assume that the resolver contract 
         follows the same interface as the [default resolver contract](https://etherscan.io/address/0x878bC2f3f717766ab69C0A5f9A6144931E61AEd3)
@@ -62,9 +62,9 @@ tags:
         The key for crypto address records follows the format:
         `crypto.uppercaseTicker.address`
         ```
-      const record = ResolverContract.at(resolverAddress).get('crypto.ETH.address', tokenId).call();
+      record = ResolverContract.at(resolverAddress).get('crypto.ETH.address', tokenId).call();
       // Or read a list of records
-      const records = ResolverContract.at(resolverAddress).getMany(['crypto.ETH.address', 'crypto.BTC.address'], tokenId).call();
+      records = ResolverContract.at(resolverAddress).getMany(['crypto.ETH.address', 'crypto.BTC.address'], tokenId).call();
         ```
         That's all for direct blockchain domain resolution! The next section covers domain management
 
@@ -82,8 +82,8 @@ tags:
       a resolver contract with customized methods or just use the existing [default resolver contract](https://etherscan.io/address/0x878bC2f3f717766ab69C0A5f9A6144931E61AEd3)
 
       ```
-      const defaultResolverAddress = '0x878bC2f3f717766ab69C0A5f9A6144931E61AEd3'
-      const resolverAddress = RegistryContract.resolverOf(tokenId).call();
+      defaultResolverAddress = '0x878bC2f3f717766ab69C0A5f9A6144931E61AEd3'
+      resolverAddress = RegistryContract.resolverOf(tokenId).call();
       if (!resolverAddress || resolverAddress === '0x' || resolverAddress === '0x0000000000000000000000000000000000000000') {
         RegistryContract.resolveTo(defaultResolverAddress, tokenId).send();
       }
@@ -92,7 +92,7 @@ tags:
       ### Update record
       Once you've confirmed the resolver contract is set in the CNS Registry, you can update or set records for the domain in the resolver
       ```
-      const resolverAddress = RegistryContract.resolverOf(tokenId).call();
+      resolverAddress = RegistryContract.resolverOf(tokenId).call();
       ResolverContract.at(resolverAddress).set('crypto.ETH.address', ethAddress, tokenId).send()
       ```
 
