@@ -637,7 +637,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Reseller/BuyResponce"
+                $ref: "#/components/schemas/Reseller/BuyResponse"
   /resellers/{resellerID}/users/{email}/orders/{orderNumber}:
     parameters:
       - name: resellerID
@@ -678,7 +678,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Reseller/BuyResponce"
+                $ref: "#/components/schemas/Reseller/BuyResponse"
         "404":
           description: Order not found
           content:
@@ -720,17 +720,25 @@ components:
           description: "Whether domain in test namespace"
         blockchain:
           type: object
-          description: Contains information regarding blockchain minning status
+          description: Contains information regarding blockchain mining status
           properties:
+            owner:
+              type: string
+              description: Recipient address
+            txHash:
+              type: string
+              description: Hash of bestow transaction
             status:
               type: string
               enum: ["PENDING", "MINED", "CANCELED"]
       example:
         type: "CNS_DOMAIN"
-        name: "reseller-test-udtesting-24287.crypto"
+        name: "chainable.crypto"
         test: true
         blockchain:
+          owner: "0x59516f47a750e9a3205c66bb8b637f1ab1f7395b"
           status: "MINED"
+          txHash: "0x9ec3905651d56a5bd5cd057d9abd72403ee47b248da3adf210b55bb598309c78"
     Order:
       type: object
       properties:
@@ -931,7 +939,7 @@ components:
             type: array
             items:
               $ref: "#/components/schemas/errors/OrderNotFound"
-      BuyResponce:
+      BuyResponse:
         $ref: "#/components/schemas/Order"
 
   requestBodies:
