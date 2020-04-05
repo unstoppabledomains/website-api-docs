@@ -220,8 +220,7 @@ tags:
       Unstoppable Domains has built several demo applications to show some examples on how someone would use it services
 
       ### Demo List:
-        - [Domain name resolution](https://unstoppabledomains.github.io/reseller-demo/#/domain-name-reloution)
-        - [Domain name resolution v2](https://unstoppabledomains.github.io/reseller-demo/#/domain-name-reloution-v2)
+        - [Domain name resolution](https://unstoppabledomains.github.io/reseller-demo/#/domain-name-resolution)
         - [Reseller domain purchase](https://unstoppabledomains.github.io/reseller-demo/#/reseller-demo)
         
       Here are some simple steps to help you launch Unstoppable Demo app locally on your machine. More complete documentation is coming soon!
