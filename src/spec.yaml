@@ -105,6 +105,40 @@ tags:
       ```
 
       That's all there is for direct blockchain management of .crypto domains!
+  - name: ipfs_resolution
+    x-displayName: Decentralized websites
+    description: |
+      Decentralized websites works by connecting decentralized storage like IPFS (intraplannetary file system) with blockhain domain.
+      In order to resolve such website one should obtain the special ipfs hash from blockchain domain and use it with any ipfs gateway
+      public or private to get all the files to serve to the user. There are several ways on how to obtain the ipfs hash.
+     
+      ## Using our resolution library 
+        - You can find our resolution library over here [@unstoppabledomains/resolution](https://www.npmjs.com/package/@unstoppabledomains/resolution)
+
+        ```javascript
+          const resolution = new Resolution();
+          const domain = 'johnnyjumper.zil';
+          const publicIPFSgateway = 'https://cloudflare-ipfs.com/ipfs';
+          resolution.ipfsHash(domain).then( hash => redirect(`${publicIPFSgateway}/${hash}`));
+        ```
+
+      ## Talking with blockchain contracts manually
+        - First we need to contact the specific registry contract depending on which tld you are going after
+          
+          * for .zil domains registry can be found here: ```zil1jcgu2wlx6xejqk9jw3aaankw6lsjzeunx2j0jz```
+          * for .crypto domains registry contract found here: ```0xD1E5b0FF1287aA9f9A268759062E4Ab08b9Dacbe```
+          * for .eth domain registry located over here: ```0x00000000000C2E074eC69A0dFb2997BA6C7d2e1e```
+
+          From registry contract we are interested in the resolver contract address. This contract holds all the records that domain is storing.
+          It's wallet addresses, whois information as well as ipfs hash. 
+        
+        - Talk with resolver contract to get the ipfs hash
+          * For UnstoppableDomains tlds' (ending with .crypto and .zil) we should ask for 'ipfs.html.value' key and will get the hash right away
+          * For ENS tlds' (ending with .eth) we should ask for contentHash and decode it to get the ipfsHash. 
+        
+        - Once you have the hash you all set up. The easiest way to view the website straight away is to use the public ipfs gateway from this [list](https://ipfs.github.io/public-gateway-checker/)
+          Or you can spin your own ipfs node and use that to reach for all .html .js and .css files stored across the decentralized file storage system
+
 
   - name: npm_library
     x-displayName: NPM Resolution Library
@@ -414,6 +448,10 @@ x-tagGroups:
   - name: NPM Library
     tags:
       - npm_library
+
+  - name: IPFS resolution
+    tags:
+      - ipfs_resolution
 
   - name: API
     description: |-
