@@ -28,7 +28,7 @@ tags:
       .crypto is built through a series of smart contracts on the Ethereum blockchain.
       An intermediate understanding of Ethereum Smart Contracts is recommended for this section.
       We also recommend using an Ethereum package like [ethers.js](https://docs.ethers.io/ethers.js/html/) or [web3.js](https://web3js.readthedocs.io/en/v1.2.2/index.html). 
-      The following psuedocode logic is the same across languages
+      The following pseudocode logic is the same across languages
 
       There are two contracts relevant to resolution and management:
         1. .crypto registry
@@ -108,7 +108,7 @@ tags:
   - name: ipfs_resolution
     x-displayName: Decentralized websites
     description: |
-      Decentralized websites works by connecting decentralized storage like IPFS (intraplannetary file system) with blockhain domain.
+      Decentralized websites work by connecting decentralized storage like IPFS (InterPlanetary File System) with blockhain domain.
       In order to resolve such website one should obtain the special ipfs hash from blockchain domain and use it with any ipfs gateway
       public or private to get all the files to serve to the user. There are several ways on how to obtain the ipfs hash.
      
@@ -128,16 +128,17 @@ tags:
           * for .zil domains registry can be found here: ```zil1jcgu2wlx6xejqk9jw3aaankw6lsjzeunx2j0jz```
           * for .crypto domains registry contract found here: ```0xD1E5b0FF1287aA9f9A268759062E4Ab08b9Dacbe```
           * for .eth domain registry located over here: ```0x00000000000C2E074eC69A0dFb2997BA6C7d2e1e```
+          
+          use [this section](#section/Resolution) to get the resolver address from registry contract.
+          On ENS contracts you can get the resolver address by using resolver method on registry like so ```resolver(namehash(domain))```
 
-          From registry contract we are interested in the resolver contract address. This contract holds all the records that domain is storing.
-          It's wallet addresses, whois information as well as ipfs hash. 
         
-        - Talk with resolver contract to get the ipfs hash
-          * For UnstoppableDomains tlds' (ending with .crypto and .zil) we should ask for 'ipfs.html.value' key and will get the hash right away
-          * For ENS tlds' (ending with .eth) we should ask for contentHash and decode it to get the ipfsHash. 
+        - Obtain the ipfs hash from resolver contract
+          * for unstoppable domains you should use .get method of the resolver contract with the key 'ipfs.html.value' ```resolver.get('ipfs.html.value')```
+          * for ENS domains refer [here](https://eips.ethereum.org/EIPS/eip-1577) on how to resolve the contenthash and get ipfs-hash from it.
         
-        - Once you have the hash you all set up. The easiest way to view the website straight away is to use the public ipfs gateway from this [list](https://ipfs.github.io/public-gateway-checker/)
-          Or you can spin your own ipfs node and use that to reach for all .html .js and .css files stored across the decentralized file storage system
+        - Once you have the hash you are all set up. The easiest way to view the website straight away is to use the public ipfs gateway from this [list](https://ipfs.github.io/public-gateway-checker/),
+          or you can spin up your own ipfs node and use that to reach for all .html .js and .css files stored across the decentralized file storage system
 
 
   - name: npm_library
@@ -235,7 +236,7 @@ tags:
       - ### isSupportedDomain
         Accepts domain name and returns boolean if such domain is supported by ens, .crypto, or .zil
       - ### isSupportedDomainInNetwork
-        Accepts the domain name and test it agains the current blockchain network specified in constructor of Resolution.
+        Accepts the domain name and tests it against the current blockchain network specified in constructor of Resolution.
         It will also check if the domain is in valid format
 
   - name: domain_name_resolution
@@ -246,12 +247,12 @@ tags:
       Blockchain domain names can resolve to a wide variety of records. The most basic is a crypto currency address.
       The Zilliqa Name Service (ZNS) resolves names to Zilliqa Addresses.
 
-      One of the way how someone can resolve a Blockchain domain name is to use this endpoint below
+      One way how someone can resolve a Blockchain domain name is to use this endpoint below
 
   - name: demos
     x-displayName: Demos
     description: |
-      Unstoppable Domains has built several demo applications to show some examples on how someone would use it services
+      Unstoppable Domains has built several demo applications to show some examples on how one would use its services
 
       ### Demo List:
         - [Domain name resolution](https://unstoppabledomains.github.io/reseller-demo/#/domain-name-resolution)
@@ -303,7 +304,7 @@ tags:
       - Wallet sends “Buy Domain” request with order information and stripe token id
       - UD receives the call, charges the credit card via stripe token
       - UD responds to the wallet with success and pending status if payment was successful
-      - Wallet shows the contratuation page to the customer
+      - Wallet shows the congratulation page to the customer
       - Wallet queries “Order Status” endpoint to make sure the transaction is mined successfully
   - name: coinbasePayment
     x-displayName: Coinbase
@@ -320,7 +321,7 @@ tags:
       ## Coinbase Flow:
       - Customer fills all necessary fields for making an order
       - Wallet sends "Buy Domain" request with order information and payment type field as coinbase
-      - Wallet receives coinbase chargeID token, use it with https://api.commerce.coinbase.com/charges/:chargeID endpoint to show ui to the user
+      - Wallet receives coinbase chargeId token, uses it with https://api.commerce.coinbase.com/charges/:chargeID endpoint to show ui to the user
       - User pays specified amount to the specified address
       - Wallets makes a series of queries "Order Status" endpoint to make sure the transaction has been made and mined successfully
   - name: paymentDescription
@@ -658,7 +659,7 @@ paths:
         the future.
 
 
-        Buy Domain has a little bit different flows depends on which Payment
+        Buy Domain has a little bit different flows depending on which Payment
         system is used. Please read more about it
         [here](#tag/paymentDescription) before using this endpoint
       requestBody:
@@ -707,7 +708,7 @@ paths:
           - Order Number
           
         This endpoint is used to check against blockchain transaction status.
-        Due to technical limitiation of blockchains transactions are not instant and require some time.
+        Due to technical limitation of blockchains transactions are not instant and require some time.
         Once the status is mined you can be sure that the domain is live and written on a blockchain
       responses:
         "200":
