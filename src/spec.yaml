@@ -104,7 +104,14 @@ tags:
       ResolverContract.at(resolverAddress).set('crypto.ETH.address', ethAddress, tokenId).send()
       ```
 
+      ## Errors
+        Take a look on the possible [errors](#tag/errors) for the best user experience.
+        In case if you are not using unstoppable resolution library you might want to implement them by yourself.
+
+
       That's all there is for direct blockchain management of .crypto domains!
+
+
   - name: ipfs_resolution
     x-displayName: Decentralized websites
     description: |
@@ -139,6 +146,10 @@ tags:
         
         - Once you have the hash you are all set up. The easiest way to view the website straight away is to use the public ipfs gateway from this [list](https://ipfs.github.io/public-gateway-checker/),
           or you can spin up your own ipfs node and use that to reach for all .html .js and .css files stored across the decentralized file storage system
+
+      ## Errors
+        Take a look on the possible [errors](#tag/errors) for the best user experience.
+        In case if you are not using unstoppable resolution library you might want to implement them by yourself.
 
 
   - name: npm_library
@@ -267,6 +278,27 @@ tags:
       git clone https://github.com/unstoppabledomains/reseller-demo ./ && 
       yarn install && yarn start
       ```
+
+  - name: errorref
+    x-displayName: Errors
+    description: |
+      Take a look on the possible [errors](#tag/errors) for the best user experience.
+      In case if you are not using unstoppable resolution library you might want to implement them by yourself.
+
+  - name: errors
+    x-displayName: Errors
+    description: |
+      If you are making an integration without the help of unstoppable resolution library
+      you might want to code for all the errors bellow to give your users best experience.
+      Users of unstoppable domains resolution library are going to get these exceptions with the codes listed bellow automatically
+
+      ### Error List
+        -  UnregisteredDomain -> This occurs when the domain has no owner address
+        -  UnsupportedDomain -> This occurs when the domain doesn't end with .crypto | .zil 
+        -  UnspecifiedCurrency -> This occurs when there is no requested currency attached to a domain (like no btc when asked for such)
+        -  NamingServiceDown -> Sometimes there might be some problem with the eth node or public blockchain providers. This should indicate when api is down
+        -  UnsupportedCurrency -> When currency is not on the [bip44-constants](https://www.npmjs.com/package/bip44-constants) list is being asked
+        -  RecordNotFound -> One of the most often occured exception from .ipfs methods. In case if some records like ipfs hash or gundb chat id are missing we throw this one.
 
   - name: reseller
     x-displayName: Reseller API
@@ -460,6 +492,7 @@ x-tagGroups:
       - authentication
       - domain_name_resolution
       - reseller
+      - errorref
 
   - name: Payment
     tags:
@@ -473,6 +506,7 @@ x-tagGroups:
   - name: For developers
     tags:
       - demos
+      - errors
   - name: Support Contacts
     tags:
       - reachout
