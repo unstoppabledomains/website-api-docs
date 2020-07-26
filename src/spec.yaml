@@ -28,7 +28,6 @@ tags:
       .crypto is built through a series of smart contracts on the Ethereum blockchain.
       An intermediate understanding of Ethereum Smart Contracts is recommended for this section.
       We also recommend using an Ethereum package like [ethers.js](https://docs.ethers.io/ethers.js/html/) or [web3.js](https://web3js.readthedocs.io/en/v1.2.2/index.html). 
-      The following pseudocode logic is the same across languages
 
       There are two contracts relevant to resolution and management:
         1. .crypto registry
@@ -36,23 +35,23 @@ tags:
 
       ### .crypto registry
       The .crypto registry is deployed at [0xd1e5b0ff1287aa9f9a268759062e4ab08b9dacbe](https://etherscan.io/address/0xd1e5b0ff1287aa9f9a268759062e4ab08b9dacbe).
-      The domain owner and resolver contract address is stored in the .crypto registry
+      The domain owner and resolver contract address records are stored in the .crypto registry. They can be read by calling methods: .ownerOf(tokenId) and .resolverOf(tokenId)
 
       ### Resolver Contract
-      Resolver contracts contain the records of a domain.
+      Resolver contracts contain all the resolution records of a domain.
       Resolver contracts should follow the same interface as the [default resolver contract](https://etherscan.io/address/0x878bC2f3f717766ab69C0A5f9A6144931E61AEd3).
       The domain's resolver contract address is set in the .crypto registry
 
       ### Token ID
-      Before interacting with .crypto, domains need to be hashed to obtain the tokenId.
-      .crypto follows the EIP-137 namehash spec defined [here](https://github.com/ethereum/EIPs/blob/master/EIPS/eip-137.md#namehash-algorithm)
+      Before being used in the .crypto registry as tokenId, domains are hashed following the EIP-137 namehash spec defined [here](https://github.com/ethereum/EIPs/blob/master/EIPS/eip-137.md#namehash-algorithm). 
+      The ethers.js library has the namehash() method defined [here](https://docs.ethers.io/v5/api/utils/hashing/#utils-namehash).
 
       ```
       tokenId = namehash('brad.crypto');
       ```
 
       ## Resolution
-        Records are stored in the resolver contract. The resolver contract address of a domain is stored in the .crypto registry
+        Records are stored in the resolver contract. The resolver contract address for a domain is retrieved from the .crypto registry using the method:
         ```
       resolverAddress = RegistryContract.resolverOf(tokenId).call();
         ```
