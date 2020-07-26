@@ -43,7 +43,7 @@ tags:
       The domain's resolver contract address is set in the .crypto registry
 
       ### Token ID
-      Before being used in the .crypto registry as tokenId, domains are hashed following the EIP-137 namehash spec defined [here](https://github.com/ethereum/EIPs/blob/master/EIPS/eip-137.md#namehash-algorithm). 
+      Before being used in the .crypto registry as tokenId, domains are hashed following the [EIP-137](https://github.com/ethereum/EIPs/blob/master/EIPS/eip-137.md#namehash-algorithm) namehash spec. 
       The ethers.js library has the namehash() method defined [here](https://docs.ethers.io/v5/api/utils/hashing/#utils-namehash).
 
       ```
