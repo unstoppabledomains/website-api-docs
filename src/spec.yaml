@@ -9,7 +9,7 @@ info:
 
     To get started with resolving .crypto domains, please choose one of these methods:
     - [Direct blockchain lookup](#tag/direct_blockchain)
-    - [NPM library](#tag/npm_library)
+    - [NPM library](#tag/resolution_library)
     - [Unstoppable API](#tag/domain_name_resolution)
 
     Apply to be a reseller [here](https://unstoppabledomains.com/resellers)
@@ -26,8 +26,8 @@ tags:
     x-displayName: Direct blockchain
     description: |
       .crypto is built through a series of smart contracts on the Ethereum blockchain.
-      An intermediate understanding of Ethereum Smart Contracts is recommended for this section.
-      We also recommend using an Ethereum package like [ethers.js](https://docs.ethers.io/ethers.js/html/) or [web3.js](https://web3js.readthedocs.io/en/v1.2.2/index.html). 
+      An intermediate understanding of Ethereum development is recommended for this section.
+      We also recommend using an Ethereum library like [ethers.js](https://docs.ethers.io/ethers.js/html/) or [web3.js](https://web3js.readthedocs.io/en/v1.2.2/index.html) to interract with the Ethereum blockchain. 
 
       There are two contracts relevant to resolution and management:
         1. .crypto registry
@@ -37,8 +37,8 @@ tags:
       The .crypto registry is deployed at [0xd1e5b0ff1287aa9f9a268759062e4ab08b9dacbe](https://etherscan.io/address/0xd1e5b0ff1287aa9f9a268759062e4ab08b9dacbe).
       The domain owner and resolver contract address records are stored in the .crypto registry. They can be read by calling methods: .ownerOf(tokenId) and .resolverOf(tokenId)
 
-      ### Resolver Contract
-      Resolver contracts contain all the resolution records of a domain.
+      ### Resolver contract
+      Resolver contracts contain the resolution records of a domain.
       Resolver contracts should follow the same interface as the [default resolver contract](https://etherscan.io/address/0x878bC2f3f717766ab69C0A5f9A6144931E61AEd3).
       The domain's resolver contract address is set in the .crypto registry
 
@@ -51,11 +51,11 @@ tags:
       ```
 
       ## Resolution
-        Records are stored in the resolver contract. The resolver contract address for a domain is retrieved from the .crypto registry using the method:
+      Retrieve the resolver contract address for a domain from the .crypto registry
         ```
       resolverAddress = RegistryContract.resolverOf(tokenId).call();
         ```
-        Then read the resolver contract to obtain the domain records. Assume that the resolver contract 
+        Read the resolver contract to obtain the domain records. Assume that the resolver contract 
         follows the same interface as the [default resolver contract](https://etherscan.io/address/0x878bC2f3f717766ab69C0A5f9A6144931E61AEd3)
 
         The key for crypto address records follows the format:
@@ -68,7 +68,7 @@ tags:
         That's all for direct blockchain domain resolution! The next section covers domain management
 
       ## Management
-      Management transactions are blockchain writes so they require gas and must be made by the domain owner
+      Management transactions are blockchain writes so they require gas and must be made by the domain owner or approved addresses
 
       ### Transfer domain
       To transfer a domain, use the transferFrom method in the registry
@@ -89,7 +89,7 @@ tags:
       resolverAddress = RegistryContract.resolverOf(tokenId).call();
 
       if (!resolverAddress || resolverAddress === '0x' || resolverAddress === '0x0000000000000000000000000000000000000000') {
-        // Clear all records for domain in resolver
+        // Clear all records for the domain
         ResolverContract.at(defaultResolverAddress).reset(tokenId).send()
         // Set the domain's resolver
         RegistryContract.resolveTo(defaultResolverAddress, tokenId).send();
@@ -253,14 +253,13 @@ tags:
       Unstoppable Domains also provides an npm package for decentralized chat [@unstoppabledomains/chat](https://www.npmjs.com/package/@unstoppabledomains/chat).
 
   - name: domain_name_resolution
-    x-displayName: Domain name resolution
+    x-displayName: Resolution
     description: |-
-      Resolution is the process of taking a name and finding a corresponding a record. We say a name 'resolves' to a record.
-      For example, www.google.com resolves to an IP Address on DNS.
-      Blockchain domain names can resolve to a wide variety of records. The most basic is a crypto currency address.
-      The Zilliqa Name Service (ZNS) resolves names to Zilliqa Addresses.
+      We provide an API for domain resolution, but this is a centralized and insecure method of resolution. 
 
-      One way how someone can resolve a Blockchain domain name is to use this endpoint below
+      **NOTE: This route should only be used for demo or testing purposes.**
+
+      Please refer to the [direct blockchain](#tag/direct_blockchain) or [resolution library](#tag/resolution_library) sections for secure resolution.
 
   - name: demos
     x-displayName: Demos
@@ -535,7 +534,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/DnsRecord'
+                $ref: '#/components/schemas/CnsRecord'
 
   /resellers/{resellerID}/users/{email}:
     parameters:
@@ -899,7 +898,7 @@ components:
               eligibleForFreeDomain:
                 description: Whether such user is eligible for a free domain
                 type: bool
-    DnsRecord:
+    CnsRecord:
       properties:
         addresses:
           description: A relation of currency tickers to the associated address
@@ -913,6 +912,14 @@ components:
               'XLM': 'r3kmLJN5D28dHuH8vZNUZpMC43pEHpaocV',
               'XRP': 'r3kmLJN5D28dHuH8vZNUZpMC43pEHpaocV',
               'ZIL': '0x177FFbD0366097C8A0DB7De1E81217dE3883a4B3',
+            }
+        ipfs:
+          description: IPFS html content hash and dweb redirect domain
+          type: object
+          example:
+            {
+              'html': 'Qme54oEzRkgooJbCDr78vzKAWcv6DDEZqRhhDyDtzgrZP6',
+              'redirect_domain': 'https://abbfe6z95qov3d40hf6j30g7auo7afhp.mypinata.cloud/ipfs/Qme54oEzRkgooJbCDr78vzKAWcv6DDEZqRhhDyDtzgrZP6',
             }
         meta:
           description: Meta information regarding the domain.
