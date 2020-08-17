@@ -591,6 +591,7 @@ paths:
          - `reselling` information on domain `price`, whether it’s
         `availableForFree`, and whether it is a `test` domain. `reselling` is
         equal to `null` if the domain is not available to resell.
+         - `registered` boolean if the domain is registered
          - `auction` information if the domain is available for the auction.
         Currently not implemented.
       responses:
@@ -1000,6 +1001,9 @@ components:
                 $ref: '#/components/schemas/Domain'
               owner:
                 $ref: '#/components/schemas/Address'
+              registered:
+                type: boolean
+                description: Information if a domain is registered or not
               reselling:
                 type: object
                 $ref: '#/components/schemas/DomainAvailability/resellingResponse'
