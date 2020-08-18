@@ -1004,6 +1004,7 @@ components:
               registered:
                 type: boolean
                 description: Information if a domain is registered or not
+                example: false
               reselling:
                 type: object
                 $ref: '#/components/schemas/DomainAvailability/resellingResponse'
