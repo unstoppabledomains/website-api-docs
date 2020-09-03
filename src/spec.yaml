@@ -276,7 +276,7 @@ tags:
 
       ```shell
       mkdir test-out-resolution && cd $_ &&
-      git clone https://github.com/unstoppabledomains/reseller-demo ./ && 
+      git clone https://github.com/unstoppabledomains/reseller-demo ./ &&
       yarn install && yarn start
       ```
 
@@ -305,7 +305,7 @@ tags:
     x-displayName: Reseller API
     description: |-
       Reseller API requires you to be an authorized reseller. You can
-      apply to be a reseller [here](https://unstoppabledomains.com/resellers). 
+      apply to be a reseller [here](https://unstoppabledomains.com/resellers).
 
       Visit the [reseller dashboard](https://unstoppabledomains.com/resellers) to view your resellerID and Stripe.
 
@@ -592,8 +592,8 @@ paths:
         `availableForFree`, and whether it is a `test` domain. `reselling` is
         equal to `null` if the domain is not available to resell.
          - `registered` boolean if the domain is registered
-         - `auction` information if the domain is available for the auction.
-        Currently not implemented.
+         - `protected` boolean if the domain is protected
+         - `premium` boolean if the domain is premium
       responses:
         '200':
           description:
@@ -1005,11 +1005,17 @@ components:
                 type: boolean
                 description: Information if a domain is registered or not
                 example: false
+              premium:
+                type: boolean
+                description: Information if a domain is premium or not
+                example: false
+              protected:
+                type: boolean
+                description: Information if a domain is protected or not
+                example: false
               reselling:
                 type: object
                 $ref: '#/components/schemas/DomainAvailability/resellingResponse'
-              auction:
-                description: Information regarding the auction if applicable
     Resolution:
       properties:
         crypto:
