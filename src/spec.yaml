@@ -5,261 +5,30 @@ servers:
     description: Main Server
 info:
   description: |
-    Welcome to the Unstoppable Domains documentation!
+    Welcome to the Unstoppable Domains Website API documentation!
 
-    To get started with resolving .crypto domains, please choose one of these methods:
-    - [Direct blockchain lookup](#tag/direct_blockchain)
-    - [NPM library](#tag/resolution_library)
-    - [Unstoppable API](#tag/domain_name_resolution)
+    ## Getting started
+    - If you're interested in resolving domains via our site API, see [Domain Name Resolution](#tag/domain_name_resolution).
+    - For resellers endpoints, see [Reseller API](#tag/reseller).
+    - For details on payments, check out [Payment Options](#tag/paymentDescription).
 
-    Apply to be a reseller [here](https://unstoppabledomains.com/resellers)
+    If you want to apply to become a reseller, see [Reseller Application](https://unstoppabledomains.com/resellers).
 
-  version: 1.0.0
-  title: Unstoppable Domain
+  title: Unstoppable Domains
 
   x-logo:
     url: 'data:image/svg+xml;base64,PHN2ZyBoZWlnaHQ9IjU4IiB3aWR0aD0iMjU2IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxnIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+PHBhdGggZD0iTTg4LjY0NiAyNS4zMDhjLTIuMjg4IDAtNC4wNjYtLjYyMy01LjMzNS0xLjg3cy0xLjkwMy0zLjAxNC0xLjkwMy01LjMwMlY5LjZoNC4zNTZ2OC40MDRjMCAyLjQ2NC45NzUgMy42OTYgMi45MjYgMy42OTYgMS45MzYgMCAyLjkwNC0xLjIzMiAyLjkwNC0zLjY5NlY5LjZoNC4yOXY4LjUzNmMwIDIuMjg4LS42MzQgNC4wNTUtMS45MDMgNS4zMDJzLTMuMDQ3IDEuODctNS4zMzUgMS44N3pNMTEzLjQ4NCA5LjZWMjVoLTMuNTg2bC02Ljc5OC04LjIwNlYyNWgtNC4yNjhWOS42aDMuNTg2bDYuNzk4IDguMjA2VjkuNnptOC40OTIgMTUuNzA4Yy0xLjI0NyAwLTIuNDU3LS4xNTQtMy42My0uNDYycy0yLjEyNy0uNzE5LTIuODYtMS4yMzJsMS40My0zLjIxMmMuNjkuNDU1IDEuNDg5LjgyMSAyLjM5OCAxLjFzMS44MDQuNDE4IDIuNjg0LjQxOGMxLjY3MiAwIDIuNTA4LS40MTggMi41MDgtMS4yNTQgMC0uNDQtLjIzOC0uNzY2LS43MTUtLjk3OXMtMS4yNDMtLjQzNi0yLjI5OS0uNjcxYy0xLjE1OS0uMjUtMi4xMjctLjUxNy0yLjkwNC0uODAzcy0xLjQ0NS0uNzQ0LTIuMDAyLTEuMzc1LS44MzYtMS40ODEtLjgzNi0yLjU1MmMwLS45MzkuMjU3LTEuNzg2Ljc3LTIuNTQxczEuMjgtMS4zNTMgMi4yOTktMS43OTMgMi4yNy0uNjYgMy43NTEtLjY2YzEuMDEyIDAgMi4wMS4xMTQgMi45OTIuMzQxczEuODQ4LjU2MSAyLjU5NiAxLjAwMWwtMS4zNDIgMy4yMzRjLTEuNDY3LS43OTItMi44OS0xLjE4OC00LjI2OC0xLjE4OC0uODY1IDAtMS40OTYuMTI4LTEuODkyLjM4NS0uMzk2LjI1Ny0uNTk0LjU5LS41OTQgMS4wMDFzLjIzNS43MTkuNzA0LjkyNCAxLjIyNS40MTggMi4yNjYuNjM4YzEuMTczLjI1IDIuMTQ1LjUxNyAyLjkxNS44MDNzMS40MzcuNzQgMi4wMDIgMS4zNjRjLjU2NS42MjMuODQ3IDEuNDcuODQ3IDIuNTQxIDAgLjkyNC0uMjU3IDEuNzYtLjc3IDIuNTA4cy0xLjI4MyAxLjM0Ni0yLjMxIDEuNzkzLTIuMjczLjY3MS0zLjc0LjY3MXptMTIuMS0xMi4yNTRoLTQuNzNWOS42aDEzLjc5NHYzLjQ1NGgtNC43MDhWMjVoLTQuMzU2em0xOC40NTggMTIuMjU0Yy0xLjYyOCAwLTMuMDkxLS4zNDUtNC4zODktMS4wMzRzLTIuMzE3LTEuNjQzLTMuMDU4LTIuODYtMS4xMTEtMi41ODktMS4xMTEtNC4xMTQuMzctMi44OTcgMS4xMTEtNC4xMTQgMS43Ni0yLjE3IDMuMDU4LTIuODZjMS4yOTgtLjY5IDIuNzYxLTEuMDM0IDQuMzg5LTEuMDM0czMuMDkxLjM0NSA0LjM4OSAxLjAzNGMxLjI5OC42OSAyLjMxNyAxLjY0MyAzLjA1OCAyLjg2czEuMTExIDIuNTg5IDEuMTExIDQuMTE0LS4zNyAyLjg5Ny0xLjExMSA0LjExNC0xLjc2IDIuMTctMy4wNTggMi44Ni0yLjc2MSAxLjAzNC00LjM4OSAxLjAzNHptMC0zLjYwOGMuNzc3IDAgMS40ODEtLjE4MyAyLjExMi0uNTVzMS4xMy0uODg0IDEuNDk2LTEuNTUxYy4zNjctLjY2Ny41NS0xLjQzNC41NS0yLjI5OXMtLjE4My0xLjYzMi0uNTUtMi4yOTljLS4zNjctLjY2Ny0uODY1LTEuMTg0LTEuNDk2LTEuNTUxcy0xLjMzNS0uNTUtMi4xMTItLjU1LTEuNDgxLjE4My0yLjExMi41NS0xLjEzLjg4NC0xLjQ5NiAxLjU1MS0uNTUgMS40MzQtLjU1IDIuMjk5LjE4MyAxLjYzMi41NSAyLjI5OS44NjUgMS4xODQgMS40OTYgMS41NTEgMS4zMzUuNTUgMi4xMTIuNTV6TTE3MC40MiA5LjZjMS4zOTMgMCAyLjYwMy4yMzEgMy42My42OTMgMS4wMjcuNDYyIDEuODE5IDEuMTIyIDIuMzc2IDEuOThzLjgzNiAxLjg2Ni44MzYgMy4wMjUtLjI3OSAyLjE2My0uODM2IDMuMDE0LTEuMzUgMS41MDctMi4zNzYgMS45NjktMi4yMzcuNjkzLTMuNjMuNjkzaC0yLjY4NFYyNWgtNC4zNTZWOS42em0tLjI2NCA3Ljk0MmMuODk1IDAgMS41Ny0uMTk0IDIuMDI0LS41ODNzLjY4Mi0uOTQyLjY4Mi0xLjY2MS0uMjI3LTEuMjc2LS42ODItMS42NzItMS4xMy0uNTk0LTIuMDI0LS41OTRoLTIuNDJ2NC41MXpNMTg2LjYzNCA5LjZjMS4zOTMgMCAyLjYwMy4yMzEgMy42My42OTMgMS4wMjcuNDYyIDEuODE5IDEuMTIyIDIuMzc2IDEuOThzLjgzNiAxLjg2Ni44MzYgMy4wMjUtLjI3OSAyLjE2My0uODM2IDMuMDE0LTEuMzUgMS41MDctMi4zNzYgMS45NjktMi4yMzcuNjkzLTMuNjMuNjkzaC0yLjY4NFYyNWgtNC4zNTZWOS42em0tLjI2NCA3Ljk0MmMuODk1IDAgMS41Ny0uMTk0IDIuMDI0LS41ODNzLjY4Mi0uOTQyLjY4Mi0xLjY2MS0uMjI3LTEuMjc2LS42ODItMS42NzItMS4xMy0uNTk0LTIuMDI0LS41OTRoLTIuNDJ2NC41MXptMTkuNzU2IDQuNDY2aC02LjUxMkwxOTguNDA0IDI1aC00LjQ0NGw2Ljc5OC0xNS40aDQuMjlsNi44MiAxNS40aC00LjUzMnptLTEuMjc2LTMuMjEybC0xLjk4LTQuOTI4LTEuOTggNC45Mjh6bTIwLjA4Ni0xLjgyNmMuODguMzA4IDEuNTcuNzg4IDIuMDY4IDEuNDQxcy43NDggMS40NDEuNzQ4IDIuMzY1YzAgMS4zNS0uNTQzIDIuMzktMS42MjggMy4xMjRzLTIuNjU1IDEuMS00LjcwOCAxLjFIMjEzLjFWOS42aDcuODc2YzEuOTY1IDAgMy40NjEuMzYzIDQuNDg4IDEuMDg5IDEuMDI3LjcyNiAxLjU0IDEuNzA1IDEuNTQgMi45MzcgMCAuNzMzLS4xOCAxLjM5LS41MzkgMS45NjlzLS44NjkgMS4wMzgtMS41MjkgMS4zNzV6bS03LjUyNC00LjIyNHYyLjk3aDIuOTkyYzEuNDY3IDAgMi4yLS40OTkgMi4yLTEuNDk2IDAtLjk4My0uNzMzLTEuNDc0LTIuMi0xLjQ3NHptMy42NTIgOS4xMDhjMS41MjUgMCAyLjI4OC0uNTIgMi4yODgtMS41NjJzLS43NjMtMS41NjItMi4yODgtMS41NjJoLTMuNjUydjMuMTI0ek0yMzAuMDE4IDkuNmg0LjM1NnYxMS45NDZoNy4zNDhWMjVoLTExLjcwNHptMjUuNzg0IDEyLjAzNFYyNWgtMTIuMzY0VjkuNmgxMi4wNzh2My4zNjZoLTcuNzY2djIuNTk2aDYuODQydjMuMjU2aC02Ljg0MnYyLjgxNnpNODEuNTQgMzMuNmg3LjI4MmMxLjY4NyAwIDMuMTgzLjMxNSA0LjQ4OC45NDZzMi4zMTcgMS41MjUgMy4wMzYgMi42ODQgMS4wNzggMi41MTUgMS4wNzggNC4wNy0uMzYgMi45MTEtMS4wNzggNC4wNy0xLjczIDIuMDUzLTMuMDM2IDIuNjg0LTIuODAxLjk0Ni00LjQ4OC45NDZIODEuNTR6bTcuMTA2IDExLjkyNGMxLjMyIDAgMi4zOC0uMzc0IDMuMTc5LTEuMTIyczEuMTk5LTEuNzgyIDEuMTk5LTMuMTAyLS40LTIuMzU0LTEuMTk5LTMuMTAyLTEuODU5LTEuMTIyLTMuMTc5LTEuMTIyaC0yLjc1djguNDQ4em0xOC44MzIgMy43ODRjLTEuNjI4IDAtMy4wOTEtLjM0NS00LjM4OS0xLjAzNHMtMi4zMTctMS42NDMtMy4wNTgtMi44NmMtLjc0LTEuMjE3LTEuMTExLTIuNTg5LTEuMTExLTQuMTE0cy4zNy0yLjg5NyAxLjExMS00LjExNGMuNzQtMS4yMTcgMS43Ni0yLjE3IDMuMDU4LTIuODZzMi43NjEtMS4wMzQgNC4zODktMS4wMzQgMy4wOTEuMzQ1IDQuMzg5IDEuMDM0IDIuMzE3IDEuNjQzIDMuMDU4IDIuODYgMS4xMTEgMi41ODkgMS4xMTEgNC4xMTQtLjM3IDIuODk3LTEuMTExIDQuMTE0LTEuNzYgMi4xNy0zLjA1OCAyLjg2LTIuNzYxIDEuMDM0LTQuMzg5IDEuMDM0em0wLTMuNjA4Yy43NzcgMCAxLjQ4MS0uMTgzIDIuMTEyLS41NXMxLjEzLS44ODQgMS40OTYtMS41NTFjLjM2Ny0uNjY3LjU1LTEuNDM0LjU1LTIuMjk5cy0uMTgzLTEuNjMyLS41NS0yLjI5OWMtLjM2Ny0uNjY3LS44NjUtMS4xODQtMS40OTYtMS41NTFzLTEuMzM1LS41NS0yLjExMi0uNTUtMS40ODEuMTgzLTIuMTEyLjU1LTEuMTMuODg0LTEuNDk2IDEuNTUxYy0uMzY3LjY2Ny0uNTUgMS40MzQtLjU1IDIuMjk5cy4xODMgMS42MzIuNTUgMi4yOTljLjM2Ny42NjcuODY1IDEuMTg0IDEuNDk2IDEuNTUxczEuMzM1LjU1IDIuMTEyLjU1em0yNC43NSAzLjNsLS4wNDQtOC4xNjItMy45NiA2LjY0NGgtMS45MzZsLTMuOTM4LTYuNDI0VjQ5aC00LjAyNlYzMy42aDMuNTg2bDUuNDEyIDguODg4IDUuMjgtOC44ODhoMy41ODZsLjA0NCAxNS40em0xNy40MDItMi45OTJoLTYuNTEyTDE0MS45MDggNDloLTQuNDQ0bDYuNzk4LTE1LjRoNC4yOWw2LjgyIDE1LjRoLTQuNTMyem0tMS4yNzYtMy4yMTJsLTEuOTgtNC45MjgtMS45OCA0LjkyOHptOC4yNS05LjE5Nmg0LjM1NlY0OWgtNC4zNTZ6bTIyLjExIDBWNDloLTMuNTg2bC02Ljc5OC04LjIwNlY0OWgtNC4yNjhWMzMuNmgzLjU4Nmw2Ljc5OCA4LjIwNlYzMy42em04LjQ5MiAxNS43MDhjLTEuMjQ3IDAtMi40NTctLjE1NC0zLjYzLS40NjJzLTIuMTI3LS43MTktMi44Ni0xLjIzMmwxLjQzLTMuMjEyYy42OS40NTUgMS40ODkuODIxIDIuMzk4IDEuMXMxLjgwNC40MTggMi42ODQuNDE4YzEuNjcyIDAgMi41MDgtLjQxOCAyLjUwOC0xLjI1NCAwLS40NC0uMjM4LS43NjYtLjcxNS0uOTc5cy0xLjI0My0uNDM2LTIuMjk5LS42NzFjLTEuMTU5LS4yNS0yLjEyNy0uNTE3LTIuOTA0LS44MDNzLTEuNDQ1LS43NDQtMi4wMDItMS4zNzUtLjgzNi0xLjQ4MS0uODM2LTIuNTUyYzAtLjkzOS4yNTctMS43ODYuNzctMi41NDFzMS4yOC0xLjM1MyAyLjI5OS0xLjc5MyAyLjI3LS42NiAzLjc1MS0uNjZjMS4wMTIgMCAyLjAxLjExNCAyLjk5Mi4zNDFzMS44NDguNTYxIDIuNTk2IDEuMDAxbC0xLjM0MiAzLjIzNGMtMS40NjctLjc5Mi0yLjg5LTEuMTg4LTQuMjY4LTEuMTg4LS44NjUgMC0xLjQ5Ni4xMjgtMS44OTIuMzg1LS4zOTYuMjU3LS41OTQuNTktLjU5NCAxLjAwMXMuMjM1LjcxOS43MDQuOTI0IDEuMjI1LjQxOCAyLjI2Ni42MzhjMS4xNzMuMjUgMi4xNDUuNTE3IDIuOTE1LjgwM3MxLjQzNy43NCAyLjAwMiAxLjM2NC44NDcgMS40Ny44NDcgMi41NDFjMCAuOTI0LS4yNTcgMS43Ni0uNzcgMi41MDhzLTEuMjgzIDEuMzQ2LTIuMzEgMS43OTMtMi4yNzMuNjcxLTMuNzQuNjcxeiIgZmlsbD0iIzAxMDYxNyIgZmlsbC1ydWxlPSJub256ZXJvIi8+PHBhdGggZD0iTTY0IDF2MjJMMCA0OXoiIGZpbGw9IiMyZmU5ZmYiLz48cGF0aCBkPSJNNTIgMHYzOGMwIDExLjA0Ni04Ljk1NCAyMC0yMCAyMHMtMjAtOC45NTQtMjAtMjBWMjJsMTItNi42VjM4YTcgNyAwIDAwMTQgMFY3Ljd6IiBmaWxsPSIjNGM0N2Y3Ii8+PC9nPjwvc3ZnPg=='
     altText: Unstoppable domain logo
 
 tags:
-  - name: direct_blockchain
-    x-displayName: Direct blockchain
-    description: |
-      .crypto is built through a series of smart contracts on the Ethereum blockchain.
-      An intermediate understanding of Ethereum development is recommended for this section.
-      We also recommend using an Ethereum library like [ethers.js](https://docs.ethers.io/ethers.js/html/) or [web3.js](https://web3js.readthedocs.io/en/v1.2.2/index.html) to interract with the Ethereum blockchain. 
-
-      There are two contracts relevant to resolution and management:
-        1. .crypto registry
-        2. Resolver contract
-
-      ### .crypto registry
-      The .crypto registry is deployed at [0xd1e5b0ff1287aa9f9a268759062e4ab08b9dacbe](https://etherscan.io/address/0xd1e5b0ff1287aa9f9a268759062e4ab08b9dacbe).
-      The domain owner and resolver contract address records are stored in the .crypto registry. They can be read by calling methods: .ownerOf(tokenId) and .resolverOf(tokenId)
-
-      ### Resolver contract
-      Resolver contracts contain the resolution records of a domain.
-      Resolver contracts should follow the same interface as the [default resolver contract](https://etherscan.io/address/0x878bC2f3f717766ab69C0A5f9A6144931E61AEd3).
-      The domain's resolver contract address is set in the .crypto registry
-
-      ### Token ID
-      Before being used in the .crypto registry as tokenId, domains are hashed following the [EIP-137](https://github.com/ethereum/EIPs/blob/master/EIPS/eip-137.md#namehash-algorithm) namehash spec. 
-      The ethers.js library has the namehash() method defined [here](https://docs.ethers.io/v5/api/utils/hashing/#utils-namehash).
-
-      ```
-      tokenId = namehash('brad.crypto');
-      ```
-
-      ## Resolution
-      Retrieve the resolver contract address for a domain from the .crypto registry
-        ```
-      resolverAddress = RegistryContract.resolverOf(tokenId).call();
-        ```
-        Read the resolver contract to obtain the domain records. Assume that the resolver contract 
-        follows the same interface as the [default resolver contract](https://etherscan.io/address/0x878bC2f3f717766ab69C0A5f9A6144931E61AEd3)
-
-        The key for crypto address records follows the format:
-        `crypto.uppercaseTicker.address`
-        ```
-      record = ResolverContract.at(resolverAddress).get('crypto.ETH.address', tokenId).call();
-      // Or read a list of records
-      records = ResolverContract.at(resolverAddress).getMany(['crypto.ETH.address', 'crypto.BTC.address'], tokenId).call();
-        ```
-        That's all for direct blockchain domain resolution! The next section covers domain management
-
-      ## Management
-      Management transactions are blockchain writes so they require gas and must be made by the domain owner or approved addresses
-
-      ### Transfer domain
-      To transfer a domain, use the transferFrom method in the registry
-      ```
-      RegistryContract.transferFrom(ownerAddress, recipientAddress, tokenId).send()
-      ```
-
-      ### Set resolver
-      A resolver contract needs to be set in the registry before records can be resolved. You can deploy 
-      a resolver contract with customized methods or just use the existing [default resolver contract](https://etherscan.io/address/0x878bC2f3f717766ab69C0A5f9A6144931E61AEd3).
-
-      **NOTE**: When a domain transfers ownership, records remain in the resolver contract. When using an existing resolver like the default 
-      resolver, it's important to clear any possible records leftover by the previous ownership by calling the reset() method.
-
-      ```
-      defaultResolverAddress = '0x878bC2f3f717766ab69C0A5f9A6144931E61AEd3'
-
-      resolverAddress = RegistryContract.resolverOf(tokenId).call();
-
-      if (!resolverAddress || resolverAddress === '0x' || resolverAddress === '0x0000000000000000000000000000000000000000') {
-        // Clear all records for the domain
-        ResolverContract.at(defaultResolverAddress).reset(tokenId).send()
-        // Set the domain's resolver
-        RegistryContract.resolveTo(defaultResolverAddress, tokenId).send();
-      }
-      ```
-
-      ### Update records
-      Once you've set or found the resolver contract in the registry, you can update records for the domain
-      ```
-      resolverAddress = RegistryContract.resolverOf(tokenId).call();
-      ResolverContract.at(resolverAddress).set('crypto.ETH.address', ethAddress, tokenId).send()
-      ```
-
-      ## Errors
-        Take a look on the possible [errors](#tag/errors) for the best user experience.
-        In case if you are not using unstoppable resolution library you might want to implement them by yourself.
-
-
-      That's all there is for direct blockchain management of .crypto domains!
-
-  - name: ipfs_resolution
-    x-displayName: Decentralized websites
-    description: |
-      Decentralized websites work by connecting decentralized storage like IPFS (InterPlanetary File System) with blockhain domain.
-      In order to resolve such website one should obtain the special ipfs hash from blockchain domain and use it with any ipfs gateway
-      public or private to get all the files to serve to the user. There are several ways on how to obtain the ipfs hash.
-
-      ## Using our resolution library 
-        - You can find our resolution library over here [@unstoppabledomains/resolution](https://www.npmjs.com/package/@unstoppabledomains/resolution)
-
-        ```javascript
-          const resolution = new Resolution();
-          const domain = 'johnnyjumper.zil';
-          const publicIPFSgateway = 'https://cloudflare-ipfs.com/ipfs';
-          resolution.ipfsHash(domain).then( hash => redirect(`${publicIPFSgateway}/${hash}`));
-        ```
-
-      ## Talking with blockchain contracts manually
-        - First we need to contact the specific registry contract depending on which tld you are going after
-          
-          * for .zil domains registry can be found here: ```zil1jcgu2wlx6xejqk9jw3aaankw6lsjzeunx2j0jz```
-          * for .crypto domains registry contract found here: ```0xD1E5b0FF1287aA9f9A268759062E4Ab08b9Dacbe```
-          * for .eth domain registry located over here: ```0x00000000000C2E074eC69A0dFb2997BA6C7d2e1e```
-          
-          use [this section](#section/Resolution) to get the resolver address from registry contract.
-          On ENS contracts you can get the resolver address by using resolver method on registry like so ```resolver(namehash(domain))```
-
-        
-        - Obtain the ipfs hash from resolver contract
-          * for unstoppable domains you should use .get method of the resolver contract with the key 'ipfs.html.value' ```resolver.get('ipfs.html.value')```
-          * for ENS domains refer [here](https://eips.ethereum.org/EIPS/eip-1577) on how to resolve the contenthash and get ipfs-hash from it.
-        
-        - Once you have the hash you are all set up. The easiest way to view the website straight away is to use the public ipfs gateway from this [list](https://ipfs.github.io/public-gateway-checker/),
-          or you can spin up your own ipfs node and use that to reach for all .html .js and .css files stored across the decentralized file storage system
-
-      ## Errors
-        Take a look on the possible [errors](#tag/errors) for the best user experience.
-        In case if you are not using unstoppable resolution library you might want to implement them by yourself.
-
-  - name: resolution_library
-    x-displayName: Resolution Library
-    description: |
-      Unstoppable Domain provides an npm package called [@unstoppabledomains/resolution](https://www.npmjs.com/package/@unstoppabledomains/resolution).
-      This npm package is able to make a live blockchain call to either .zil, .crypto, or ens to resolve a domain name.
-      It is fully customizable for various blockchain networks. When creating an instance developer can specify
-        - blockchain url such as https://mainnet.infura.io or https://api.zilliqa.com
-        - blockchain network as either a standart number like 1 for ens for mainnet or 333 for zns for testnet
-          - blockchain network can be specified as a string as well ('mainnet', 'testnet', 'ropsten' and etc...)
-        
-      ## Notice: <Infura project-ID enforcement>
-        If you are planning to use resolution library to resolve ens or cns (.crypto) domain levels consider
-        using custom url for both naming spaces.
-       ```javascript
-          const customUrl = "https://mainnet.infura.io/v3/YOUR-PROJECT-ID";
-        
-            const resolution = new Resolution({blockchain: {
-           ens: {url: customUrl},
-           cns: {url: customUrl}
-         }})
-       ```
-
-      ## Installation
-        Resolution is hosted on the [NPM Registry](https://www.npmjs.com/package/@unstoppabledomains/resolution) as package
-        `@unstoppabledomains/resolution`.
-
-        Most of the time installation looks like:
-
-        ```bash
-        npm install @unstoppabledomains/resolution
-        ```
-
-        ```bash
-        # It's also available via yarn
-        yarn add @unstoppabledomains/resolution
-        ```
-      ## Getting Started
-        Create a new project.
-
-        ```shell
-        mkdir test-out-resolution && cd $_
-        npm init -y
-        ```
-
-        Make a file, `script.js`.
-
-        ```javascript
-        const {default: Resolution} = require('@unstoppabledomains/resolution')
-
-        const resolution = new Resolution({blockchain: {
-          ens: {url: 'https://mainnet.infura.io/v3/YOUR-PROJECT-ID'},
-          cns: {url: 'https://mainnet.infura.io/v3/YOUR-PROJECT-ID'}
-        }})
-
-        function resolve(domain, currency) {
-          resolution.address(domain, currency)
-            .then(address => console.log(domain, ' resolves to', address))
-            .catch(console.error)
-        }
-        resolve('resolver.eth', "ETH")
-        resolve('brad.zil', "ZIL")
-        ```
-
-        Execute the script.
-
-        ```javascript
-        node script.js
-        # brad.zil  resolves to zil1yu5u4hegy9v3xgluweg4en54zm8f8auwxu0xxj
-        # resolver.eth resolves to 0xD3ddcCDD3b25A8a7423B5bEe360a42146eb4Baf3
-        ```
-        
-      ## How to resolve 
-        Resolution library provides a way to resolve a domain name using a direct blockchain call.
-        For this purpose there are two main methods to look for: ** Resolution.resolve ** and ** Resolution.address **
-      - ### Resolve
-        This method accept the domain name and returns following object or null in case of error
-        ```javascript
-          {
-            addresses: {}, // if domain will resolve to anything it will be here
-            meta: {
-              owner: null, // this means the domain is avalable for purchase
-              ttl: 0,
-            },
-          };
-        ```
-      - ### Address
-        This method accepts two arguments:
-          - domain name
-          - currency ticker in which address you are interested like ( BTC, ETH, ZIL )
-
-        It returns you the address if such exists or simply null if such address wasn't found.
-        Beside the resolution there are also methods to test whether the domain is in valid format or supported by the network
-      - ### isSupportedDomain
-        Accepts domain name and returns boolean if such domain is supported by ens, .crypto, or .zil
-      - ### isSupportedDomainInNetwork
-        Accepts the domain name and tests it against the current blockchain network specified in constructor of Resolution.
-        It will also check if the domain is in valid format
-
-  - name: chat_library
-    x-displayName: Chat Library
-    description: |
-      Unstoppable Domains also provides an npm package for decentralized chat [@unstoppabledomains/chat](https://www.npmjs.com/package/@unstoppabledomains/chat).
-
   - name: domain_name_resolution
     x-displayName: Resolution
     description: |-
-      We provide an API for domain resolution, but this is a centralized and insecure method of resolution. 
+      We provide an API for domain resolution, but this is a centralized and insecure method of resolution.
 
       **NOTE: This route should only be used for demo or testing purposes.**
 
-      Please refer to the [direct blockchain](#tag/direct_blockchain) or [resolution library](#tag/resolution_library) sections for secure resolution.
+      Please refer to [Resolving Domain Records](https://app.gitbook.com/@unstoppable-domains/s/unstoppable-domains/domain-registry-essentials/resolving-domain-records) or see our [resolution library](https://github.com/unstoppabledomains/resolution).
 
   - name: demos
     x-displayName: Demos
@@ -269,7 +38,7 @@ tags:
       ### Demo List:
         - [Domain name resolution](https://unstoppabledomains.github.io/reseller-demo/#/domain-name-resolution)
         - [Reseller domain purchase](https://unstoppabledomains.github.io/reseller-demo/#/reseller-demo)
-        
+
       Here are some simple steps to help you launch Unstoppable Demo app locally on your machine. More complete documentation is coming soon!
 
       # Clone, install and run the project locally.
@@ -278,28 +47,6 @@ tags:
       mkdir test-out-resolution && cd $_ &&
       git clone https://github.com/unstoppabledomains/reseller-demo ./ &&
       yarn install && yarn start
-      ```
-
-  - name: errorref
-    x-displayName: Errors
-    description: |
-      Take a look on the possible [errors](#tag/errors) for the best user experience.
-      In case if you are not using unstoppable resolution library you might want to implement them by yourself.
-
-  - name: errors
-    x-displayName: Errors
-    description: |
-      If you are making an integration without the help of unstoppable resolution library
-      you might want to code for all the errors bellow to give your users best experience.
-      Users of unstoppable domains resolution library are going to get these exceptions with the codes listed bellow automatically
-
-      ### Error List
-        -  UnregisteredDomain -> This occurs when the domain has no owner address
-        -  UnsupportedDomain -> This occurs when the domain doesn't end with .crypto | .zil 
-        -  UnspecifiedCurrency -> This occurs when there is no requested currency attached to a domain (like no btc when asked for such)
-        -  NamingServiceDown -> Sometimes there might be some problem with the eth node or public blockchain providers. This should indicate when api is down
-        -  UnsupportedCurrency -> When currency is not on the [bip44-constants](https://www.npmjs.com/package/bip44-constants) list is being asked
-        -  RecordNotFound -> One of the most often occured exception from .ipfs methods. In case if some records like ipfs hash or gundb chat id are missing we throw this one.
 
   - name: reseller
     x-displayName: Reseller API
@@ -308,8 +55,6 @@ tags:
       apply to be a reseller [here](https://unstoppabledomains.com/resellers).
 
       Visit the [reseller dashboard](https://unstoppabledomains.com/resellers) to view your resellerID and Stripe.
-
-      Below endpoints are used with our [Authentication](#tag/authentication)
 
   - name: stripePayment
     x-displayName: Stripe
@@ -349,7 +94,7 @@ tags:
 
       Example: https://api.commerce.coinbase.com/charges/BDCL6NRV
 
-      In order to detect whether the payment passed through developer can use order status endpoint. 
+      In order to detect whether the payment passed through developer can use order status endpoint.
 
       ## Coinbase Flow:
       - Customer fills all necessary fields for making an order
@@ -363,17 +108,11 @@ tags:
       Unstoppable Domains provides several choices for payment operations:
         - [Stripe integration](#section/Stripe-Flow:)
         - [Coinbase integration](#section/Coinbase-Flow:)
-  - name: authentication
-    x-displayName: Authentication
-    description: |-
-      Unstoppable Domains provides following tools and API endpoints:
-      - Domain Resolution is realized via [Resolution](#tag/resolution) library with direct blockchain calls
-      - Reseller API requires you to be an authorized reseller. You can apply to be a reseller [here](https://unstoppabledomains.com/resellers)
 
   - name: testing
     x-displayName: Testing
     description: |-
-      Based on the nature of the blockchain domains, they can not be easily returned because UD has no control over the domain once it is assigned. 
+      Based on the nature of the blockchain domains, they can not be easily returned because UD has no control over the domain once it is assigned.
       ### IMPORTANT:
       That is why **ANY** successful purchase of the domain is not easily reversible. UD charges resellers for any domain sold via the “Buy Domain” endpoint that is not in the test name space.
       ## Test name space
@@ -475,19 +214,6 @@ tags:
         - <support@unstoppabledomains.com>
 
 x-tagGroups:
-  - name: Direct blockchain
-    tags:
-      - direct_blockchain
-
-  - name: NPM Libraries
-    tags:
-      - resolution_library
-      - chat_library
-
-  - name: IPFS resolution
-    tags:
-      - ipfs_resolution
-
   - name: API
     description: |-
     tags:
@@ -586,7 +312,7 @@ paths:
       description: >
         Requires domain name
 
-        ## Returns 
+        ## Returns
          - `owner` blockchain address
          - `reselling` information on domain `price`, whether it’s
         `availableForFree`, and whether it is a `test` domain. `reselling` is
@@ -684,7 +410,7 @@ paths:
         The blockchain needs time before a transaction is mined. In rare cases,
         it is possible for someone to front run your purchase, which would
         result in an order being cancelled. We expect this to happen in less
-        than 1 out of 10,000 cases. 
+        than 1 out of 10,000 cases.
 
 
         Blockchain doesn’t currently support any locking functionality for an
@@ -744,7 +470,7 @@ paths:
         Requires:
           - User Email
           - Order Number
-          
+
         This endpoint is used to check against blockchain transaction status.
         Due to technical limitation of blockchains transactions are not instant and require some time.
         Once the status is mined you can be sure that the domain is live and written on a blockchain
