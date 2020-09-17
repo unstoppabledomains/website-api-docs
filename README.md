@@ -1,4 +1,4 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+The live documentation of Unstoppable Domains website API is hosted at [api-docs.unstoppabledomains.com](https://api-docs.unstoppabledomains.com/).
 
 ## Available Scripts
 
