@@ -1,4 +1,4 @@
-The live documentation of Unstoppable Domains website API is hosted at [api-docs.unstoppabledomains.com](https://api-docs.unstoppabledomains.com/).
+The live documentation of Unstoppable Domains website API is hosted at [apidocs.unstoppabledomains.com](https://apidocs.unstoppabledomains.com/).
 
 ## Available Scripts
 
