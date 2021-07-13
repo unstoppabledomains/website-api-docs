@@ -4,16 +4,6 @@ servers:
   - url: //unstoppabledomains.com/api/v1
     description: Main Server
 info:
-  description: |
-    Welcome to the Unstoppable Domains Website API documentation!
-
-    ## Getting started
-    - If you're interested in resolving domains via our site API, see [Domain Name Resolution](#tag/domain_name_resolution).
-    - For resellers endpoints, see [Reseller API](#tag/reseller).
-    - For details on payments, check out [Payment Options](#tag/paymentDescription).
-
-    If you want to apply to become a reseller, see [Reseller Application](https://unstoppabledomains.com/resellers).
-
   title: Unstoppable Domains
 
   x-logo:
@@ -21,33 +11,6 @@ info:
     altText: Unstoppable domain logo
 
 tags:
-  - name: domain_name_resolution
-    x-displayName: Resolution
-    description: |-
-      We provide an API for domain resolution, but this is a centralized and insecure method of resolution.
-
-      **NOTE: This route should only be used for demo or testing purposes.**
-
-      Please refer to [Resolving Domain Records](https://app.gitbook.com/@unstoppable-domains/s/unstoppable-domains/domain-registry-essentials/resolving-domain-records) or see our [resolution library](https://github.com/unstoppabledomains/resolution).
-
-  - name: demos
-    x-displayName: Demos
-    description: |
-      Unstoppable Domains has built several demo applications to show some examples on how one would use its services
-
-      ### Demo List:
-        - [Domain name resolution](https://unstoppabledomains.github.io/reseller-demo/#/domain-name-resolution)
-        - [Reseller domain purchase](https://unstoppabledomains.github.io/reseller-demo/#/reseller-demo)
-
-      Here are some simple steps to help you launch Unstoppable Demo app locally on your machine. More complete documentation is coming soon!
-
-      # Clone, install and run the project locally.
-
-      ```shell
-      mkdir test-out-resolution && cd $_ &&
-      git clone https://github.com/unstoppabledomains/reseller-demo ./ &&
-      yarn install && yarn start
-
   - name: reseller
     x-displayName: Reseller API
     description: |-
@@ -55,242 +18,10 @@ tags:
       apply to be a reseller [here](https://unstoppabledomains.com/resellers).
 
       Visit the [reseller dashboard](https://unstoppabledomains.com/resellers) to view your resellerID and Stripe.
+      
+      To view more about unstoppable domains read our [main documentation](https://docs.unstoppabledomains.com).
 
-  - name: stripePayment
-    x-displayName: Stripe
-    description: |-
-      To obtain your Stripe API keys, onboard with the Unstoppable Domains platform through Stripe.
-      There is a stripe connect button in the [reseller dashboard](https://unstoppabledomains.com/resellers). Once connected, your Stripe API key will appear.
-
-      UD supports http://stripe.com/ payments.
-
-      Stripe requires you to embed their form into your application: https://stripe.com/docs/web/setup
-
-      Stripe token ID should be proded to the buy domain API endpoint: https://stripe.com/docs/stripe-js/elements/quickstart#create-token
-
-      This is a recommended and **SECURE** payment method for wallets that have all their applications completely on the client side.
-
-      We use a different stripe API key for live and test orders:
-        - pk_test_* (reseller-test-* namespace)
-        - pk_live_* (all other domains)
-
-      These Stripe API keys are public keys and they are safe to reveal.
-
-      ## Stripe Flow:
-      - Customer enters his credit card and presses submit
-      - Wallet sends payment information to stripe and generates the stripe token.
-      - Wallet sends “Buy Domain” request with order information and stripe token id
-      - UD receives the call, charges the credit card via stripe token
-      - UD responds to the wallet with success and pending status if payment was successful
-      - Wallet shows the congratulation page to the customer
-      - Wallet queries “Order Status” endpoint to make sure the transaction is mined successfully
-  - name: coinbasePayment
-    x-displayName: Coinbase
-    description: |-
-      UD support https://developers.coinbase.com/ payments.
-
-      That requires Reseller to change the flow in a specific manner.
-      In order to work with coinbase a wallet should make a buy domain call with payments field defined to “coinbase”. UD will respond with the coinbase chargeID which can be used with coinbase API.
-
-      Example: https://api.commerce.coinbase.com/charges/BDCL6NRV
-
-      In order to detect whether the payment passed through developer can use order status endpoint.
-
-      ## Coinbase Flow:
-      - Customer fills all necessary fields for making an order
-      - Wallet sends "Buy Domain" request with order information and payment type field as coinbase
-      - Wallet receives coinbase chargeId token, uses it with https://api.commerce.coinbase.com/charges/:chargeID endpoint to show ui to the user
-      - User pays specified amount to the specified address
-      - Wallets makes a series of queries "Order Status" endpoint to make sure the transaction has been made and mined successfully
-  - name: paymentDescription
-    x-displayName: Payment options
-    description: |-
-      Unstoppable Domains provides several choices for payment operations:
-        - [Stripe integration](#section/Stripe-Flow:)
-        - [Coinbase integration](#section/Coinbase-Flow:)
-
-  - name: testing
-    x-displayName: Testing
-    description: |-
-      Based on the nature of the blockchain domains, they can not be easily returned because UD has no control over the domain once it is assigned.
-      ### IMPORTANT:
-      That is why **ANY** successful purchase of the domain is not easily reversible. UD charges resellers for any domain sold via the “Buy Domain” endpoint that is not in the test name space.
-      ## Test name space
-      UD is introducing the testing domain name space for resellers. If your domain has the following format: “reseller-test-\<reseller-id\>-\<random-number\>.crypto”, UD will not charge you for selling any of these. However, these domains are fully functional and live in the same production environment on the blockchain as any other UD domain. “Domain Availability” endpoint has an information whether the domain is in the testing space with `reseller.test` key.
-      ## Try It For Yourself
-      Shell script to run all example request to API:
-      ```shell
-        jq --version > /dev/null
-        curl --version > /dev/null
-
-        set -e
-        if [ -z "$RESELLER" ] || [ -z $BUYER ]; then
-          echo "Usage: RESELLER=<key> BUYER=<email> $0"
-          exit 1
-        fi
-
-        reseller="$RESELLER"
-
-        # Buy Domain params
-        buyer="$BUYER"
-        buydomain() {
-          echo "reseller-test-$reseller-$RANDOM.crypto"
-        }
-        owner="0xa823a39d2d5d2b981a10ca8f0516e6eaff78bdcf"
-        zil='0xe568f2BB42A77F6508911290d581B3Af107b1e4B'
-        eth='0x20B4564DEB7AF89ece828d843D0Ac2c16934a23e'
-
-
-        #host="http://localhost:8080"
-        host="https://unstoppabledomains.com"
-
-        base="$host/api/v1/resellers/$reseller"
-
-        get() {
-          url="$base$1"
-          echo $url
-          curl -sS -H "$header" $url | jq
-        }
-
-        get "/domains/bogdantest.crypto"
-        get "/domains/invalid"
-        get "/domains/available-domain.crypto"
-        get "/domains/reseller-test-$reseller-3828832.crypto"
-        get "/domains/reseller-test-unavailable-3828832.crypto"
-        get "/users/bogdan@unstoppabledomains.com"
-        get "/users/braden@unstoppabledomains.com"
-        get "/users/unknown-user@gmail.com"
-        get "/users/invalid-gmail.com"
-        get "/users/$buyer/orders/28832"
-
-        domainsjson() {
-        echo $( jq -n \
-                          --arg buydomain "`buydomain`" \
-                          --arg owner "$owner" \
-                          --arg zil "$zil" \
-                          --arg eth "$eth" \
-                          '[{name: $buydomain, owner: $owner, resolution: {crypto: {ZIL: {address: $zil}, ETH: {address: $eth}}}}]' )
-
-        }
-        json=$( jq -n "{order: {domains: `domainsjson`}}" )
-
-        orderapi="$base/users/$buyer/orders"
-
-        order() {
-          echo POST $orderapi
-          echo BODY $1
-          curl -sS -H "$header" -H "Content-Type: application/json" -X POST -d "$1" "$orderapi" > /tmp/response.json
-          jq "." /tmp/response.json
-        }
-
-        order "$json"
-
-        orderid=`jq -r .order.orderNumber /tmp/response.json`
-        get "/users/$buyer/orders/$orderid"
-
-
-        json=$(jq -n  '{order: {domains: [{invalidSchema: true}]}}')
-        order "$json"
-
-
-        tokenid=`curl -sS 'https://api.stripe.com/v1/tokens' -H 'Accept: application/json' -H 'Content-Type: application/x-www-form-urlencoded' --data 'card[number]=5555555555554444&card[cvc]=123&card[exp_month]=01&card[exp_year]=25&card[address_zip]=12345&key=pk_test_bERlHfGH5lT9rTIhKPg74H0o&pasted_fields=number' | jq -r '.id'`
-
-        json=$( jq -n \
-          --arg tokenid "$tokenid" \
-          "{order: {payment: {type: \"stripe\", tokenId: \$tokenid}, domains: `domainsjson`}}" )
-
-        order "$json"
-      ```
-
-      Requires jq and curl console utilities:
-      - https://stedolan.github.io/jq/
-      - https://curl.haxx.se/
-  - name: reachout
-    x-displayName: Support team
-    description: |-
-      You can reach our support team via these channels:
-        - [Telegram](https://t.me/unstoppabledomains)
-        - [Website](https://community.unstoppabledomains.com)
-        - <support@unstoppabledomains.com>
-
-x-tagGroups:
-  - name: API
-    description: |-
-    tags:
-      - authentication
-      - domain_name_resolution
-      - reseller
-      - errorref
-
-  - name: Payment
-    tags:
-      - paymentDescription
-      - stripePayment
-      - coinbasePayment
-  - name: How to test
-    tags:
-      - testing
-
-  - name: For developers
-    tags:
-      - demos
-      - errors
-  - name: Support Contacts
-    tags:
-      - reachout
 paths:
-  /{domain}:
-    parameters:
-      - name: domain name
-        in: path
-        description: Domain name you wish to check
-        schema:
-          $ref: '#/components/schemas/Domain'
-    get:
-      tags:
-        - domain_name_resolution
-      summary: Resolves the domain
-      description:
-        'Dispatches the domain returns crypto addresses and metadata associated
-        with the domain. Unclaimed address will still be revolved to null
-        addresses'
-      responses:
-        '200':
-          description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/CnsRecord'
-
-  /resellers/{resellerID}/users/{email}:
-    parameters:
-      - name: resellerID
-        in: path
-        description: ID obtained from UD team
-        required: true
-        schema:
-          type: string
-          example: udtesting
-      - name: email
-        in: path
-        description: User email
-        required: true
-        schema:
-          $ref: '#/components/schemas/Email'
-    get:
-      tags:
-        - reseller
-      summary: User status
-      description:
-        API endpoint can be used to check whether the user has a domain and
-        whether they are eligible for a free domain.
-      responses:
-        '200':
-          description: Valid
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/userStatus/Valid'
   /resellers/{resellerID}/domains/{domainName}:
     parameters:
       - name: resellerID
@@ -322,69 +53,23 @@ paths:
          - `premium` boolean if the domain is premium
       responses:
         '200':
-          description:
-            Contains owner, reselling information and auction information if any
+          description: Successful
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/DomainAvailability/ValidResponse'
         '400':
-          description: Invalid domain
+          description: Bad Request
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/DomainAvailability/errors/invalidDomain'
-  /resellers/{resellerID}/domains:
-    parameters:
-      - name: resellerID
-        in: path
-        description: ID obtained from UD team
-        required: true
-        schema:
-          type: string
-          example: udtesting
-      - name: owner
-        in: query
-        description: owner ethereum address
-        required: true
-        schema:
-          type: string
-          example: '0x033dc48B5dB4CA62861643e9D2C411D9eb6D1975'
-      - name: extension
-        in: query
-        description: extension to look for
-        required: true
-        schema:
-          type: string
-          exmaple: zil
-      - name: page
-        in: query
-        description: page number to look at number >= 1, default 1
-        required: false
-        schema:
-          type: number
-          example: 1
-      - name: perPage
-        in: query
-        description: perPage results  number >= 1 && number <= 50, default 30
-        required: false
-        schema:
-          type: number
-          example: 10
-    get:
-      tags:
-        - reseller
-      summary: Reverse look up.
-      description:
-        This endpoint is used to get all domains that are connected to certain
-        owner
-      responses:
-        '200':
-          description: Valid
+                $ref: '#/components/schemas/errors/GeneralError'
+        '401':
+          description: Reseller not found
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/reverselookUp/Valid'
+                $ref: '#/components/schemas/errors/GeneralResellerNotFound'
   /resellers/{resellerID}/users/{email}/orders:
     parameters:
       - name: resellerID
@@ -440,6 +125,18 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Reseller/BuyResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errors/GeneralError'
+        '401':
+          description: Reseller not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errors/GeneralResellerNotFound'
   /resellers/{resellerID}/users/{email}/orders/{orderNumber}:
     parameters:
       - name: resellerID
@@ -481,34 +178,213 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Reseller/BuyResponse'
-        '404':
-          description: Order not found
+        '400':
+          description: Bad Request
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Reseller/OrderNotFound'
+                $ref: '#/components/schemas/errors/GeneralError'
+        '401':
+          description: Reseller not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errors/GeneralResellerNotFound'
+        '404':
+          description: Order Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errors/NotFoundError'
+  /resellers/{resellerID}/users/{email}:
+    parameters:
+      - name: resellerID
+        in: path
+        description: ID obtained from UD team
+        required: true
+        schema:
+          type: string
+          example: udtesting
+      - name: email
+        in: path
+        description: User email
+        required: true
+        schema:
+          $ref: '#/components/schemas/Email'
+    get:
+      tags:
+        - reseller
+      summary: User status
+      description:
+        API endpoint can be used to check whether the user has a domain and
+        whether they are eligible for a free domain.
+      responses:
+        '200':
+          description: Valid
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/userStatus/Valid'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errors/GeneralError'
+        '401':
+          description: Reseller not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errors/GeneralResellerNotFound'
+  /resellers/{resellerID}/domains:
+    parameters:
+      - name: resellerID
+        in: path
+        description: ID obtained from UD team
+        required: true
+        schema:
+          type: string
+          example: udtesting
+      - name: owner
+        in: query
+        description: owner ethereum address
+        required: true
+        schema:
+          type: string
+          example: '0x033dc48B5dB4CA62861643e9D2C411D9eb6D1975'
+      - name: extension
+        in: query
+        description: extension to look for
+        required: true
+        schema:
+          type: string
+          exmaple: zil
+      - name: page
+        in: query
+        description: page number to look at number >= 1, default 1
+        required: false
+        schema:
+          type: number
+          example: 1
+      - name: perPage
+        in: query
+        description: perPage results  number >= 1 && number <= 50, default 30
+        required: false
+        schema:
+          type: number
+          example: 10
+    get:
+      tags:
+        - reseller
+      summary: Reverse look up
+      description:
+        This endpoint is used to get all domains that are connected to certain
+        owner
+      responses:
+        '200':
+          description: Valid
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/reverselookUp/Valid'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errors/GeneralError'
+        '401':
+          description: Reseller not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errors/GeneralResellerNotFound'
+        
+            
 components:
   schemas:
     errors:
-      OrderNotFound:
+      GeneralError:
+        type: object
+        properties:
+          errors:
+            type: array
+            items:
+              $ref: '#/components/schemas/errors/BasicError'
+      GeneralResellerNotFound:
+        type: object
+        properties:
+          errors:
+            type: array
+            items:
+              $ref: '#/components/schemas/errors/ResellerNotFound'
+      GeneralNotFoundError:
+        type: object
+        properties:
+          errors:
+            type: array
+            items:
+              $ref: '#/components/schemas/errors/NotFoundError'
+      BasicError:
         type: object
         properties:
           code:
             type: string
             description: |
-              Error code: 'ORDER_NOT_FOUND'
-            example: 'ORDER_NOT_FOUND'
+              Error code
+            example: 'ERROR_CODE'
           message:
             type: string
             description: User friendly description of above code
-            example: 'Order is not found'
+            example: 'Error code explanation'
           field:
             type: string
             description: Estimate error field
-            example: 'orderId'
+            example: 'some field'
           value:
             description: Value of error field
-            example: 1231
+            example: 'some value'
+          status:
+            type: number
+            description: Status code of the response
+            example: 400
+      NotFoundError:
+        type: object
+        properties:
+          error:
+            type: object
+            properties:
+              message: 
+                type: string
+                example: 'Not Found'
+              status: 
+                type: number
+                example: 404
+
+      ResellerNotFound:
+        type: object
+        properties:
+          code:
+            type: string
+            description: |
+              Error code
+            example: 'RESELLER_NOT_FOUND'
+          message:
+            type: string
+            description: User friendly description of above code
+            example: 'Reseller ID not found'
+          field:
+            type: string
+            description: Estimate error field
+            example: null
+          value:
+            description: Value of error field
+            example: null
+          status:
+            type: number
+            description: Status code of the response
+            example: 401
     orderItem:
       type: object
       properties:
@@ -571,7 +447,7 @@ components:
     Domain:
       description: 'A Plaintext LDH domain'
       type: 'string'
-      pattern: "^((?![0-9]+$)(?!.*-$)(?!-)[a-zA-Z0-9-]{1,63}\\.)*(?![0-9]+$)(?!.*-$)(?!-)[a-zA-Z0-9-]{1,63}$"
+      pattern: "^((?![0-9]+$)(?!.*-$)(?!-)[a-zA-Z0-9-]{1,63}\\.)*(?!-)[a-zA-Z0-9-]{1,63}$"
       example: 'domain.crypto'
     Timestamp:
       description: An epoch timestamp in milliseconds
@@ -602,8 +478,18 @@ components:
                 reselling:
                   type: object
                   $ref: '#/components/schemas/DomainAvailability/resellingResponse'
-                auction:
-                  description: Information regarding the auction if applicable
+                premium:
+                  type: bool
+                  description: Is domain premium
+                  example: false
+                registered:
+                  type: bool
+                  description: Is domain registered
+                  example: true
+                protected:
+                  type: bool
+                  description: Is domain protected
+                  example: false
 
     userStatus:
       Valid:
@@ -753,13 +639,6 @@ components:
             ETH:
               address: '0x20B4564DEB7AF89ece828d843D0Ac2c16934a23e'
     Reseller:
-      OrderNotFound:
-        type: object
-        properties:
-          errors:
-            type: array
-            items:
-              $ref: '#/components/schemas/errors/OrderNotFound'
       BuyResponse:
         $ref: '#/components/schemas/Order'
 
