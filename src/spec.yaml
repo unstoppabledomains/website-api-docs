@@ -22,35 +22,6 @@ tags:
       Visit the [reseller dashboard](https://unstoppabledomains.com/resellers) to view your resellerID and Stripe.
 
 paths:
-  /resellers/{resellerID}/users/{email}:
-    parameters:
-      - name: resellerID
-        in: path
-        description: ID obtained from UD team
-        required: true
-        schema:
-          type: string
-          example: udtesting
-      - name: email
-        in: path
-        description: User email
-        required: true
-        schema:
-          $ref: '#/components/schemas/Email'
-    get:
-      tags:
-        - reseller
-      summary: User status
-      description:
-        API endpoint can be used to check whether the user has a domain and
-        whether they are eligible for a free domain.
-      responses:
-        '200':
-          description: Valid
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/userStatus/Valid'
   /resellers/{resellerID}/domains/{domainName}:
     parameters:
       - name: resellerID
@@ -82,69 +53,23 @@ paths:
          - `premium` boolean if the domain is premium
       responses:
         '200':
-          description:
-            Contains owner, reselling information and auction information if any
+          description: Successful
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/DomainAvailability/ValidResponse'
         '400':
-          description: Invalid domain
+          description: Bad Request
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/DomainAvailability/errors/invalidDomain'
-  /resellers/{resellerID}/domains:
-    parameters:
-      - name: resellerID
-        in: path
-        description: ID obtained from UD team
-        required: true
-        schema:
-          type: string
-          example: udtesting
-      - name: owner
-        in: query
-        description: owner ethereum address
-        required: true
-        schema:
-          type: string
-          example: '0x033dc48B5dB4CA62861643e9D2C411D9eb6D1975'
-      - name: extension
-        in: query
-        description: extension to look for
-        required: true
-        schema:
-          type: string
-          exmaple: zil
-      - name: page
-        in: query
-        description: page number to look at number >= 1, default 1
-        required: false
-        schema:
-          type: number
-          example: 1
-      - name: perPage
-        in: query
-        description: perPage results  number >= 1 && number <= 50, default 30
-        required: false
-        schema:
-          type: number
-          example: 10
-    get:
-      tags:
-        - reseller
-      summary: Reverse look up.
-      description:
-        This endpoint is used to get all domains that are connected to certain
-        owner
-      responses:
-        '200':
-          description: Valid
+                $ref: '#/components/schemas/errors/GeneralError'
+        '401':
+          description: Reseller not found
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/reverselookUp/Valid'
+                $ref: '#/components/schemas/errors/GeneralResellerNotFound'
   /resellers/{resellerID}/users/{email}/orders:
     parameters:
       - name: resellerID
@@ -200,6 +125,18 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Reseller/BuyResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errors/GeneralError'
+        '401':
+          description: Reseller not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errors/GeneralResellerNotFound'
   /resellers/{resellerID}/users/{email}/orders/{orderNumber}:
     parameters:
       - name: resellerID
@@ -241,34 +178,213 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Reseller/BuyResponse'
-        '404':
-          description: Order not found
+        '400':
+          description: Bad Request
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Reseller/OrderNotFound'
+                $ref: '#/components/schemas/errors/GeneralError'
+        '401':
+          description: Reseller not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errors/GeneralResellerNotFound'
+        '404':
+          description: Order Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errors/NotFoundError'
+  /resellers/{resellerID}/users/{email}:
+    parameters:
+      - name: resellerID
+        in: path
+        description: ID obtained from UD team
+        required: true
+        schema:
+          type: string
+          example: udtesting
+      - name: email
+        in: path
+        description: User email
+        required: true
+        schema:
+          $ref: '#/components/schemas/Email'
+    get:
+      tags:
+        - reseller
+      summary: User status
+      description:
+        API endpoint can be used to check whether the user has a domain and
+        whether they are eligible for a free domain.
+      responses:
+        '200':
+          description: Valid
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/userStatus/Valid'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errors/GeneralError'
+        '401':
+          description: Reseller not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errors/GeneralResellerNotFound'
+  /resellers/{resellerID}/domains:
+    parameters:
+      - name: resellerID
+        in: path
+        description: ID obtained from UD team
+        required: true
+        schema:
+          type: string
+          example: udtesting
+      - name: owner
+        in: query
+        description: owner ethereum address
+        required: true
+        schema:
+          type: string
+          example: '0x033dc48B5dB4CA62861643e9D2C411D9eb6D1975'
+      - name: extension
+        in: query
+        description: extension to look for
+        required: true
+        schema:
+          type: string
+          exmaple: zil
+      - name: page
+        in: query
+        description: page number to look at number >= 1, default 1
+        required: false
+        schema:
+          type: number
+          example: 1
+      - name: perPage
+        in: query
+        description: perPage results  number >= 1 && number <= 50, default 30
+        required: false
+        schema:
+          type: number
+          example: 10
+    get:
+      tags:
+        - reseller
+      summary: Reverse look up
+      description:
+        This endpoint is used to get all domains that are connected to certain
+        owner
+      responses:
+        '200':
+          description: Valid
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/reverselookUp/Valid'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errors/GeneralError'
+        '401':
+          description: Reseller not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errors/GeneralResellerNotFound'
+        
+            
 components:
   schemas:
     errors:
-      OrderNotFound:
+      GeneralError:
+        type: object
+        properties:
+          errors:
+            type: array
+            items:
+              $ref: '#/components/schemas/errors/BasicError'
+      GeneralResellerNotFound:
+        type: object
+        properties:
+          errors:
+            type: array
+            items:
+              $ref: '#/components/schemas/errors/ResellerNotFound'
+      GeneralNotFoundError:
+        type: object
+        properties:
+          errors:
+            type: array
+            items:
+              $ref: '#/components/schemas/errors/NotFoundError'
+      BasicError:
         type: object
         properties:
           code:
             type: string
             description: |
-              Error code: 'ORDER_NOT_FOUND'
-            example: 'ORDER_NOT_FOUND'
+              Error code
+            example: 'ERROR_CODE'
           message:
             type: string
             description: User friendly description of above code
-            example: 'Order is not found'
+            example: 'Error code explanation'
           field:
             type: string
             description: Estimate error field
-            example: 'orderId'
+            example: 'some field'
           value:
             description: Value of error field
-            example: 1231
+            example: 'some value'
+          status:
+            type: number
+            description: Status code of the response
+            example: 400
+      NotFoundError:
+        type: object
+        properties:
+          error:
+            type: object
+            properties:
+              message: 
+                type: string
+                example: 'Not Found'
+              status: 
+                type: number
+                example: 404
+
+      ResellerNotFound:
+        type: object
+        properties:
+          code:
+            type: string
+            description: |
+              Error code
+            example: 'RESELLER_NOT_FOUND'
+          message:
+            type: string
+            description: User friendly description of above code
+            example: 'Reseller ID not found'
+          field:
+            type: string
+            description: Estimate error field
+            example: null
+          value:
+            description: Value of error field
+            example: null
+          status:
+            type: number
+            description: Status code of the response
+            example: 401
     orderItem:
       type: object
       properties:
@@ -331,7 +447,7 @@ components:
     Domain:
       description: 'A Plaintext LDH domain'
       type: 'string'
-      pattern: "^((?![0-9]+$)(?!.*-$)(?!-)[a-zA-Z0-9-]{1,63}\\.)*(?![0-9]+$)(?!.*-$)(?!-)[a-zA-Z0-9-]{1,63}$"
+      pattern: "^((?![0-9]+$)(?!.*-$)(?!-)[a-zA-Z0-9-]{1,63}\\.)*(?!-)[a-zA-Z0-9-]{1,63}$"
       example: 'domain.crypto'
     Timestamp:
       description: An epoch timestamp in milliseconds
@@ -362,8 +478,18 @@ components:
                 reselling:
                   type: object
                   $ref: '#/components/schemas/DomainAvailability/resellingResponse'
-                auction:
-                  description: Information regarding the auction if applicable
+                premium:
+                  type: bool
+                  description: Is domain premium
+                  example: false
+                registered:
+                  type: bool
+                  description: Is domain registered
+                  example: true
+                protected:
+                  type: bool
+                  description: Is domain protected
+                  example: false
 
     userStatus:
       Valid:
@@ -513,13 +639,6 @@ components:
             ETH:
               address: '0x20B4564DEB7AF89ece828d843D0Ac2c16934a23e'
     Reseller:
-      OrderNotFound:
-        type: object
-        properties:
-          errors:
-            type: array
-            items:
-              $ref: '#/components/schemas/errors/OrderNotFound'
       BuyResponse:
         $ref: '#/components/schemas/Order'
 
