@@ -18,7 +18,7 @@ tags:
       apply to be a reseller [here](https://unstoppabledomains.com/resellers).
 
       Visit the [reseller dashboard](https://unstoppabledomains.com/resellers) to view your resellerID and Stripe.
-      
+
       To view more about unstoppable domains read our [main documentation](https://docs.unstoppabledomains.com).
 
 paths:
@@ -300,8 +300,51 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/errors/GeneralResellerNotFound'
-        
-            
+
+  /resellers/{resellerID}/domains/variations:
+    parameters:
+      - name: resellerID
+        in: path
+        description: ID obtained from UD team
+        required: true
+        schema:
+          type: string
+          example: udtesting
+      - name: domains
+        in: query
+        description: domains and labels which will be user to build variants around
+        required: true
+        schema:
+          type: array
+          items:
+            type: string
+          example: '["test.crypto", "hello", "domains.888"]'
+    get:
+      tags:
+        - reseller
+      summary: Get domains variations
+      description:
+        This endpoint is used to provide domains variants based on provided domains and labels. Method will provide domains similar to domains provided in domains parameter.
+      responses:
+        '200':
+          description: Valid
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/domainVariations'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errors/GeneralError'
+        '401':
+          description: Reseller not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errors/GeneralResellerNotFound'
+
 components:
   schemas:
     errors:
@@ -355,10 +398,10 @@ components:
           error:
             type: object
             properties:
-              message: 
+              message:
                 type: string
                 example: 'Not Found'
-              status: 
+              status:
                 type: number
                 example: 404
 
@@ -490,6 +533,42 @@ components:
                   type: bool
                   description: Is domain protected
                   example: false
+
+    domainVariations:
+      type: object
+      example:
+        test.crypto:
+          - label: thetest
+            extension: crypto
+            price: 20000
+        hello:
+          - label: hellos
+            extension: crypto
+            price: 20000
+        domains.888:
+          - label: thedomains
+            extension: 888
+            price: 2000
+      properties:
+        domainVariant:
+          description: 'One of the domain variant provided in domains query parameter'
+          type: array
+          items:
+            type: object
+            properties:
+              label:
+                description: 'Domain label'
+                type: string
+                example: 'thetest'
+              extension:
+                description: 'Domain extension (.crypto, .nft, etc)'
+                type: string
+                example: 'crypto'
+              price:
+                description: 'Domain price in USD cents. For example 20000 cents = 200 USD'
+                type: integer
+                example: 20000
+
 
     userStatus:
       Valid:
