@@ -22,7 +22,7 @@ class App extends Component {
         },
         {
           name: 'Resolution service API',
-          url: 'https://resolve.unstoppabledomains.com/api-docs/spec.json',
+          url: 'https://resolve.unstoppabledomains.com/api-docs/swagger.json',
         },
       ],
     }
