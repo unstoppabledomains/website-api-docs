@@ -9,10 +9,10 @@
     "mobx": "^4.2.0",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
-    "react-scripts": "3.1.1",
+    "react-scripts": "5.0.1",
     "redoc": "^2.0.0-rc.29",
     "styled-components": "^4.3.2",
-    "swagger-ui": "^4.6.0"
+    "swagger-ui": "^4.14.0"
   },
   "devDependencies": {
     "prettier": "^1.16.4"
