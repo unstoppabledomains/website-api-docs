@@ -18,7 +18,7 @@ class App extends Component {
         {
           name: 'Resellers API v2',
           url:
-            'https://raw.githubusercontent.com/unstoppabledomains/website-api-docs-v2/master/openapi.yaml',
+            'https://unstoppabledomains.com/api/v2/resellers/openapi.yaml',
         },
         {
           name: 'Resolution service API',
@@ -42,7 +42,7 @@ class App extends Component {
 
   componentDidMount() {
     this.updateDefinitionLink(
-      'https://raw.githubusercontent.com/unstoppabledomains/website-api-docs-v2/master/openapi.yaml',
+      'https://unstoppabledomains.com/api/v2/resellers/openapi.yaml',
       1,
     )
   }
