@@ -1,3 +1,10 @@
+#DEPRECATED
+jan 27, 2023 - this repository used to be hosted by a google app engine application in the unstoppable-domains-docs GCP project as apidocs.unstoppabledomains.com.  this domain (apidocs.unstopapbledomains.com) has been moved to redocly, and provides teh same content as docs.unstoppabledomains.com.
+
+
+#Prior content
+
+
 The live documentation of Unstoppable Domains website API is hosted at [apidocs.unstoppabledomains.com](https://apidocs.unstoppabledomains.com/).
 
 ## Available Scripts
